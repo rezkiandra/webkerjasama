@@ -34,7 +34,7 @@ require_once "./bin/koneksi.php";
                     <p class="text-light" style="font-size: 14px;"><i class="bi bi-globe me-2"></i>info@poltesa.ac.id</p>
                 </div>
                 <div class="col-lg-6 mb-3 d-lg-flex flex-column justify-content-center align-items-center">
-                    <a href="#"><i class="text-warning bi bi-arrow-up-circle-fill"></i></a>
+                    <a href="#"><i style="font-size: 60px;" class="text-warning bi bi-arrow-up-circle-fill"></i></a>
                     <img src="../../kerjasama/assets/img/white.png" class="img-fluid w-25">
                 </div>
                 <div class="col-lg-3 mb-3">

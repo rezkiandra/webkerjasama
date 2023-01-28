@@ -28,7 +28,9 @@ require_once "./bin/koneksi.php";
 <body>
     <div class="navbar navbar-expand-lg py-2 mx-5" id="bg-nav">
         <div class="container">
-            <img src="../../kerjasama/assets/img/logo.png" alt="" style="height: 68px; width: 200;" class="img-fluid navbar-brand">
+            <a class="navbar-brand" href="./index.php">
+                <img src="../../kerjasama/assets/img/logo.png" alt="" style="height: 68px; width: 200;">
+            </a>
             <button class="navbar-toggler border-light rounded d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="bi bi-list"></i>
             </button>

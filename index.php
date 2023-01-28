@@ -38,7 +38,7 @@ require_once("./bin/koneksi.php");
                 <h5 class="text-light text-center">Ayo Jalin Kerja Sama Bersama Kami</h5>
                 <h5 class="text-light text-center">Untuk Meningkatkan Kebersamaan Antar Perguruan Tinggi</h5>
             </div>
-            <a href="" class="btn text-warning border-purple rounded shadow btn-light border shadow mt-4">Selengkapnya</a>
+            <a href="" class="btn btn-light text-dark rounded border border-warning border-3 shadow my-4">Selengkapnya</a>
         </div>
     </section>
     <!-- ========== End Banner ========== -->

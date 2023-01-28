@@ -1,12 +1,3 @@
-* {
-    font-family: 'Poppins', sans-serif;
-}
-
-#footer {
-    /* background: linear-gradient(90deg, rgba(71,34,114,1) 0%, rgba(135,57,195,1) 50%, rgba(71,34,114,1) 100%); */
-    background: linear-gradient(90deg, rgba(71,34,114,1) 10%, rgba(135,57,195,1) 50%, rgba(71,34,114,1) 90%);
-}
-
-#footer #button-arrow {
-    width: 200%;
+.bi.bi-arrow-up-circle-fill {
+    transition: ease-in-out 5ms;
 }
