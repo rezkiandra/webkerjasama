@@ -21,7 +21,7 @@ require_once "./bin/koneksi.php";
     <link rel="stylesheet" href="./assets/vendor/bootstrap-icons/bootstrap-icons.css">
 
     <!-- Style Header -->
-    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
 </head>
 
@@ -29,7 +29,7 @@ require_once "./bin/koneksi.php";
     <div class="navbar navbar-expand-lg py-2 mx-5" id="bg-nav">
         <div class="container">
             <a class="navbar-brand" href="./index.php">
-                <img src="../../kerjasama/assets/img/logo.png" alt="" style="height: 68px; width: 200;">
+                <img src="../../kerjasama/assets/img/logo.png" alt="" style="height: 51px; width: 150;">
             </a>
             <button class="navbar-toggler border-light rounded d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="bi bi-list"></i>

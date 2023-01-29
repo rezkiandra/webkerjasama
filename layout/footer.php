@@ -20,25 +20,25 @@ require_once "./bin/koneksi.php";
     <link rel="stylesheet" href="./assets/vendor/bootstrap-icons/bootstrap-icons.css">
 
     <!-- Style Header -->
-    <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
     <section id="footer" class="mt-5 position-static bottom-0 w-100">
         <div class="container">
             <div class="d-lg-flex justify-content-start align-items-center">
-                <div class="col-lg-3 mb-3 d-lg-flex flex-column justify-content-center text-start">
+                <div class="col-lg-3 mb-3 d-flex flex-column justify-content-center text-start">
                     <h4 class="text-uppercase text-light mt-4 text-center">Alamat</h4>
                     <p class="text-light" style="font-size: 14px;"><i class="bi bi-globe me-2"></i>Jalan Raya Sejangkung Pendidikan Sambas - Kalimantan Barat 79460</p>
                     <p class="text-light" style="font-size: 14px;"><i class="bi bi-globe me-2"></i>(0562) 6303123</p>
                     <p class="text-light" style="font-size: 14px;"><i class="bi bi-globe me-2"></i>info@poltesa.ac.id</p>
                 </div>
-                <div class="col-lg-6 mb-3 d-lg-flex flex-column justify-content-center align-items-center">
-                    <a href="#"><i style="font-size: 60px;" class="text-warning bi bi-arrow-up-circle-fill"></i></a>
+                <div class="col-lg-6 mb-3 d-flex flex-column justify-content-center align-items-center">
+                    <a href="#"><i style="font-size: 50px;" class="text-warning bi bi-arrow-up-circle-fill"></i></a>
                     <img src="../../kerjasama/assets/img/white.png" class="img-fluid w-25">
                 </div>
                 <div class="col-lg-3 mb-3">
-                    <div class="col-lg d-lg-flex flex-column justify-content-center text-start">
+                    <div class="d-flex flex-column justify-content-center text-start">
                         <h4 class="text-uppercase text-light text-center mt-4">Ikuti Kami</h4>
                         <div class="d-grid gap-3">
                             <a href="" class="text-decoration-none text-light text-uppercase" style="font-size: 14px;">
@@ -58,8 +58,8 @@ require_once "./bin/koneksi.php";
                 </div>
             </div>
         </div>
-        <div class="bg-dark d-lg-flex align-items-center justify-content-center">
-            <p class="text-light text-center py-2">&copy 2022 Poltesa All Rights Reserved</p>
+        <div class="bg-dark d-flex justify-content-center pt-3">
+            <p class="text-light">&copy 2022 Poltesa All Rights Reserved</p>
         </div>
     </section>
 </body>

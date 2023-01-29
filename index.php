@@ -54,13 +54,13 @@ require_once("./bin/koneksi.php");
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="./assets/img/1.png" class="d-block w-100" alt="...">
+                        <img src="./assets/img/download.jpg" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="./assets/img/2.png" class="d-block w-100" alt="...">
+                        <img src="./assets/img/download2.jpg" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="./assets/img/3.png" class="d-block w-100" alt="...">
+                        <img src="./assets/img/download.3.jpg" class="d-block w-100" alt="...">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -92,22 +92,22 @@ require_once("./bin/koneksi.php");
                     </div>
                 </div>
             </div>
-            <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-                <div class="col-4 border rounded bg-white d-flex justify-content-center">
+            <div class="d-lg-flex flex-row justify-content-center align-items-center gap-2">
+                <div class="col-lg-4 border rounded bg-white d-flex justify-content-center">
                     <h4 class="bg-counter text-light w-25 d-flex justify-content-center align-items-center">15</h4>
                     <div class="subject">
                         <p class="text-uppercase ms-2">Kerjasama Dalam Negeri 3 Tahun Terakhir</p>
                         <a href="" class="btn btn-sm ms-2 btn-light text-uppercase">Detail</a>
                     </div>
                 </div>
-                <div class="col-4 border rounded bg-white d-flex justify-content-center">
+                <div class="col-lg-4 border rounded bg-white d-flex justify-content-center">
                     <h4 class="bg-counter text-light w-25 d-flex justify-content-center align-items-center">15</h4>
                     <div class="subject">
                         <p class="text-uppercase ms-2">Kerjasama Dalam Negeri 3 Tahun Terakhir</p>
                         <a href="" class="btn btn-sm ms-2 btn-light text-uppercase">Detail</a>
                     </div>
                 </div>
-                <div class="col-4 border rounded bg-white d-flex justify-content-center">
+                <div class="col-lg-4 border rounded bg-white d-flex justify-content-center">
                     <h4 class="bg-counter text-light w-25 d-flex justify-content-center align-items-center">15</h4>
                     <div class="subject">
                         <p class="text-uppercase ms-2">Kerjasama Dalam Negeri 3 Tahun Terakhir</p>
@@ -124,7 +124,7 @@ require_once("./bin/koneksi.php");
         <div class="container rounded shadow mt-5 bg-light d-lg-flex justify-content-center align-items-center">
             <div class="col-lg-8 my-5">
                 <h4 class="text-uppercase text-center">Galeri</h4>
-                <div class="d-lg-flex flex-column justify-content-evenly align-items-center">
+                <div class="d-lg-flex flex-column justify-content-evenly align-items-center gap-4">
                     <div class="container d-lg-flex my-4 flex-row justify-content-evenly align-items-center">
                         <div class="col-lg-5 border rounded">
                             <div class="float-end mt-2 ms-2 bg-warning position-absolute">25/05/2015</div>
@@ -167,15 +167,16 @@ require_once("./bin/koneksi.php");
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 my-5">
-                <h4 class="text-uppercase text-center">Berita</h4>
-                <div class="container d-grid gap-4">
+            <div class="col-lg-3">
+                <h4 class="text-uppercase text-center mb-5">Berita Terbaru</h4>
+                <div class="container d-lg-flex flex-column gap-5">
                     <div class="col-lg-12 border rounded">
                         <div class="float-end mt-2 ms-2 bg-warning position-absolute">25/05/2015</div>
                         <img src="./assets/img/poltesa-home.jpg" alt="" class="img-fluid">
                         <div class="container my-3">
                             <h6>Foto Bersama Direktur Polnep</h6>
                             <p>Pada tanggal 24 September 2023...</p>
+                            <a href="" class="btn btn-sm btn-secondary">Kunjungi</a>
                         </div>
                     </div>
                     <div class="col-lg-12 border rounded">
@@ -184,29 +185,18 @@ require_once("./bin/koneksi.php");
                         <div class="container my-3">
                             <h6>Foto Bersama Direktur Polnep</h6>
                             <p>Pada tanggal 24 September 2023...</p>
+                            <a href="" class="btn btn-sm btn-secondary">Kunjungi</a>
                         </div>
                     </div>
-                </div>
-                <div class="container my-4">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination pagination-sm justify-content-center">
-                            <li class="page-item disabled">
-                                <a class="page-link">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
             </div>
+        </div>
     </section>
     <!-- ========== End Galeri ========== -->
 
-    <?php include "./layout/footer.php" ?>
+    <section>
+        <?php include "./layout/footer.php" ?>
+    </section>
 </body>
 
 <!-- Boostrap JS -->

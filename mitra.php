@@ -10,7 +10,6 @@ require_once("./bin/koneksi.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css">
     <title>Mitra - Kerjasama</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +18,6 @@ require_once("./bin/koneksi.php");
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
@@ -33,97 +31,91 @@ require_once("./bin/koneksi.php");
             <h2 class="text-uppercase text-center my-5">Mitra Dalam Negeri</h2>
         </div>
         <div class="my-5">
-            <div class="container d-lg-flex d-flex flex-row justify-content-evenly">
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
+            <div class="d-lg-flex align-items-center">
+                <div class="container d-lg-flex flex-row justify-content-center align-items-center gap-5">
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
                     </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
                     </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
                     </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="my-5">
-            <div class="container d-lg-flex d-flex flex-row justify-content-evenly">
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
                     </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
                     </div>
                 </div>
             </div>
         </div>
         <div class="my-5">
-            <div class="container d-lg-flex d-flex flex-row justify-content-evenly">
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
+            <div class="d-lg-flex align-items-center">
+                <div class="container d-lg-flex flex-row justify-content-center align-items-center gap-5">
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
+                    </div>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
+                    </div>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
+                    </div>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
+                    </div>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
+                    </div>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
                     </div>
                 </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
+            </div>
+        </div>
+        <div class="my-5">
+            <div class="d-lg-flex align-items-center">
+                <div class="container d-lg-flex flex-row justify-content-center align-items-center gap-5">
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
                     </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
                     </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
+                    </div>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
+                    </div>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
+                    </div>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
                     </div>
                 </div>
             </div>
@@ -135,97 +127,27 @@ require_once("./bin/koneksi.php");
             <h2 class="text-uppercase text-center my-5">Mitra Luar Negeri</h2>
         </div>
         <div class="my-5">
-            <div class="container d-lg-flex d-flex flex-row justify-content-evenly">
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
+            <div class="d-lg-flex align-items-center">
+                <div class="container d-lg-flex flex-row justify-content-center align-items-center gap-5">
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
                     </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
                     </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
                     </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="my-5">
-            <div class="container d-lg-flex d-flex flex-row justify-content-evenly">
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="my-5">
-            <div class="container d-lg-flex d-flex flex-row justify-content-evenly">
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-3 border rounded shadow-sm">
-                    <div class="container d-lg-flex justify-content-center align-items-center flex-column">
-                        <img src="./assets/img/politap.png" alt="" class="img-fluid">
-                        <h6 class="text-uppercase my-3 text-center">Politeknik Negeri Ketapang</h6>
-                        <a href="" class="btn btn-sm text-uppercase">Kunjungi</a>
+                    <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
+                        <img src="./assets/img/politap.png" class="img-fluid">
+                        <p class="text-center">Politeknik Negeri Ketapang</p>
                     </div>
                 </div>
             </div>

@@ -23,7 +23,7 @@ require_once("./bin/koneksi.php");
         <?php include "./layout/header.php" ?>
     </section>
 
-    <section id="banner">
+    <section id="gambar">
         <div class="container">
             <h3 class="text-uppercase text-center my-5">Tentang Kami</h3>
             <img src="./assets//img//Struktur Bagan Kerja Sama.png" alt="" class="img-fluid shadow">

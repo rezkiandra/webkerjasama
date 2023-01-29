@@ -37,48 +37,42 @@ require_once("./bin/koneksi.php");
                 <div class="d-lg-flex justify-content-around align-items-center flex-row gap-5">
                     <div class="col-lg-4 border rounded shadow-sm">
                         <img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">
-                        <div class="container">
-                            <h4 class="my-2 text-uppercase">Berita</h4>
-                            <div class="title d-lg-flex justify-content-between align-items-center">
-                                <h5 class="text-start">Judul Berita</h5>
-                                <h6 class="text-right">5 Juni 2022</h6>
-                            </div>
-                            <p class="my-3">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
-                            <p class="my-3 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
-                            <hr>
-                            </hr>
-                            <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
+                        <h4 class="my-2 mx-2 text-uppercase">Berita</h4>
+                        <div class="d-lg-flex justify-content-between align-items-center">
+                            <h5 class="text-start mx-2">Judul Berita</h5>
+                            <h6 class="text-right mx-2">5 Juni 2022</h6>
                         </div>
+                        <p class="my-3 mx-2 text-start">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
+                        <p class="my-3 mx-2 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
+                        <hr>
+                        </hr>
+                        <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
                     </div>
                     <div class="col-lg-4 border rounded shadow-sm">
                         <img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">
-                        <div class="container">
-                            <h4 class="my-2 text-uppercase">Berita</h4>
-                            <div class="title d-lg-flex justify-content-between align-items-center">
-                                <h5 class="text-start">Judul Berita</h5>
-                                <h6 class="text-right">5 Juni 2022</h6>
-                            </div>
-                            <p class="my-3">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
-                            <p class="my-3 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
-                            <hr>
-                            </hr>
-                            <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
+                        <h4 class="my-2 mx-2 text-uppercase">Berita</h4>
+                        <div class="d-lg-flex justify-content-between align-items-center">
+                            <h5 class="text-start mx-2">Judul Berita</h5>
+                            <h6 class="text-right mx-2">5 Juni 2022</h6>
                         </div>
+                        <p class="my-3 mx-2 text-start">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
+                        <p class="my-3 mx-2 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
+                        <hr>
+                        </hr>
+                        <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
                     </div>
                     <div class="col-lg-4 border rounded shadow-sm">
                         <img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">
-                        <div class="container">
-                            <h4 class="my-2 text-uppercase">Berita</h4>
-                            <div class="title d-lg-flex justify-content-between align-items-center">
-                                <h5 class="text-start">Judul Berita</h5>
-                                <h6 class="text-right">5 Juni 2022</h6>
-                            </div>
-                            <p class="my-3">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
-                            <p class="my-3 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
-                            <hr>
-                            </hr>
-                            <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
+                        <h4 class="my-2 mx-2 text-uppercase">Berita</h4>
+                        <div class="d-lg-flex justify-content-between align-items-center">
+                            <h5 class="text-start mx-2">Judul Berita</h5>
+                            <h6 class="text-right mx-2">5 Juni 2022</h6>
                         </div>
+                        <p class="my-3 mx-2 text-start">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
+                        <p class="my-3 mx-2 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
+                        <hr>
+                        </hr>
+                        <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
                     </div>
                 </div>
             </div>
@@ -86,48 +80,42 @@ require_once("./bin/koneksi.php");
                 <div class="d-lg-flex justify-content-around align-items-center flex-row gap-5">
                     <div class="col-lg-4 border rounded shadow-sm">
                         <img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">
-                        <div class="container">
-                            <h4 class="my-2 text-uppercase">Berita</h4>
-                            <div class="title d-lg-flex justify-content-between align-items-center">
-                                <h5 class="text-start">Judul Berita</h5>
-                                <h6 class="text-right">5 Juni 2022</h6>
-                            </div>
-                            <p class="my-3">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
-                            <p class="my-3 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
-                            <hr>
-                            </hr>
-                            <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
+                        <h4 class="my-2 mx-2 text-uppercase">Berita</h4>
+                        <div class="d-lg-flex justify-content-between align-items-center">
+                            <h5 class="text-start mx-2">Judul Berita</h5>
+                            <h6 class="text-right mx-2">5 Juni 2022</h6>
                         </div>
+                        <p class="my-3 mx-2 text-start">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
+                        <p class="my-3 mx-2 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
+                        <hr>
+                        </hr>
+                        <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
                     </div>
                     <div class="col-lg-4 border rounded shadow-sm">
                         <img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">
-                        <div class="container">
-                            <h4 class="my-2 text-uppercase">Berita</h4>
-                            <div class="title d-lg-flex justify-content-between align-items-center">
-                                <h5 class="text-start">Judul Berita</h5>
-                                <h6 class="text-right">5 Juni 2022</h6>
-                            </div>
-                            <p class="my-3">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
-                            <p class="my-3 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
-                            <hr>
-                            </hr>
-                            <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
+                        <h4 class="my-2 mx-2 text-uppercase">Berita</h4>
+                        <div class="d-lg-flex justify-content-between align-items-center">
+                            <h5 class="text-start mx-2">Judul Berita</h5>
+                            <h6 class="text-right mx-2">5 Juni 2022</h6>
                         </div>
+                        <p class="my-3 mx-2 text-start">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
+                        <p class="my-3 mx-2 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
+                        <hr>
+                        </hr>
+                        <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
                     </div>
                     <div class="col-lg-4 border rounded shadow-sm">
                         <img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">
-                        <div class="container">
-                            <h4 class="my-2 text-uppercase">Berita</h4>
-                            <div class="title d-lg-flex justify-content-between align-items-center">
-                                <h5 class="text-start">Judul Berita</h5>
-                                <h6 class="text-right">5 Juni 2022</h6>
-                            </div>
-                            <p class="my-3">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
-                            <p class="my-3 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
-                            <hr>
-                            </hr>
-                            <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
+                        <h4 class="my-2 mx-2 text-uppercase">Berita</h4>
+                        <div class="d-lg-flex justify-content-between align-items-center">
+                            <h5 class="text-start mx-2">Judul Berita</h5>
+                            <h6 class="text-right mx-2">5 Juni 2022</h6>
                         </div>
+                        <p class="my-3 mx-2 text-start">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
+                        <p class="my-3 mx-2 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
+                        <hr>
+                        </hr>
+                        <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
                     </div>
                 </div>
             </div>
@@ -135,67 +123,61 @@ require_once("./bin/koneksi.php");
                 <div class="d-lg-flex justify-content-around align-items-center flex-row gap-5">
                     <div class="col-lg-4 border rounded shadow-sm">
                         <img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">
-                        <div class="container">
-                            <h4 class="my-2 text-uppercase">Berita</h4>
-                            <div class="title d-lg-flex justify-content-between align-items-center">
-                                <h5 class="text-start">Judul Berita</h5>
-                                <h6 class="text-right">5 Juni 2022</h6>
-                            </div>
-                            <p class="my-3">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
-                            <p class="my-3 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
-                            <hr>
-                            </hr>
-                            <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
+                        <h4 class="my-2 mx-2 text-uppercase">Berita</h4>
+                        <div class="d-lg-flex justify-content-between align-items-center">
+                            <h5 class="text-start mx-2">Judul Berita</h5>
+                            <h6 class="text-right mx-2">5 Juni 2022</h6>
                         </div>
+                        <p class="my-3 mx-2 text-start">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
+                        <p class="my-3 mx-2 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
+                        <hr>
+                        </hr>
+                        <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
                     </div>
                     <div class="col-lg-4 border rounded shadow-sm">
                         <img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">
-                        <div class="container">
-                            <h4 class="my-2 text-uppercase">Berita</h4>
-                            <div class="title d-lg-flex justify-content-between align-items-center">
-                                <h5 class="text-start">Judul Berita</h5>
-                                <h6 class="text-right">5 Juni 2022</h6>
-                            </div>
-                            <p class="my-3">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
-                            <p class="my-3 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
-                            <hr>
-                            </hr>
-                            <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
+                        <h4 class="my-2 mx-2 text-uppercase">Berita</h4>
+                        <div class="d-lg-flex justify-content-between align-items-center">
+                            <h5 class="text-start mx-2">Judul Berita</h5>
+                            <h6 class="text-right mx-2">5 Juni 2022</h6>
                         </div>
+                        <p class="my-3 mx-2 text-start">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
+                        <p class="my-3 mx-2 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
+                        <hr>
+                        </hr>
+                        <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
                     </div>
                     <div class="col-lg-4 border rounded shadow-sm">
                         <img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">
-                        <div class="container">
-                            <h4 class="my-2 text-uppercase">Berita</h4>
-                            <div class="title d-lg-flex justify-content-between align-items-center">
-                                <h5 class="text-start">Judul Berita</h5>
-                                <h6 class="text-right">5 Juni 2022</h6>
-                            </div>
-                            <p class="my-3">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
-                            <p class="my-3 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
-                            <hr>
-                            </hr>
-                            <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
+                        <h4 class="my-2 mx-2 text-uppercase">Berita</h4>
+                        <div class="d-lg-flex justify-content-between align-items-center">
+                            <h5 class="text-start mx-2">Judul Berita</h5>
+                            <h6 class="text-right mx-2">5 Juni 2022</h6>
                         </div>
+                        <p class="my-3 mx-2 text-start">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
+                        <p class="my-3 mx-2 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
+                        <hr>
+                        </hr>
+                        <a href="" class="btn btn-sm mb-3 d-lg-flex justify-content-center">Selengkapnya</a>
                     </div>
                 </div>
             </div>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link text-secondary" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link text-secondary" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link text-secondary" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link text-secondary" href="#">4</a></li>
-                    <li class="page-item"><a class="page-link text-secondary" href="#">5</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
         </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link text-secondary" href="#">1</a></li>
+                <li class="page-item"><a class="page-link text-secondary" href="#">2</a></li>
+                <li class="page-item"><a class="page-link text-secondary" href="#">3</a></li>
+                <li class="page-item"><a class="page-link text-secondary" href="#">4</a></li>
+                <li class="page-item"><a class="page-link text-secondary" href="#">5</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
     </section>
     <!-- ========== End Main ========== -->
     <section>

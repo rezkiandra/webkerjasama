@@ -26,7 +26,7 @@ include "./bin/koneksi.php";
         <?php include "./layout/header.php" ?>
     </section>
 
-    <section id="banner">
+    <section id="gambar">
         <div class="container">
             <h2 class="text-center text-uppercase my-5">Prosedur Kemitraan Keluar</h2>
             <img src="./assets//img//Prosedur Kemitraan Keluar.png" alt="" class="img-fluid shadow">
