@@ -26,7 +26,7 @@ require_once "./bin/koneksi.php";
 </head>
 
 <body>
-    <div class="navbar navbar-expand-lg py-2 mx-5" id="bg-nav">
+    <div class="navbar navbar-expand-lg py-2 mx-3" id="bg-nav">
         <div class="container">
             <a class="navbar-brand" href="./index.php">
                 <img src="../../kerjasama/assets/img/logo.png" alt="" style="height: 51px; width: 150;">

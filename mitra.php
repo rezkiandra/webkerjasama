@@ -31,7 +31,7 @@ require_once("./bin/koneksi.php");
             <h2 class="text-uppercase text-center my-5">Mitra Dalam Negeri</h2>
         </div>
         <div class="my-5">
-            <div class="d-lg-flex align-items-center">
+            <div class="d-lg-flex align-items-center justify-content-center">
                 <div class="container d-lg-flex flex-row justify-content-center align-items-center gap-5">
                     <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
                         <img src="./assets/img/politap.png" class="img-fluid">

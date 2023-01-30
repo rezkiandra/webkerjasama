@@ -7,76 +7,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.3/font/bootstrap-icons.min.css">
     <!-- End Bootstrap CSS -->
 
-        <!--Google Fonts-->
+    <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!--Custom Css-->
     <link rel="stylesheet" href="./CSS/style.css">
     <!--End Custom Css-->
+    <title>Admin - Login</title>
 </head>
 
 <body>
-    <div class="container login-form">
-        <div class="row mt-4 justify-content-center">
-
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="offest-md-4">
-                            <h1 class="text-center mt-4 mb-4 fw-bolder">Login</h1>
-                            <form class="form-login">
-                                <!-- Email input -->
-                                <div class="form-outline mb-4">
-                                    <label class="form-label" for="form2Example1">Email address</label>
-                                    <input type="email" id="form2Example1" class="form-control" placeholder="E-mail" />
-                                </div>
-                                <!-- Password input -->
-                                <div class="form-outline mb-4">
-                                    <label class="form-label " for="form2Example2">Password</label>
-                                    <!-- Simple link -->
-                                    <a href="#!" class="float-end text-primary">Forgot password?</a>
-                                    <input type="password" id="form2Example2" class="form-control" placeholder="Password"/>
-                                </div>
-                                <!-- 2 column grid layout for inline styling -->
-                                <div class="row mb-4">
-                                    <div class="col d-flex">
-                                        <!-- Checkbox -->
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="form2Example31"
-                                                checked />
-                                            <label class="form-check-label" for="form2Example31"> Remember me </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Submit button -->
-                                <div class="col-md-12">
-                                    <button type="button" class="col-12 btn btn-primary btn-block mb-4">Sign
-                                        in</button>
-                                </div>
-                                <p class="text-center"> Don't have account yet?<a href="register.html" class="text-primary"> Sign up</a></p>
-                            </form>
-                        </div>
+    <div class="d-lg-flex justify-content-center align-items-center flex-row">
+        <div class="col-lg-7">
+            <img src="../assets/img//auth.jpg" alt="" class="img-fluid" style="height: 100vh; width: 100%;">
+        </div>
+        <div class="col-lg-5">
+            <div class="container d-lg-flex justify-content-center align-items-center">
+                <div class="card w-50">
+                    <div class="card-header">
+                        <h3 class="text-center">Login</h3>
                     </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password">
+                        </div>
+                        <form action="" method="post">
+                            <input type="submit" value="Login" class="btn btn-sm btn-success col-4">
+                        </form>
+                    </div>
+                    <div class="card-footer text-center">&copy Copyrights 2023 Poltesa</div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-
 </body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </html>

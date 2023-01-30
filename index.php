@@ -54,13 +54,13 @@ require_once("./bin/koneksi.php");
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="./assets/img/download.jpg" class="d-block w-100" alt="...">
+                        <img src="./assets/img/carousel1.jpg" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="./assets/img/download2.jpg" class="d-block w-100" alt="...">
+                        <img src="./assets/img/carousel2.jpg" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="./assets/img/download.3.jpg" class="d-block w-100" alt="...">
+                        <img src="./assets/img/carousel3.jpg" class="d-block w-100" alt="...">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -198,9 +198,6 @@ require_once("./bin/koneksi.php");
         <?php include "./layout/footer.php" ?>
     </section>
 </body>
-
-<!-- Boostrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 <!-- Chart JS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
