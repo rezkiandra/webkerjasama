@@ -41,7 +41,7 @@
                             <input type="password" class="form-control" id="password" placeholder="Password">
                         </div>
                         <form action="" method="post">
-                            <input type="submit" value="Login" class="btn btn-sm btn-success col-4">
+                            <input type="submit" value="Login" name="login" class="btn btn-sm btn-success col-4">
                         </form>
                     </div>
                     <div class="card-footer text-center">&copy Copyrights 2023 Poltesa</div>
