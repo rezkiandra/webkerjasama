@@ -5,10 +5,13 @@ $user           = "root";
 $pwd            = "";
 $db             = "kerjasama";
 
+$mitra_kerjasama        = "";
 $bentuk_lembaga         = "";
 $jenis_kegiatan         = "";
 $waktu_mulai            = "";
 $waktu_berakhir         = "";
+$mou_poltesa            = "";
+$mou_mitra              = "";
 $lokasi                 = "";
 $status                 = "";
 $q1                     = "";
@@ -29,27 +32,58 @@ if (isset($_GET['op'])) {
     $op = "";
 }
 
-if ($op == 'hapus') {
+if ($op == 'hapus-internal') {
     $id         = $_GET['id'];
-    $sql1       = "delete from tb_berita where id = '$id'";
+    $sql1       = "delete from tb_kerjasama_dalam where id = '$id'";
     $q1         = mysqli_query($koneksi, $sql1);
     if ($q1) {
-        $success = "Berhasil menghapus data berita";
+        $success = "Berhasil menghapus data kerjasama";
     } else {
-        $failed  = "Gagal menghapus data berita";
+        $failed  = "Gagal menghapus data kerjasama";
     }
 }
 
-if ($op == 'edit') {
+if ($op == 'hapus-external') {
     $id         = $_GET['id'];
-    $sql1       = "select * from tb_berita where id = '$id'";
+    $sql1       = "delete from tb_kerjasama_luar where id = '$id'";
     $q1         = mysqli_query($koneksi, $sql1);
-    $r1         = mysqli_fetch_array($q1);
-    $judul      = $r1['judul'];
-    $deskripsi  = $r1['deskripsi'];
-    $lokasi     = $r1['lokasi'];
-    $tanggal    = $r1['tanggal'];
-    $gambar     = $r1['gambar'];
+    if ($q1) {
+        $success = "Berhasil menghapus data kerjasama";
+    } else {
+        $failed  = "Gagal menghapus data kerjasama";
+    }
+}
+
+if ($op == 'edit-internal') {
+    $id                 = $_GET['id'];
+    $sql1               = "select * from tb_kerjasama_dalam where id = '$id'";
+    $q1                 = mysqli_query($koneksi, $sql1);
+    $r1                 = mysqli_fetch_array($q1);
+    $mitra_kerjasama    = $r1['mitra_kerjasama'];
+    $bentuk_lembaga     = $r1['bentuk_lembaga'];
+    $jenis_kegiatan     = $r1['jenis_kegiatan'];
+    $waktu_mulai        = $r1['waktu_mulai'];
+    $waktu_berakhir     = $r1['waktu_berakhir'];
+    $mou_poltesa        = $r1['mou_poltesa'];
+    $mou_mitra          = $r1['mou_mitra'];
+    $status             = $r1['status'];
+    $lokasi             = $r1['lokasi'];
+}
+
+if ($op == 'edit-external') {
+    $id                 = $_GET['id'];
+    $sql1               = "select * from tb_kerjasama_luar where id = '$id'";
+    $q1                 = mysqli_query($koneksi, $sql1);
+    $r1                 = mysqli_fetch_array($q1);
+    $mitra_kerjasama    = $r1['mitra_kerjasama'];
+    $bentuk_lembaga     = $r1['bentuk_lembaga'];
+    $jenis_kegiatan     = $r1['jenis_kegiatan'];
+    $waktu_mulai        = $r1['waktu_mulai'];
+    $waktu_berakhir     = $r1['waktu_berakhir'];
+    $mou_poltesa        = $r1['mou_poltesa'];
+    $mou_mitra          = $r1['mou_mitra'];
+    $status             = $r1['status'];
+    $lokasi             = $r1['lokasi'];
 }
 
 
@@ -66,13 +100,32 @@ if (isset($_POST['simpan'])) { //untuk create data
 
     if ($mitra_kerjasama && $bentuk_lembaga && $jenis_kegiatan && $waktu_mulai && $waktu_berakhir && $mou_poltesa && $mou_mitra && $status && $lokasi) {
         if ($lokasi == "Dalam Negeri") {
-            $sql1   = "insert into tb_kerjasama_dalam(mitra_kerjasama, bentuk_lembaga, jenis_kegiatan, waktu_mulai, waktu_berakhir, mou_poltesa, mou_mitra, status, lokasi) values ('$mitra_kerjasama','$bentuk_lembaga', '$jenis_kegiatan','$waktu_mulai', '$waktu_berakhir', '$mou_poltesa', '$mou_mitra', '$status', '$lokasi')";
-            $q1     = mysqli_query($koneksi, $sql1);
+            if ($op == 'edit-internal') { //untuk update
+                $sql1       = "update tb_kerjasama_dalam set mitra_kerjasama = '$mitra_kerjasama', bentuk_lembaga = '$bentuk_lembaga', jenis_kegiatan = '$jenis_kegiatan', waktu_mulai = '$waktu_mulai', waktu_berakhir = '$waktu_berakhir', mou_poltesa = '$mou_poltesa', mou_mitra = '$mou_mitra', status = '$status', lokasi = '$lokasi' where id = '$id'";
+                $q1         = mysqli_query($koneksi, $sql1);
+                if ($q1) {
+                    $success = "Data kerjasama berhasil diupdate";
+                } else {
+                    $failed  = "Data kerjasama gagal diupdate";
+                }
+            } else {
+                $sql1   = "insert into tb_kerjasama_dalam(mitra_kerjasama, bentuk_lembaga, jenis_kegiatan, waktu_mulai, waktu_berakhir, mou_poltesa, mou_mitra, status, lokasi) values ('$mitra_kerjasama','$bentuk_lembaga', '$jenis_kegiatan','$waktu_mulai', '$waktu_berakhir', '$mou_poltesa', '$mou_mitra', '$status', '$lokasi')";
+                $q1     = mysqli_query($koneksi, $sql1);
+            }
         } elseif ($lokasi == "Luar Negeri") {
-            $sql1   = "insert into tb_kerjasama_luar(mitra_kerjasama, bentuk_lembaga, jenis_kegiatan, waktu_mulai, waktu_berakhir, mou_poltesa, mou_mitra, status, lokasi) values ('$mitra_kerjasama','$bentuk_lembaga', '$jenis_kegiatan','$waktu_mulai', '$waktu_berakhir', '$mou_poltesa', '$mou_mitra', '$status', '$lokasi')";
-            $q1     = mysqli_query($koneksi, $sql1);
+            if ($op == 'edit-external') { //untuk update
+                $sql1       = "update tb_kerjasama_luar set mitra_kerjasama = '$mitra_kerjasama', bentuk_lembaga = '$bentuk_lembaga', jenis_kegiatan = '$jenis_kegiatan', waktu_mulai = '$waktu_mulai', waktu_berakhir = '$waktu_berakhir', mou_poltesa = '$mou_poltesa', mou_mitra = '$mou_mitra', status = '$status', lokasi = '$lokasi' where id = '$id'";
+                $q1         = mysqli_query($koneksi, $sql1);
+                if ($q1) {
+                    $success = "Data kerjasama berhasil diupdate";
+                } else {
+                    $failed  = "Data kerjasama gagal diupdate";
+                }
+            } else {
+                $sql1   = "insert into tb_kerjasama_luar(mitra_kerjasama, bentuk_lembaga, jenis_kegiatan, waktu_mulai, waktu_berakhir, mou_poltesa, mou_mitra, status, lokasi) values ('$mitra_kerjasama','$bentuk_lembaga', '$jenis_kegiatan','$waktu_mulai', '$waktu_berakhir', '$mou_poltesa', '$mou_mitra', '$status', '$lokasi')";
+                $q1     = mysqli_query($koneksi, $sql1);
+            }
         }
-
         if ($q1) {
             $success     = "Berhasil memasukkan mitra kerjasama baru";
         } else {
@@ -180,7 +233,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                     <div class="row mb-3">
                         <label for="mitra_kerjasama" class="col-sm-2 col-form-label">Mitra Kerjasama</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="mitra_kerjasama" name="mitra_kerjasama" placeholder="Masukkan Mitra Kerjasama" required>
+                            <input type="text" class="form-control" id="mitra_kerjasama" name="mitra_kerjasama" placeholder="Masukkan Mitra Kerjasama" required value="<?php echo $mitra_kerjasama ?>">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -222,27 +275,27 @@ if (isset($_POST['simpan'])) { //untuk create data
                     <div class="row mb-3">
                         <label for="waktu_mulai" class="col-sm-2 col-form-label">Waktu Mulai</label>
                         <div class="col-sm-10">
-                            <input type="date" name="waktu_mulai" id="waktu_mulai" class="form-control" required>
+                            <input type="date" name="waktu_mulai" id="waktu_mulai" class="form-control" required value="<?php echo $mit ?>">
 
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="waktu_berakhir" class="col-sm-2 col-form-label">Waktu Berakhir</label>
                         <div class="col-sm-10">
-                            <input type="date" name="waktu_berakhir" id="waktu_berakhir" class="form-control" required>
+                            <input type="date" name="waktu_berakhir" id="waktu_berakhir" class="form-control" required value="<?php echo $waktu_berakhir ?>">
 
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="mou_poltesa" class="col-sm-2 col-form-label">MoU Poltesa</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="mou_poltesa" name="mou_poltesa" placeholder="Masukkan MoU Poltesa" required>
+                            <input type="text" class="form-control" id="mou_poltesa" name="mou_poltesa" placeholder="Masukkan MoU Poltesa" required value="<?php echo $mou_poltesa ?>">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="mou_mitra" class="col-sm-2 col-form-label">MoU Mitra</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="mou_mitra" name="mou_mitra" placeholder="Masukkan MoU Mitra" required>
+                            <input type="text" class="form-control" id="mou_mitra" name="mou_mitra" placeholder="Masukkan MoU Mitra" required value="<?php echo $mou_mitra ?>">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -313,11 +366,14 @@ if (isset($_POST['simpan'])) { //untuk create data
                                     <td scope="row"><?php echo $lokasi ?></td>
                                     <td scope="row"><?php echo $status ?></td>
                                     <td class="text-center">
-                                        <a href="kerjasama.php?op=edit-internal&id=<?php echo $id ?>">
+                                        <!-- <a href="kerjasama.php?op=edit-internal&id=<?php echo $id ?>">
                                             <button type="button" name="edit-internal" class="col-4 btn btn-warning">Edit</button>
-                                        </a>
-                                        <a href="kerjasama.php?op=hapus-internal&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
+                                        </a> -->
+                                        <!-- <a href="kerjasama.php?op=hapus-internal&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
                                             <button type="button" name="hapus-internal" class="col-4 btn btn-danger">Delete</button>
+                                        </a> -->
+                                        <a href="kerjasama.php?op=detail-internal&id=<?php echo $id ?>">
+                                            <button type="button" name="detail-internal" class="col-4 btn btn-warning">Detail</button>
                                         </a>
                                     </td>
                                 </tr>
@@ -343,6 +399,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                                 <th>MoU Mitra</th>
                                 <th>Lokasi</th>
                                 <th>Status</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -371,6 +428,17 @@ if (isset($_POST['simpan'])) { //untuk create data
                                     <td scope="row"><?php echo $mou_mitra ?></td>
                                     <td scope="row"><?php echo $lokasi ?></td>
                                     <td scope="row"><?php echo $status ?></td>
+                                    <td class="text-center">
+                                        <!-- <a href="kerjasama.php?op=edit-external&id=<?php echo $id ?>">
+                                            <button type="button" name="edit-external" class="col-4 btn btn-warning">Edit</button>
+                                        </a>
+                                        <a href="kerjasama.php?op=hapus-external&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
+                                            <button type="button" name="hapus-external" class="col-4 btn btn-danger">Delete</button>
+                                        </a> -->
+                                        <a href="kerjasama.php?op=detail-external&id=<?php echo $id ?>">
+                                            <button type="button" name="detail-external" class="col-4 btn btn-warning">Detail</button>
+                                        </a>
+                                    </td>
                                 </tr>
                             <?php
                             }

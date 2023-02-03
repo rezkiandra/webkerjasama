@@ -973,7 +973,7 @@ table.dbkit-table tr td {
 }
 
 .stats-chart canvas {
-    margin: auto;
+    /* margin: auto; */
 }
 
 .buy img,

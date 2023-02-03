@@ -26,7 +26,17 @@ require_once("./bin/koneksi.php");
     <section id="gambar">
         <div class="container">
             <h3 class="text-uppercase text-center my-5">Tentang Kami</h3>
-            <img src="./assets//img//Struktur Bagan Kerja Sama.png" alt="" class="img-fluid shadow">
+            <?php
+            $sql      = "select * from tb_tentang";
+            $query    = mysqli_query($koneksi, $sql);
+            while ($q = mysqli_fetch_array($query)) {
+                $id             = $q['id'];
+                $banner         = $q['banner'];
+            ?>
+                <img src="./admin/assets/upload/tentang/<?php echo $banner ?>" alt="" class="img-fluid shadow">
+            <?php
+            }
+            ?>
         </div>
     </section>
 

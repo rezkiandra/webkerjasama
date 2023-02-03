@@ -1,4 +1,3 @@
-/*--------------  coin distrubution chart END ------------*/
 if ($('#coin_distribution').length) {
 
     zingchart.THEME = "classic";

@@ -53,14 +53,14 @@ require_once("./bin/koneksi.php");
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
                 </div>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="./assets/img/carousel1.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-item active" data-interval="2000">
+                        <img src="./assets/img/carousel1.jpg" class="d-block w-100">
                     </div>
-                    <div class="carousel-item">
-                        <img src="./assets/img/carousel2.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-item" data-interval="2000">
+                        <img src="./assets/img/carousel2.jpg" class="d-block w-100">
                     </div>
-                    <div class="carousel-item">
-                        <img src="./assets/img/carousel3.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-item" data-interval="2000">
+                        <img src="./assets/img/carousel3.jpg" class="d-block w-100">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

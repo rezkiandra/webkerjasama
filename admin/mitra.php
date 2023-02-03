@@ -5,7 +5,10 @@ $user           = "root";
 $pwd            = "";
 $db             = "kerjasama";
 
+$nama_mitra     = "";
 $lokasi         = "";
+$tanggal        = "";
+$gambar         = "";
 $success        = "";
 $failed         = "";
 
@@ -42,18 +45,22 @@ if ($op == 'edit') {
     $nama_mitra = $r1['nama_mitra'];
     $lokasi     = $r1['lokasi'];
     $tanggal    = $r1['tanggal'];
-    $logo       = $r1['logo'];
+    $gambar     = $r1['gambar'];
 }
 
 if (isset($_POST['simpan'])) { //untuk create data
     $nama_mitra         = $_POST['nama_mitra'];
     $lokasi             = $_POST['lokasi'];
     $tanggal            = $_POST['tanggal'];
-    $logo               = $_POST['logo'];
 
-    if ($nama_mitra && $lokasi && $tanggal && $logo) {
-        if ($op == 'edit') { //untuk updat
-            $sql1       = "update tb_mitra set nama_mitra : '$nama_mitra', lokasi : '$lokasi', tanggal : '$tanggal', logo : '$logo' where id = '$id'";
+    $gambar             = $_FILES["gambar"]["name"];
+    $tmp_name           = $_FILES["gambar"]["tmp_name"];
+    $path               = "../../kerjasama/admin/assets/upload/mitra/";
+    move_uploaded_file($tmp_name, $path . $gambar);
+
+    if ($nama_mitra && $lokasi && $tanggal && $gambar) {
+        if ($op == 'edit') { //untuk update
+            $sql1       = "update tb_mitra set nama_mitra = '$nama_mitra', lokasi = '$lokasi', tanggal = '$tanggal', gambar = '$gambar' where id = '$id'";
             $q1         = mysqli_query($koneksi, $sql1);
             if ($q1) {
                 $success = "Data mitra berhasil diupdate";
@@ -61,7 +68,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                 $failed  = "Data mitra gagal diupdate";
             }
         } else {
-            $sql1   = "insert into tb_mitra(nama_mitra, lokasi, tanggal, logo) values ('$nama_mitra','$lokasi', '$tanggal','$logo')";
+            $sql1   = "insert into tb_mitra(nama_mitra, lokasi, tanggal, gambar) values ('$nama_mitra','$lokasi', '$tanggal','$gambar')";
             $q1     = mysqli_query($koneksi, $sql1);
             if ($q1) {
                 $success     = "Berhasil memasukkan data mitra baru";
@@ -165,11 +172,11 @@ if (isset($_POST['simpan'])) { //untuk create data
                     header("refresh:3; url=mitra.php");
                 }
                 ?>
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     <div class="row mb-3">
                         <label for="nama_mitra" class="col-sm-2 col-form-label">Nama Perguruan Tinggi</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nama_mitra" name="nama_mitra" placeholder="Masukkan Perguruan Tinggi" required>
+                            <input type="text" class="form-control" id="nama_mitra" name="nama_mitra" placeholder="Masukkan Perguruan Tinggi" required value="<?php echo $nama_mitra ?>">
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -185,14 +192,14 @@ if (isset($_POST['simpan'])) { //untuk create data
                     <div class="row mb-3">
                         <label for="tanggal" class="col-sm-2 col-form-label">Tanggal</label>
                         <div class="col-sm-10">
-                            <input type="date" name="tanggal" id="tanggal" class="form-control" required>
+                            <input type="date" name="tanggal" id="tanggal" class="form-control" required value="<?php echo $tanggal ?>">
 
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="logo" class="col-sm-2 col-form-label">Logo Perguruan Tinggi</label>
+                        <label for="gambar" class="col-sm-2 col-form-label">Logo Perguruan Tinggi</label>
                         <div class="col-sm-10">
-                            <input type="file" name="logo" id="logo" class="form-control" required>
+                            <input type="file" name="gambar" id="gambar" class="form-control" required>
                         </div>
                     </div>
                     <input type="submit" value="Simpan" name="simpan" class="btn btn-primary text-uppercase col-2 offset-2">
@@ -219,13 +226,15 @@ if (isset($_POST['simpan'])) { //untuk create data
                                 $nama_mitra         = $q['nama_mitra'];
                                 $lokasi             = $q['lokasi'];
                                 $tanggal            = $q['tanggal'];
-                                $logo               = $q['logo'];
+                                $gambar             = $q['gambar'];
                             ?>
                                 <tr class="text-start text-wrap">
                                     <td scope="row"><?php echo $nama_mitra ?></td>
                                     <td scope="row"><?php echo $lokasi ?></td>
                                     <td scope="row"><?php echo $tanggal ?></td>
-                                    <td scope="row"><?php echo $logo ?></td>
+                                    <td scope="row">
+                                        <img src="../admin/assets/upload/mitra/<?php echo $gambar ?>" style="width: 100px;" class="img-fluid">
+                                    </td>
                                     <td class="text-center">
                                         <a href="mitra.php?op=edit&id=<?php echo $id ?>">
                                             <button type="button" name="edit" class="col-4 btn btn-warning">Edit</button>

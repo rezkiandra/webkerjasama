@@ -112,7 +112,7 @@ if ($op == 'pilih') {
     <!-- ========== Start Template ========== -->
     <section id="main">
         <div class="container">
-            <img src="../assets/img//carousel1.jpg" alt="Gambar Berita" class="img-fluid my-5">
+            <img src="../admin/assets/upload/berita/<?php echo $gambar ?>" alt="Gambar Berita" class="img-fluid my-5">
             <div class="my-4">
                 <h2 class="text-start"><?php echo $judul ?></h2>
             </div>

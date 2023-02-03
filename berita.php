@@ -100,7 +100,7 @@ if ($op == 'pilih') {
                         // }
                     ?>
                         <div class="col-lg-4 border rounded shadow-sm">
-                            <img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">
+                            <img src="./admin//assets//upload/berita/<?php echo $gambar ?>" class="img-fluid" alt="">
                             <div class="d-lg-flex justify-content-between align-items-center my-2">
                                 <h5 class="text-start mx-2"><?php echo $judul ?></h5>
                                 <h6 class="text-right mx-2"><?php echo $tanggal ?></h6>

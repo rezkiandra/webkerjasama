@@ -5,12 +5,16 @@ $user           = "root";
 $pwd            = "";
 $db             = "kerjasama";
 
-$judul          = "";
+$judul_video    = "";
 $deskripsi      = "";
 $link           = "";
+
+$judul_foto     = "";
+$lokasi         = "";
+$tanggal        = "";
+$gambar         = "";
 $success        = "";
 $failed         = "";
-$op             = "";
 
 $koneksi = mysqli_connect($hostname, $user, $pwd, $db);
 if (!$koneksi) {
@@ -19,56 +23,107 @@ if (!$koneksi) {
     // echo "Koneksi berhasil";
 }
 
-// if (isset($_GET['op'])) {
-//     $op = $_GET['op'];
-// } else {
-//     $op = "";
-// }
+if (isset($_GET['op'])) {
+    $op = $_GET['op'];
+} else {
+    $op = "";
+}
 
-// if ($op == 'hapus') {
-//     $id         = $_GET['id'];
-//     $sql1       = "delete from tb_berita where id = '$id'";
-//     $q1         = mysqli_query($koneksi, $sql1);
-//     if ($q1) {
-//         $success = "Berhasil menghapus data";
-//     } else {
-//         $failed  = "Gagal menghapus data";
-//     }
-// }
+if ($op == 'hapus-video') {
+    $id         = $_GET['id'];
+    $sql1       = "delete from tb_video where id = '$id'";
+    $q1         = mysqli_query($koneksi, $sql1);
+    if ($q1) {
+        $success = "Berhasil menghapus data video";
+    } else {
+        $failed  = "Gagal menghapus data video";
+    }
+}
 
-// if ($op == 'edit') {
-//     $id         = $_GET['id'];
-//     $sql1       = "select * from tb_berita where id = '$id'";
-//     $q1         = mysqli_query($koneksi, $sql1);
-//     $r1         = mysqli_fetch_array($q1);
-//     $judul      = $r1['judul'];
-//     $deskripsi  = $r1['deskripsi'];
-//     $lokasi     = $r1['lokasi'];
-//     $tanggal    = $r1['tanggal'];
-//     $gambar     = $r1['gambar'];
-// }
+if ($op == 'edit-video') {
+    $id             = $_GET['id'];
+    $sql1           = "select * from tb_video where id = '$id'";
+    $q1             = mysqli_query($koneksi, $sql1);
+    $r1             = mysqli_fetch_array($q1);
+    $judul_video    = $r1['judul_video'];
+    $deskripsi      = $r1['deskripsi'];
+    $link           = $r1['link'];
+}
 
 if (isset($_POST['simpan-video'])) { //untuk create data
-    $judul          = $_POST['judul-video'];
-    $deskripsi      = $_POST['deskripsi'];
-    $link           = $_POST['link'];
+    $judul_video          = $_POST['judul-video'];
+    $deskripsi            = $_POST['deskripsi'];
+    $link                 = $_POST['link'];
 
-    if ($judul && $deskripsi && $link) {
-        if ($op == 'edit') { //untuk update
-            $sql1       = "update tb_berita set judul : '$judul', deskripsi : '$deskripsi', lokasi : '$lokasi', tanggal : '$tanggal', gambar : '$gambar' where id = '$id'";
+    if ($judul_video && $deskripsi && $link) {
+        if ($op == 'edit-video') { //untuk update
+            $sql1       = "update tb_video set judul_video = '$judul_video', deskripsi = '$deskripsi', link = '$link' where id = '$id'";
             $q1         = mysqli_query($koneksi, $sql1);
             if ($q1) {
-                $success = "Data berhasil diupdate";
+                $success = "Data video berhasil diupdate";
             } else {
-                $failed  = "Data gagal diupdate";
+                $failed  = "Data video gagal diupdate";
             }
         } else { //untuk insert
-            $sql1   = "insert into tb_video(judul, deskripsi, link) values ('$judul','$deskripsi', '$link')";
+            $sql1   = "insert into tb_video(judul_video, deskripsi, link) values ('$judul_video','$deskripsi', '$link')";
             $q1     = mysqli_query($koneksi, $sql1);
             if ($q1) {
                 $success     = "Berhasil memasukkan data video baru";
             } else {
                 $failed      = "Gagal memasukkan data video baru";
+            }
+        }
+    }
+}
+
+if ($op == 'hapus-foto') {
+    $id          = $_GET['id'];
+    $sql1        = "delete from tb_foto where id = '$id'";
+    $q1          = mysqli_query($koneksi, $sql1);
+    if ($q1) {
+        $success = "Berhasil menghapus data foto";
+    } else {
+        $failed  = "Gagal menghapus data foto";
+    }
+}
+
+if ($op == 'edit-foto') {
+    $id             = $_GET['id'];
+    $sql1           = "select * from tb_foto where id = '$id'";
+    $q1             = mysqli_query($koneksi, $sql1);
+    $r1             = mysqli_fetch_array($q1);
+    $judul_foto     = $r1['judul_foto'];
+    $lokasi         = $r1['lokasi'];
+    $tanggal        = $r1['tanggal'];
+    $gambar         = $r1['gambar'];
+}
+
+if (isset($_POST['simpan-foto'])) { //untuk create data
+    $judul_foto          = $_POST['judul_foto'];
+    $lokasi              = $_POST['lokasi'];
+    $tanggal             = $_POST['tanggal'];
+
+    $gambar              = $_FILES["gambar"]["name"];
+    $tmp_name            = $_FILES["gambar"]["tmp_name"];
+    $path                = "../../kerjasama/admin/assets/upload/galeri/";
+    move_uploaded_file($tmp_name, $path . $gambar);
+
+    if ($judul_foto && $lokasi && $tanggal && $gambar) {
+        if ($op == 'edit-foto') { //untuk update
+            $sql1       = "update tb_foto set judul_foto = '$judul_foto', lokasi = '$lokasi', tanggal = '$tanggal', gambar = '$gambar' where id = '$id'";
+            $q1         = mysqli_query($koneksi, $sql1);
+            if ($q1) {
+                $success = "Data foto berhasil diupdate";
+            } else {
+                $failed  = "Data foto gagal diupdate";
+            }
+        } else { //untuk insert
+            $sql1   = "insert into tb_foto(judul_foto, lokasi, tanggal, gambar) values ('$judul_foto','$lokasi', '$tanggal', '$gambar')";
+            $q1     = mysqli_query($koneksi, $sql1);
+            if ($q1) {
+                $success     = "Berhasil memasukkan data foto baru";
+            } else {
+                $failed      = "Gagal memasukkan data foto baru";
             }
         }
     }
@@ -171,52 +226,52 @@ if (isset($_POST['simpan-video'])) { //untuk create data
                     <div class="row mb-3">
                         <label for="judul-video" class="col-sm-2 col-form-label">Judul Video</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="judul-video" name="judul-video" placeholder="Masukkan Judul Video" required>
+                            <input type="text" class="form-control" id="judul-video" name="judul-video" placeholder="Masukkan Judul Video" required value="<?php echo $judul_video ?>">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi Video</label>
                         <div class="col-sm-10">
-                            <textarea type="textarea" rows="10" class="form-control" id="deskripsi" name="deskripsi" placeholder="Masukkan Deskripsi Video" required></textarea>
+                            <textarea type="textarea" rows="10" class="form-control" id="deskripsi" name="deskripsi" placeholder="Masukkan Deskripsi Video" required><?php echo $deskripsi ?></textarea>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="link" class="col-sm-2 col-form-label">Link Video</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="link" name="link" placeholder="Masukkan Link Video" required>
+                            <input type="text" class="form-control" id="link" name="link" placeholder="Masukkan Link Video" required value="<?php echo $link ?>">
                         </div>
                     </div>
                     <input type="submit" value="Simpan Video" name="simpan-video" class="btn btn-primary text-uppercase col-2 offset-2">
                 </form>
-                <form action="" method="post" class="py-5">
+
+                <form action="" method="post" class="py-5" enctype="multipart/form-data">
                     <div class="row mb-3">
-                        <label for="judul-foto" class="col-sm-2 col-form-label">Judul Foto</label>
+                        <label for="judul_foto" class="col-sm-2 col-form-label">Judul Foto</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="judul-foto" name="judul-foto" placeholder="Masukkan Judul Video" required>
+                            <input type="text" class="form-control" id="judul_foto" name="judul_foto" placeholder="Masukkan Judul Video" required value="<?php echo $judul_foto ?>">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="lokasi" class="col-sm-2 col-form-label">Lokasi</label>
                         <div class="col-sm-10">
-                            <select class="form-control form-select" id="validationDefault04" required>
+                            <select class="form-control form-select" name="lokasi" id="lokasi" required>
                                 <option selected disabled value="">Pilih Lokasi</option>
-                                <option value="Dalam Negeri">Dalam Negeri</option>
-                                <option value="Luar Negeri">Luar Negeri</option>
-                                <option value="Kampus">Kampus</option>
+                                <option value="Dalam Negeri" <?php if ($lokasi == "Dalam Negeri") echo "selected" ?>>Dalam Negeri</option>
+                                <option value="Luar Negeri" <?php if ($lokasi == "Luar Negeri") echo "selected" ?>>Luar Negeri</option>
+                                <option value="Kampus" <?php if ($lokasi == "Kampus") echo "selected" ?>>Kampus</option>
                             </select>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="tanggal" class="col-sm-2 col-form-label">Tanggal</label>
                         <div class="col-sm-10">
-                            <input type="date" name="tanggal" id="tanggal" class="form-control" required>
-
+                            <input type="date" name="tanggal" id="tanggal" class="form-control" required value="<?php echo $tanggal ?>">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="dokumentasi" class="col-sm-2 col-form-label">Gambar Dokumentasi</label>
+                        <label for="gambar" class="col-sm-2 col-form-label">Gambar Dokumentasi</label>
                         <div class="col-sm-10">
-                            <input type="file" name="dokumentasi" id="dokumentasi" class="form-control" required>
+                            <input type="file" name="gambar" id="gambar" class="form-control" required>
                         </div>
                     </div>
                     <input type="submit" value="Simpan Foto" name="simpan-foto" class="btn btn-danger text-uppercase col-2 offset-2">
@@ -242,20 +297,20 @@ if (isset($_POST['simpan-video'])) { //untuk create data
                                     $query    = mysqli_query($koneksi, $sql);
                                     while ($q = mysqli_fetch_array($query)) {
                                         $id             = $q['id'];
-                                        $judul          = $q['judul'];
+                                        $judul_video    = $q['judul_video'];
                                         $deskripsi      = $q['deskripsi'];
                                         $link           = $q['link'];
                                     ?>
                                         <tr class="text-start text-wrap">
-                                            <td scope="row"><?php echo $judul ?></td>
+                                            <td scope="row"><?php echo $judul_video ?></td>
                                             <td scope="row"><?php echo $deskripsi ?></td>
                                             <td scope="row"><?php echo $link ?></td>
                                             <td class="text-center">
                                                 <a href="galeri.php?op=edit-video&id=<?php echo $id ?>">
-                                                    <button type="button" name="edit" class="col-4 btn btn-warning">Edit</button>
+                                                    <button type="button" name="edit-video" class="col-4 btn btn-warning">Edit</button>
                                                 </a>
                                                 <a href="galeri.php?op=hapus-video&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete video?')">
-                                                    <button type="button" name="hapus" class="col-4 btn btn-danger">Delete</button>
+                                                    <button type="button" name="hapus-video" class="col-4 btn btn-danger">Delete</button>
                                                 </a>
                                             </td>
                                         </tr>
@@ -278,6 +333,7 @@ if (isset($_POST['simpan-video'])) { //untuk create data
                                         <th>Lokasi</th>
                                         <th>Tanggal</th>
                                         <th>Dokumentasi</th>
+                                        <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -286,22 +342,24 @@ if (isset($_POST['simpan-video'])) { //untuk create data
                                     $query    = mysqli_query($koneksi, $sql);
                                     while ($q = mysqli_fetch_array($query)) {
                                         $id                 = $q['id'];
-                                        $judul              = $q['judul'];
+                                        $judul_foto         = $q['judul_foto'];
                                         $lokasi             = $q['lokasi'];
                                         $tanggal            = $q['tanggal'];
                                         $gambar             = $q['gambar'];
                                     ?>
                                         <tr class="text-start text-wrap">
-                                            <td scope="row"><?php echo $judul ?></td>
+                                            <td scope="row"><?php echo $judul_foto ?></td>
                                             <td scope="row"><?php echo $lokasi ?></td>
                                             <td scope="row"><?php echo $tanggal ?></td>
-                                            <td scope="row"><?php echo $gambar ?></td>
+                                            <td scope="row">
+                                                <img src="../admin/assets/upload/galeri/<?php echo $gambar ?>" style="width: 100px;" class="img-fluid">
+                                            </td>
                                             <td class="text-center">
-                                                <a href="berita.php?op=edit&id=<?php echo $id ?>">
-                                                    <button type="button" name="edit" class="col-4 btn btn-warning">Edit</button>
+                                                <a href="galeri.php?op=edit-foto&id=<?php echo $id ?>">
+                                                    <button type="button" name="edit-foto" class="col-4 btn btn-warning">Edit</button>
                                                 </a>
-                                                <a href="berita.php?op=hapus&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
-                                                    <button type="button" name="hapus" class="col-4 btn btn-danger">Delete</button>
+                                                <a href="galeri.php?op=hapus-foto&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
+                                                    <button type="button" name="hapus-foto" class="col-4 btn btn-danger">Delete</button>
                                                 </a>
                                             </td>
                                         </tr>

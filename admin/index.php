@@ -1,3 +1,50 @@
+<?php
+
+$hostname       = "localhost";
+$user           = "root";
+$pwd            = "";
+$db             = "kerjasama";
+
+$koneksi = mysqli_connect($hostname, $user, $pwd, $db);
+if (!$koneksi) {
+    die("Belum terkoneksi");
+} else {
+    // echo "Koneksi berhasil";
+}
+
+// Memanggil data pada table kerjasama dalam negeri
+$get_internal       = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_dalam");
+$count_internal     = mysqli_num_rows($get_internal);
+
+// Memanggil data pada table kerjasama luar negeri
+$get_external       = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_luar");
+$count_external     = mysqli_num_rows($get_external);
+
+// Memanggil data pada table berita dalam negeri
+$get_berita         = mysqli_query($koneksi, "SELECT * FROM tb_berita");
+$count_berita       = mysqli_num_rows($get_berita);
+
+// Kerjasama Dalam Negeri yang aktif
+$aktif_internal             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_dalam WHERE status = 'Aktif'");
+$count_aktif_internal       = mysqli_num_rows($aktif_internal);
+
+// Kerjasama Dalam Negeri yang tidak aktif
+$nonaktif_internal             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_dalam WHERE status = 'Tidak Aktif'");
+$count_nonaktif_internal       = mysqli_num_rows($nonaktif_internal);
+
+// Kerjasama Luar Negeri yang aktif
+$aktif_external             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_luar WHERE status = 'Aktif'");
+$count_aktif_external       = mysqli_num_rows($aktif_external);
+
+// Kerjasama Luar Negeri yang tidak aktif
+$nonaktif_external             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_luar WHERE status = 'Tidak Aktif'");
+$count_nonaktif_external       = mysqli_num_rows($nonaktif_external);
+
+// Total Keseluruhan MoU
+$total_mou                  = $count_aktif_internal + $count_nonaktif_internal + $count_aktif_external + $count_nonaktif_external;
+
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -72,7 +119,7 @@
             </div>
             <div class="main-content-inner">
                 <div class="sales-report-area mt-5 mb-5">
-                    <div class="row">
+                    <div class="row mb-5">
                         <div class="col-md-4">
                             <div class="single-report mb-xs-30">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
@@ -82,11 +129,11 @@
                                         <p>Kampus</p>
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
-                                        <h2>12</h2>
+                                        <h2><?php echo $count_berita ?></h2>
                                         <span>Berita</span>
                                     </div>
                                 </div>
-                                <canvas id="coin_sales1" height="100"></canvas>
+                                <!-- <canvas id="berita" height="100"></canvas> -->
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -98,11 +145,10 @@
                                         <p>Dalam Negeri</p>
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
-                                        <h2>23</h2>
+                                        <h2><?php echo $count_internal ?></h2>
                                         <span>Mitra</span>
                                     </div>
                                 </div>
-                                <canvas id="coin_sales2" height="100"></canvas>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -114,39 +160,76 @@
                                         <p>Luar Negeri</p>
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
-                                        <h2>12</h2>
+                                        <h2><?php echo $count_external ?></h2>
                                         <span>Mitra</span>
                                     </div>
                                 </div>
-                                <canvas id="coin_sales3" height="100"></canvas>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-9 col-lg-7">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h4 class="header-title mb-0">Kerjasama Berdasarkan Tahun</h4>
-                                    <select class="custome-select border-0 pr-3">
-                                        <option selected>2018</option>
-                                        <option value="0">2019</option>
-                                        <option value="1">2020</option>
-                                        <option value="2">2021</option>
-                                        <option value="3">2022</option>
-                                        <option value="4">2023</option>
-                                    </select>
+                    <div class="row mb-5">
+                        <div class="col-md-6">
+                            <div class="single-report mb-xs-30">
+                                <div class="s-report-inner pr--20 pt--30 mb-3">
+                                    <div class="icon"><i class="fa fa-user"></i></div>
+                                    <div class="s-report-title d-flex justify-content-between">
+                                        <h4 class="header-title mb-0">Jumlah Kerjasama Yang Aktif</h4>
+                                        <p>Dalam Negeri</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between pb-2">
+                                        <h2><?php echo $count_aktif_internal ?></h2>
+                                        <span>Kerjasama</span>
+                                    </div>
                                 </div>
-                                <div id="verview-shart"></div>
+                                <!-- <canvas id="berita" height="100"></canvas> -->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single-report mb-xs-30">
+                                <div class="s-report-inner pr--20 pt--30 mb-3">
+                                    <div class="icon"><i class="fa fa-user"></i></div>
+                                    <div class="s-report-title d-flex justify-content-between">
+                                        <h4 class="header-title mb-0">Jumlah Kerjasama Yang Tidak Aktif</h4>
+                                        <p>Dalam Negeri</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between pb-2">
+                                        <h2><?php echo $count_nonaktif_internal ?></h2>
+                                        <span>Kerjasama</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-lg-5 coin-distribution">
-                        <div class="card h-full">
-                            <div class="card-body">
-                                <h4 class="header-title mb-0">Jumlah MoU</h4>
-                                <div id="coin_distribution"></div>
+                    <div class="row mb-5">
+                        <div class="col-md-6">
+                            <div class="single-report mb-xs-30">
+                                <div class="s-report-inner pr--20 pt--30 mb-3">
+                                    <div class="icon"><i class="fa fa-user"></i></div>
+                                    <div class="s-report-title d-flex justify-content-between">
+                                        <h4 class="header-title mb-0">Jumlah Kerjasama Yang Aktif</h4>
+                                        <p>Luar Negeri</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between pb-2">
+                                        <h2><?php echo $count_aktif_external ?></h2>
+                                        <span>Kerjasama</span>
+                                    </div>
+                                </div>
+                                <!-- <canvas id="berita" height="100"></canvas> -->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="single-report mb-xs-30">
+                                <div class="s-report-inner pr--20 pt--30 mb-3">
+                                    <div class="icon"><i class="fa fa-user"></i></div>
+                                    <div class="s-report-title d-flex justify-content-between">
+                                        <h4 class="header-title mb-0">Jumlah Kerjasama Yang Tidak Aktif</h4>
+                                        <p>Luar Negeri</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between pb-2">
+                                        <h2><?php echo $count_nonaktif_external ?></h2>
+                                        <span>Kerjasama</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -169,9 +252,7 @@
 <script src="../admin/assets/js/jquery.slimscroll.min.js"></script>
 <script src="../admin/assets/js/jquery.slicknav.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="../admin/assets/js/line-chart.js"></script>
 <script src="../admin/assets/js/pie-chart.js"></script>
 <script src="../admin/assets/js/plugins.js"></script>

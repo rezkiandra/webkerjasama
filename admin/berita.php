@@ -9,7 +9,7 @@ $judul          = "";
 $deskripsi      = "";
 $lokasi         = "";
 $tanggal        = "";
-$gambar         = "";
+$gambar          = "";
 $success        = "";
 $failed         = "";
 
@@ -28,7 +28,7 @@ if (isset($_GET['op'])) {
 
 if ($op == 'hapus') {
     $id         = $_GET['id'];
-    $sql1       = "delete from tb_berita where id = '$id'";
+    $sql1       = "DELETE FROM tb_berita WHERE id = '$id'";
     $q1         = mysqli_query($koneksi, $sql1);
     if ($q1) {
         $success = "Berhasil menghapus data berita";
@@ -39,13 +39,13 @@ if ($op == 'hapus') {
 
 if ($op == 'edit') {
     $id         = $_GET['id'];
-    $sql1       = "select * from tb_berita where id = '$id'";
+    $sql1       = "SELECT * FROM tb_berita WHERE id = '$id'";
     $q1         = mysqli_query($koneksi, $sql1);
     $r1         = mysqli_fetch_array($q1);
     $judul      = $r1['judul'];
     $deskripsi  = $r1['deskripsi'];
     $lokasi     = $r1['lokasi'];
-    $tanggal    = $r1['tanggal'];
+    $tanggal    = $r1['tanggal'];   
     $gambar     = $r1['gambar'];
 }
 
@@ -54,11 +54,16 @@ if (isset($_POST['simpan'])) { //untuk create data
     $deskripsi      = $_POST['deskripsi'];
     $lokasi         = $_POST['lokasi'];
     $tanggal        = $_POST['tanggal'];
-    $gambar         = $_POST['gambar'];
+
+    $gambar         = $_FILES["gambar"]["name"];
+    $tmp_name       = $_FILES["gambar"]["tmp_name"];
+    $path           = "../../kerjasama/admin/assets/upload/berita/";
+    move_uploaded_file($tmp_name, $path . $gambar);
 
     if ($judul && $deskripsi && $lokasi && $tanggal && $gambar) {
-        if ($op == 'edit') { //untuk updat
-            $sql1       = "update tb_berita set judul : '$judul', deskripsi : '$deskripsi', lokasi : '$lokasi', tanggal : '$tanggal', gambar : '$gambar' where id = '$id'";
+        if ($op == 'edit') { //untuk update
+            $sql1       = "UPDATE tb_berita SET judul = '$judul', deskripsi = '$deskripsi', lokasi = '$lokasi', tanggal = '$tanggal', gambar = '$gambar'";
+            $sql1       .= "WHERE id = '$id'";
             $q1         = mysqli_query($koneksi, $sql1);
             if ($q1) {
                 $success = "Data berita berhasil diupdate";
@@ -66,7 +71,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                 $failed  = "Data berita gagal diupdate";
             }
         } else { //untuk insert
-            $sql1   = "insert into tb_berita(judul, deskripsi, lokasi, tanggal, gambar) values ('$judul','$deskripsi', '$lokasi', '$tanggal','$gambar')";
+            $sql1   = "INSERT INTO tb_berita(judul, deskripsi, lokasi, tanggal, gambar) VALUES ('$judul','$deskripsi', '$lokasi', '$tanggal','$gambar')";
             $q1     = mysqli_query($koneksi, $sql1);
             if ($q1) {
                 $success     = "Berhasil memasukkan data berita baru";
@@ -144,7 +149,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
-                        <div class="user-profile pull-right">
+                        <div class="user-progambar pull-right">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Username Admin<i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="./auth.php">Log Out</a>
@@ -173,7 +178,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                     header("refresh:3; url=berita.php");
                 }
                 ?>
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     <div class="row mb-3">
                         <label for="judul" class="col-sm-2 col-form-label">Judul Berita</label>
                         <div class="col-sm-10">
@@ -201,12 +206,12 @@ if (isset($_POST['simpan'])) { //untuk create data
                         <label for="tanggal" class="col-sm-2 col-form-label">Tanggal</label>
                         <div class="col-sm-10">
                             <input type="date" name="tanggal" id="tanggal" class="form-control" required value="<?php echo $tanggal ?>">
-
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="gambar" class="col-sm-2 col-form-label">Gambar</label>
                         <div class="col-sm-10">
+                            <!-- <img src="../admin/assets/upload/berita/<?php echo $gambar ?>" style="width: 20%;" class="img-fluid w-0 mb-3"> -->
                             <input type="file" name="gambar" id="gambar" class="form-control" required value="<?php echo $gambar ?>">
                         </div>
                     </div>
@@ -243,7 +248,9 @@ if (isset($_POST['simpan'])) { //untuk create data
                                     <td scope="row"><?php echo $deskripsi ?></td>
                                     <td scope="row"><?php echo $lokasi ?></td>
                                     <td scope="row"><?php echo $tanggal ?></td>
-                                    <td scope="row"><?php echo $gambar ?></td>
+                                    <td scope="row">
+                                        <img src="../admin/assets/upload/berita/<?php echo $gambar ?>" style="width: 150px;" class="img-fluid w-0">
+                                    </td>
                                     <td class="text-center">
                                         <a href="berita.php?op=edit&id=<?php echo $id ?>">
                                             <button type="button" name="edit" class="col-4 btn btn-warning">Edit</button>
