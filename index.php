@@ -1,5 +1,18 @@
 <?php
 require_once("./bin/koneksi.php");
+
+$hostname           = "localhost";
+$user               = "root";
+$pwd                = "";
+$db                 = "kerjasama";
+
+$koneksi = mysqli_connect($hostname, $user, $pwd, $db);
+if (!$koneksi) {
+    die("Belum terkoneksi");
+} else {
+    // echo "Koneksi berhasil";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -125,26 +138,41 @@ require_once("./bin/koneksi.php");
             <div class="col-lg-8 my-5">
                 <h4 class="text-uppercase text-center">Galeri</h4>
                 <div class="d-lg-flex flex-column justify-content-evenly align-items-center gap-4">
-                    <div class="container d-lg-flex my-4 flex-row justify-content-evenly align-items-center">
-                        <div class="col-lg-5 border rounded">
-                            <div class="float-end mt-2 ms-2 bg-warning position-absolute">25/05/2015</div>
-                            <img src="./assets/img/poltesa-home.jpg" alt="" class="img-fluid">
-                            <div class="container my-3">
-                                <h6>Foto Bersama Direktur Polnep</h6>
-                                <p>Pada tanggal 24 September 2023...</p>
-                                <a href="" class="btn btn-sm btn-secondary">Kunjungi</a>
+                    <?php
+                    $sql   = "SELECT * FROM tb_berita";
+                    $query    = mysqli_query($koneksi, $sql);
+                    while ($q = mysqli_fetch_array($query)) {
+                        $id                = $q['id'];
+                        $judul             = $q['judul'];
+                        $deskripsi         = $q['deskripsi'];
+                        $lokasi            = $q['lokasi'];
+                        $tanggal           = $q['tanggal'];
+                        $gambar            = $q['gambar'];
+                    ?>
+                        <div class="container d-lg-flex my-4 flex-row justify-content-evenly align-items-center">
+                            <div class="col-lg-5 border rounded">
+                                <div class="float-end mt-2 ms-2 bg-warning position-absolute"><?php echo $tanggal ?></div>
+                                <img src="./admin/assets/upload/berita/<?php echo $gambar ?>" alt="" class="img-fluid">
+                                <div class="container my-3">
+                                    <h6><?php echo $judul ?></h6>
+                                    <p><?php echo $tanggal ?></p>
+                                    <a href="" class="btn btn-sm btn-secondary">Kunjungi</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 border rounded">
+                                <div class="float-end mt-2 ms-2 bg-warning position-absolute">25/05/2015</div>
+                                <img src="./assets/img/poltesa-home.jpg" alt="" class="img-fluid">
+                                <div class="container my-3">
+                                    <h6>Foto Bersama Direktur Polnep</h6>
+                                    <p>Pada tanggal 24 September 2023...</p>
+                                    <a href="" class="btn btn-sm btn-secondary">Kunjungi</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-lg-5 border rounded">
-                            <div class="float-end mt-2 ms-2 bg-warning position-absolute">25/05/2015</div>
-                            <img src="./assets/img/poltesa-home.jpg" alt="" class="img-fluid">
-                            <div class="container my-3">
-                                <h6>Foto Bersama Direktur Polnep</h6>
-                                <p>Pada tanggal 24 September 2023...</p>
-                                <a href="" class="btn btn-sm btn-secondary">Kunjungi</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                    }
+                    ?>
+
                     <div class="container d-lg-flex flex-row justify-content-evenly align-items-center">
                         <div class="col-lg-5 border rounded">
                             <div class="float-end mt-2 ms-2 bg-warning position-absolute">25/05/2015</div>

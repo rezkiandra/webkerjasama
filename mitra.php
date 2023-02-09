@@ -31,12 +31,11 @@ require_once("./bin/koneksi.php");
             <h2 class="text-uppercase text-center my-5">Mitra Dalam Negeri</h2>
         </div>
         <div class="my-5">
-            <div class="rows my-5">
-                <div class="d-lg-flex flex-column gap-5">
+            <div class="rows-1 my-5"> <!-- Tumpuan -->
+                <div class="d-lg-flex flex-row justify-content-center align-items-center gap-5">
                     <?php
-                    $sql      = "select * from tb_mitra where lokasi = 'Dalam Negeri'";
+                    $sql      = "SELECT * FROM tb_mitra WHERE lokasi = 'Dalam Negeri' LIMIT 0, 6";
                     $query    = mysqli_query($koneksi, $sql);
-                    $i        = 0;
                     while ($q = mysqli_fetch_array($query)) {
                         $id             = $q['id'];
                         $nama_mitra     = $q['nama_mitra'];
@@ -44,12 +43,35 @@ require_once("./bin/koneksi.php");
                         $tanggal        = $q['tanggal'];
                         $gambar         = $q['gambar'];
                     ?>
-                        <div class="d-lg-flex align-items-center justify-content-center">
-                            <div class="container d-lg-flex justify-content-center align-items-center gap-5">
-                                <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
-                                    <img src="./admin/assets/upload/mitra/<?php echo $gambar ?>" class="img-fluid">
-                                    <p class="text-center"><?php echo $nama_mitra ?></p>
-                                </div>
+                        <div class="col-lg-1 col-6 d-lg-flex flex-row justify-content-center align-items-center">
+                            <div class="d-lg-flex flex-column gap-3">
+                                <img src="./admin/assets/upload/mitra/<?php echo $gambar ?>" class="img-fluid">
+                                <p class="text-center"><?php echo $nama_mitra ?></p>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+        <div class="my-5">
+            <div class="rows-1 my-5"> <!-- Tumpuan -->
+                <div class="d-lg-flex flex-row justify-content-center align-items-center gap-5">
+                    <?php
+                    $sql      = "SELECT * FROM tb_mitra WHERE lokasi = 'Dalam Negeri' LIMIT 6, 6";
+                    $query    = mysqli_query($koneksi, $sql);
+                    while ($q = mysqli_fetch_array($query)) {
+                        $id             = $q['id'];
+                        $nama_mitra     = $q['nama_mitra'];
+                        $lokasi         = $q['lokasi'];
+                        $tanggal        = $q['tanggal'];
+                        $gambar         = $q['gambar'];
+                    ?>
+                        <div class="col-lg-1 col-6 d-lg-flex flex-row justify-content-center align-items-center">
+                            <div class="d-lg-flex flex-column gap-3">
+                                <img src="./admin/assets/upload/mitra/<?php echo $gambar ?>" class="img-fluid">
+                                <p class="text-center"><?php echo $nama_mitra ?></p>
                             </div>
                         </div>
                     <?php
@@ -65,9 +87,9 @@ require_once("./bin/koneksi.php");
             <h2 class="text-uppercase text-center my-5">Mitra Luar Negeri</h2>
         </div>
         <div class="my-5">
-            <div class="d-lg-flex flex-column gap-5">
+            <div class="d-lg-flex flex-row justify-content-center align-items-center gap-5">
                 <?php
-                $sql      = "select * from tb_mitra where lokasi = 'Luar Negeri'";
+                $sql      = "SELECT * FROM tb_mitra WHERE lokasi = 'Luar Negeri' LIMIT 0, 6";
                 $query    = mysqli_query($koneksi, $sql);
                 while ($q = mysqli_fetch_array($query)) {
                     $id             = $q['id'];
@@ -76,12 +98,10 @@ require_once("./bin/koneksi.php");
                     $tanggal        = $q['tanggal'];
                     $gambar         = $q['gambar'];
                 ?>
-                    <div class="d-lg-flex align-items-center justify-content-center">
-                        <div class="container d-lg-flex justify-content-center align-items-center gap-5">
-                            <div class="col-lg-1 col-6 d-flex flex-column justify-content-center align-items-center gap-3">
-                                <img src="./admin/assets/upload/mitra/<?php echo $gambar ?>" class="img-fluid">
-                                <p class="text-center"><?php echo $nama_mitra ?></p>
-                            </div>
+                    <div class="col-lg-1 col-6 d-lg-flex flex-row justify-content-center align-items-center">
+                        <div class="d-lg-flex flex-column gap-3">
+                            <img src="./admin/assets/upload/mitra/<?php echo $gambar ?>" class="img-fluid">
+                            <p class="text-center"><?php echo $nama_mitra ?></p>
                         </div>
                     </div>
                 <?php

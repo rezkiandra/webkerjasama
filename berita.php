@@ -1,17 +1,18 @@
 <?php
-require_once("./bin/koneksi.php");
+// require_once("./bin/koneksi.php");
+ob_start();
 
-// $hostname       = "localhost";
-// $user           = "root";
-// $pwd            = "";
-// $db             = "kerjasama";
+$hostname       = "localhost";
+$user           = "root";
+$pwd            = "";
+$db             = "kerjasama";
 
-// $koneksi = mysqli_connect($hostname, $user, $pwd, $db);
-// if (!$koneksi) {
-//     die("Belum terkoneksi");
-// } else {
-//     // echo "Koneksi berhasil";
-// }
+$koneksi = mysqli_connect($hostname, $user, $pwd, $db);
+if (!$koneksi) {
+    die("Belum terkoneksi");
+} else {
+    // echo "Koneksi berhasil";
+}
 
 if (isset($_GET['op'])) {
     $op = $_GET['op'];
@@ -64,40 +65,26 @@ if ($op == 'pilih') {
                 <h2 class="text-uppercase text-center my-5">Berita Kerjasama</h2>
             </div>
             <div class="rows my-5">
-                <div class="d-lg-flex flex-column gap-5">
+                <div class="d-lg-flex flex-row justify-content-center align-items-center gap-5">
                     <?php
-                    $sql      = "select * from tb_berita";
-                    $query    = mysqli_query($koneksi, $sql);
-                    $i        = 0;
+                    $perPage            = 3;
+                    $page               = isset($_GET['halaman']) ? (int)$_GET['halaman'] : 1;
+                    $start              = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+                    $sql                = "SELECT * FROM tb_berita LIMIT $start, $perPage";
+
+                    $result         = mysqli_query($koneksi, "SELECT * FROM tb_berita");
+                    $total          = mysqli_num_rows($result);
+
+                    $pages          = ceil($total / $perPage);
+
+                    $query          = mysqli_query($koneksi, $sql);
                     while ($q = mysqli_fetch_array($query)) {
-                        $i          = $i++;
                         $id         = $q['id'];
                         $judul      = $q['judul'];
                         $deskripsi  = $q['deskripsi'];
                         $lokasi     = $q['lokasi'];
                         $tanggal    = $q['tanggal'];
                         $gambar     = $q['gambar'];
-
-                        // if ($i == 3) {
-                        //     echo '<div class="d-lg-flex justify-content-around align-items-center">';
-                        //     echo '<div class="col-lg-3 border rounded shadow-sm">';
-                        //     echo '<img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">';
-                        //     echo '<div class="d-lg-flex justify-content-between align-items-center my-2">';
-                        //     echo '<h5 class="text-start mx-2"></h5>';
-                        //     echo '<h6 class="text-right mx-2"></h6>';
-                        //     echo '</div>';
-                        //     echo '<p class="my-3 mx-2 text-start"></p>';
-                        //     echo '<p class="my-3 mx-2 col-lg-5 text-center rounded shadow-sm bg-warning"></p>';
-                        //     echo '<hr>';
-                        //     echo '</hr>';
-                        //     echo '<a href="./template/berita.php?op=pilih&id=';
-                        //     echo $id;
-                        //     echo '">';
-                        //     echo '<button type="button" class="btn btn-sm">Looping</button>';
-                        //     echo '</a>';
-                        //     echo '</div>';
-                        //     echo '</div>';
-                        // }
                     ?>
                         <div class="col-lg-4 border rounded shadow-sm">
                             <img src="./admin//assets//upload/berita/<?php echo $gambar ?>" class="img-fluid" alt="">
@@ -110,7 +97,7 @@ if ($op == 'pilih') {
                             <hr>
                             </hr>
                             <a href="./template/berita.php?op=pilih&id=<?php echo $id ?>">
-                                <button type="button" class="btn btn-sm">Selengkapnya</button>
+                                <button type="button" class="btn btn-sm btn-outline-dark mb-3 mx-2">Selengkapnya</button>
                             </a>
                         </div>
                     <?php
@@ -121,17 +108,30 @@ if ($op == 'pilih') {
         </div>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link text-secondary" href="#">1</a></li>
-                <li class="page-item"><a class="page-link text-secondary" href="#">2</a></li>
-                <li class="page-item"><a class="page-link text-secondary" href="#">3</a></li>
-                <li class="page-item"><a class="page-link text-secondary" href="#">4</a></li>
-                <li class="page-item"><a class="page-link text-secondary" href="#">5</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
+                <?php if ($start <= 1) { ?>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="?halaman=<?php echo $pages - 1; ?>">Kembali</a>
+                    </li>
+                <?php } else { ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?halaman=<?php echo $pages - 1; ?>">Kembali</a>
+                    </li>
+                <?php } ?>
+
+
+                <?php for ($i = 1; $i <= $pages; $i++) { ?>
+                    <li class="page-item"><a class="page-link text-secondary" href="?halaman=<?php echo $i ?>"> <?php echo $i ?></a></li>
+                <?php } ?>
+
+                <?php if ($start >= 1) { ?>
+                    <li class="page-item disabled">
+                        <a class="page-link" href="?halaman=<?php echo $pages++; ?>">Lanjut</a>
+                    </li>
+                <?php } else { ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?halaman=<?php echo $pages++; ?>">Lanjut</a>
+                    </li>
+                <?php } ?>
             </ul>
         </nav>
     </section>
