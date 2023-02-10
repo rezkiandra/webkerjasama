@@ -1,5 +1,12 @@
 <?php
 require_once("./bin/koneksi.php");
+
+$hostname               = "localhost";
+$user                   = "root";
+$pwd                    = "";
+$db                     = "kerjasama";
+
+$koneksi                = mysqli_connect($hostname, $user, $pwd, $db);
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +25,7 @@ require_once("./bin/koneksi.php");
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
@@ -25,137 +33,130 @@ require_once("./bin/koneksi.php");
         <?php include "./layout/header.php" ?>
     </section>
 
-    <!-- ========== Start Video ========== -->
-    <section id="video">
+    <!-- Start Foto -->
+    <section id="foto" class="">
         <div class="container my-5">
-            <h3 class="text-uppercase text-start my-4">Video</h3>
-            <div class="d-lg-flex justify-content-around flex-row align-items-center gap-5">
-                <div class="col-lg-6 border shadow-sm">
-                    <div class="col-lg-12">
-                        <div class="ratio ratio-16x9 embed-responsive embed-responsive-16by9">
-                            <iframe class="rounded shadow-sm" width="560" height="315" src="https://www.youtube.com/embed/X3wXl_KM7Jo" title="Profil POLTESA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <h3 class="text-uppercase text-start">Foto</h3>
+            <div class="rows">
+                <div class="d-lg-flex flex-row align-items-center justify-content-around gap-4">
+                    <?php
+                    $perPage            = 3;
+                    $page               = isset($_GET['halaman']) ? (int)$_GET['halaman'] : 1;
+                    $start              = ($page > 1) ? ($page * $perPage) - $perPage : 0;
+                    $sql                = "SELECT * FROM tb_foto LIMIT $start, $perPage";
+
+                    $result         = mysqli_query($koneksi, "SELECT * FROM tb_foto");
+                    $total          = mysqli_num_rows($result);
+
+                    $pages          = ceil($total / $perPage);
+
+                    $query          = mysqli_query($koneksi, $sql);
+                    while ($q = mysqli_fetch_array($query)) {
+                        $id             = $q['id'];
+                        $judul_foto     = $q['judul_foto'];
+                        $lokasi         = $q['lokasi'];
+                        $tanggal        = $q['tanggal'];
+                        $gambar         = $q['gambar'];
+                    ?>
+                        <div class="col-lg-4 border rounded shadow-sm my-4">
+                            <img src="./admin/assets/upload/galeri/<?php echo $gambar ?>" class="img-fluid" alt="">
+                            <div class="title">
+                                <h6 class="text-start mx-3 my-3"><?php echo $judul_foto ?></h6>
+                                <p class="text-start mx-3"><?php echo date('d F Y', strtotime($tanggal)) ?></p>
+                            </div>
+                            <p class="mt-4 mx-3 col-lg-4 text-center rounded shadow-sm bg-warning" style="font-size: 14px;"><?php echo $lokasi ?></p>
                         </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <h4 class="text-secondary my-2 fw-light">Profil Politeknik Negeri Sambas (POLTESA)</h4>
-                        <p class="fw-light" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, beatae! Ex tenetur, quasi quaerat sed et voluptate repudiandae molestiae magnam, voluptas laudantium voluptatum at odit recusandae, eum maiores consequatur sit?</p>
-                    </div>
-                </div>
-                <div class="col-lg-6 border shadow-sm">
-                    <div class="col-lg-12">
-                        <div class="ratio ratio-16x9 embed-responsive embed-responsive-16by9">
-                            <iframe class="rounded shadow-sm" width="560" height="315" src="https://www.youtube.com/embed/X3wXl_KM7Jo" title="Profil POLTESA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <h4 class="text-secondary my-2 fw-light">Profil Politeknik Negeri Sambas (POLTESA)</h4>
-                        <p class="fw-light" style="text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, beatae! Ex tenetur, quasi quaerat sed et voluptate repudiandae molestiae magnam, voluptas laudantium voluptatum at odit recusandae, eum maiores consequatur sit?</p>
-                    </div>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <?php if ($start <= 1) { ?>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="?halaman=<?php echo $pages - 1; ?>">Kembali</a>
+                        </li>
+                    <?php } else { ?>
+                        <li class="page-item">
+                            <a class="page-link" href="?halaman=<?php echo $pages - 1; ?>">Kembali</a>
+                        </li>
+                    <?php } ?>
 
-            <div class="d-lg-flex justify-content-evenly flex-row align-items-center my-5">
-                <div class="col-lg-3 border shadow-sm">
-                    <div class="col-lg-12">
+
+                    <?php for ($i = 1; $i <= $pages; $i++) { ?>
+                        <li class="page-item"><a class="page-link text-secondary" href="?halaman=<?php echo $i ?>"> <?php echo $i ?></a></li>
+                    <?php } ?>
+
+                    <?php if ($start >= 1) { ?>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="?halaman=<?php echo $pages++; ?>">Lanjut</a>
+                        </li>
+                    <?php } else { ?>
+                        <li class="page-item">
+                            <a class="page-link" href="?halaman=<?php echo $pages++; ?>">Lanjut</a>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    <!-- End Foto -->
+
+    <!-- ========== Start Video ========== -->
+    <section id="video" class="pt-3">
+        <div class="container my-5">
+            <h3 class="text-uppercase text-start">Video</h3>
+            <div class="d-lg-flex flex-row justify-content-around align-items-center gap-5">
+                <?php
+                $sql            = "SELECT * FROM tb_video ORDER BY ID DESC LIMIT 0, 2";
+                $query          = mysqli_query($koneksi, $sql);
+                while ($q = mysqli_fetch_array($query)) {
+                    $id             = $q['id'];
+                    $judul_video    = $q['judul_video'];
+                    $deskripsi      = $q['deskripsi'];
+                    $link           = $q['link'];
+                ?>
+                    <div class="col-lg-6 d-lg-flex flex-column justify-content-around align-items-start border rounded shadow-sm my-4">
                         <div class="ratio ratio-16x9 embed-responsive embed-responsive-16by9">
-                            <iframe class="rounded shadow-sm" width="560" height="315" src="https://www.youtube.com/embed/X3wXl_KM7Jo" title="Profil POLTESA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe class="" width="560" height="315" src="<?php echo $link ?>" title="Profil POLTESA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="my-3 mx-3">
+                            <h5 class="text-dark"><?php echo $judul_video ?></h5>
+                            <p class="text-dark"><?php echo $deskripsi ?></p>
                         </div>
                     </div>
-                    <div class="col-lg-12">
-                    </div>
-                </div>
-                <div class="col-lg-3 border shadow-sm">
-                    <div class="col-lg-12">
-                        <div class="ratio ratio-16x9 embed-responsive embed-responsive-16by9">
-                            <iframe class="rounded shadow-sm" width="560" height="315" src="https://www.youtube.com/embed/X3wXl_KM7Jo" title="Profil POLTESA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <?php
+                }
+                ?>
+            </div>
+
+            <div class="d-lg-flex justify-content-evenly flex-row align-items-center">
+                <?php
+                $sql            = "SELECT * FROM tb_video ORDER BY ID DESC LIMIT 2, 3";
+                $query          = mysqli_query($koneksi, $sql);
+                while ($q = mysqli_fetch_array($query)) {
+                    $id             = $q['id'];
+                    $judul_video    = $q['judul_video'];
+                    $deskripsi      = $q['deskripsi'];
+                    $link           = $q['link'];
+                ?>
+                    <div class="col-lg-3 border shadow-sm my-4">
+                        <div class="col-lg-12">
+                            <div class="ratio ratio-16x9 embed-responsive embed-responsive-16by9">
+                                <iframe class="rounded shadow-sm" width="560" height="315" src="<?php echo $link ?>" title="Profil POLTESA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
                         </div>
                     </div>
-                    <div class="col-lg-12">
-                    </div>
-                </div>
-                <div class="col-lg-3 border shadow-sm">
-                    <div class="col-lg-12">
-                        <div class="ratio ratio-16x9 embed-responsive embed-responsive-16by9">
-                            <iframe class="rounded shadow-sm" width="560" height="315" src="https://www.youtube.com/embed/X3wXl_KM7Jo" title="Profil POLTESA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                    </div>
-                </div>
+                <?php
+                }
+                ?>
             </div>
 
     </section>
     <!-- ========== End Video ========== -->
-
-    <!-- Start Foto -->
-    <section id="foto" class="py-3">
-        <div class="container class my-5">
-            <h3 class="text-uppercase text-start my-4">Foto</h3>
-            <div class="grid my-4">
-                <div class="d-lg-flex flex-row align-items-center justify-content-around gap-4">
-                    <div class="col-lg-4 border rounded shadow-sm">
-                        <img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">
-                        <div class="title d-lg-flex justify-content-between align-items-center">
-                            <h5 class="text-start mx-3 my-3">Judul Foto</h5>
-                            <h6 class="text-right mx-3">5 Juni 2022</h6>
-                        </div>
-                        <p class="my-3 mx-3">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
-                        <p class="my-3 mx-3 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
-                    </div>
-                    <div class="col-lg-4 border rounded shadow-sm">
-                        <img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">
-                        <div class="title d-lg-flex justify-content-between align-items-center">
-                            <h5 class="text-start mx-3 my-3">Judul Foto</h5>
-                            <h6 class="text-right mx-3">5 Juni 2022</h6>
-                        </div>
-                        <p class="my-3 mx-3">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
-                        <p class="my-3 mx-3 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
-                    </div>
-                    <div class="col-lg-4 border rounded shadow-sm">
-                        <img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">
-                        <div class="title d-lg-flex justify-content-between align-items-center">
-                            <h5 class="text-start mx-3 my-3">Judul Foto</h5>
-                            <h6 class="text-right mx-3">5 Juni 2022</h6>
-                        </div>
-                        <p class="my-3 mx-3">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
-                        <p class="my-3 mx-3 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
-                    </div>
-                </div>
-            </div>
-            <div class="grid my-4">
-                <div class="d-lg-flex flex-row align-items-center justify-content-around gap-4">
-                    <div class="col-lg-4 border rounded shadow-sm">
-                        <img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">
-                        <div class="title d-lg-flex justify-content-between align-items-center">
-                            <h5 class="text-start mx-3 my-3">Judul Foto</h5>
-                            <h6 class="text-right mx-3">5 Juni 2022</h6>
-                        </div>
-                        <p class="my-3 mx-3">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
-                        <p class="my-3 mx-3 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
-                    </div>
-                    <div class="col-lg-4 border rounded shadow-sm">
-                        <img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">
-                        <div class="title d-lg-flex justify-content-between align-items-center">
-                            <h5 class="text-start mx-3 my-3">Judul Foto</h5>
-                            <h6 class="text-right mx-3">5 Juni 2022</h6>
-                        </div>
-                        <p class="my-3 mx-3">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
-                        <p class="my-3 mx-3 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
-                    </div>
-                    <div class="col-lg-4 border rounded shadow-sm">
-                        <img src="./assets/img/poltesa-home.jpg" class="img-fluid" alt="">
-                        <div class="title d-lg-flex justify-content-between align-items-center">
-                            <h5 class="text-start mx-3 my-3">Judul Foto</h5>
-                            <h6 class="text-right mx-3">5 Juni 2022</h6>
-                        </div>
-                        <p class="my-3 mx-3">Deskripsi Berita Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias optio animi consequatur impedit est numquam ipsum quisquam ad, totam illo?</p>
-                        <p class="my-3 mx-3 col-lg-4 text-center rounded shadow-sm bg-warning">Kampus</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Foto -->
 
     <!-- Footer -->
     <section>

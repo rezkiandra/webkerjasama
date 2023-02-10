@@ -34,12 +34,13 @@ if (!$koneksi) {
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="./assets/vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
     <!-- ========== Start Banner ========== -->
-    <section id="banner" class="h-50">
-        <div class="pt-5 pb-4">
+    <section id="banner" class="h-75">
+        <div class="pt-3 pb-4">
             <?php include "./layout/header.php" ?>
         </div>
         <div class="container d-flex flex-column align-items-center">
@@ -57,7 +58,7 @@ if (!$koneksi) {
     <!-- ========== End Banner ========== -->
 
     <!-- ========== Start Carousel ========== -->
-    <section id="carousel" class="mt-5 pt-5">
+    <section id="carousel" class="pt-5">
         <div class="container">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
                 <div class="carousel-indicators">
@@ -65,7 +66,7 @@ if (!$koneksi) {
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
                 </div>
-                <div class="carousel-inner">
+                <div class="carousel-inner shadow-sm">
                     <div class="carousel-item active" data-interval="2000">
                         <img src="./assets/img/carousel1.jpg" class="d-block w-100">
                     </div>
@@ -94,7 +95,7 @@ if (!$koneksi) {
         <div class="container bg-light mt-5 rounded shadow pb-5">
             <h2 class="text-center py-4">Grafik MoU</h2>
             <div class="d-lg-flex justify-content-around">
-                <div class="col-lg-8 d-lg-flex justify-content-around gap-5 pb-5">
+                <div class="col-lg-8 d-lg-flex justify-content-around gap-5 mb-5">
                     <div class="col-lg-6 border rounded shadow-sm">
                         <h5 class="text-uppercase text-center rounded text-bold text-light py-2 bg-chart" style="font-size: 16px;">Kerjasama Dalam 3 Tahun Terakhir</h5>
                         <canvas id="myChart"></canvas>
@@ -132,99 +133,92 @@ if (!$koneksi) {
     </section>
     <!-- ========== End Deskripsi ========== -->
 
-    <!-- ========== Start Galeri ========== -->
-    <section id="galeri">
+    <!-- ========== Start Berita ========== -->
+    <section id="berita" class="h-50">
         <div class="container rounded shadow mt-5 bg-light d-lg-flex justify-content-center align-items-center">
             <div class="col-lg-8 my-5">
-                <h4 class="text-uppercase text-center">Galeri</h4>
-                <div class="d-lg-flex flex-column justify-content-evenly align-items-center gap-4">
+                <h4 class="text-uppercase text-center">Berita Terbaru</h4>
+                <div class="d-lg-flex flex-column justify-content-evenly align-items-center">
+                    <div class="d-lg-flex my-4 flex-row justify-content-evenly align-items-center">
+                        <?php
+                        $sql   = "SELECT * FROM tb_berita ORDER BY ID DESC LIMIT 2";
+                        $query    = mysqli_query($koneksi, $sql);
+                        while ($q = mysqli_fetch_array($query)) {
+                            $id                = $q['id'];
+                            $judul             = $q['judul'];
+                            $deskripsi         = $q['deskripsi'];
+                            $lokasi            = $q['lokasi'];
+                            $tanggal           = $q['tanggal'];
+                            $gambar            = $q['gambar'];
+                        ?>
+                            <div class="col-lg-5 border rounded">
+                                <div class="rounded mt-2 ms-2 bg-warning position-absolute"><?php echo date('d F Y', strtotime($tanggal)) ?></div>
+                                <img src="./admin/assets/upload/berita/<?php echo $gambar ?>" alt="" class="img-fluid">
+                                <div class="my-3 mx-2">
+                                    <h6><?php echo $judul ?></h6>
+                                    <p><?php echo $deskripsi ?></p>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="d-lg-flex flex-row justify-content-evenly align-items-center">
+                        <?php
+                        $sql   = "SELECT * FROM tb_berita ORDER BY ID DESC LIMIT 2, 2";
+                        $query    = mysqli_query($koneksi, $sql);
+                        while ($q = mysqli_fetch_array($query)) {
+                            $id                = $q['id'];
+                            $judul             = $q['judul'];
+                            $deskripsi         = $q['deskripsi'];
+                            $lokasi            = $q['lokasi'];
+                            $tanggal           = $q['tanggal'];
+                            $gambar            = $q['gambar'];
+                        ?>
+                            <div class="col-lg-5 border rounded">
+                                <div class="rounded mt-2 ms-2 bg-warning position-absolute"><?php echo date('d F Y', strtotime($tanggal)) ?></div>
+                                <img src="./admin/assets/upload/berita/<?php echo $gambar ?>" alt="" class="img-fluid">
+                                <div class="my-3 mx-2">
+                                    <h6><?php echo $judul ?></h6>
+                                    <p><?php echo $deskripsi ?></p>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <h4 class="text-uppercase text-center my-5">Galeri</h4>
+                <div class="container d-lg-flex flex-column">
                     <?php
-                    $sql   = "SELECT * FROM tb_berita";
+                    $sql   = "SELECT * FROM tb_foto ORDER BY ID ASC LIMIT 2";
                     $query    = mysqli_query($koneksi, $sql);
                     while ($q = mysqli_fetch_array($query)) {
                         $id                = $q['id'];
-                        $judul             = $q['judul'];
-                        $deskripsi         = $q['deskripsi'];
+                        $judul_foto        = $q['judul_foto'];
                         $lokasi            = $q['lokasi'];
                         $tanggal           = $q['tanggal'];
                         $gambar            = $q['gambar'];
                     ?>
-                        <div class="container d-lg-flex my-4 flex-row justify-content-evenly align-items-center">
-                            <div class="col-lg-5 border rounded">
-                                <div class="float-end mt-2 ms-2 bg-warning position-absolute"><?php echo $tanggal ?></div>
-                                <img src="./admin/assets/upload/berita/<?php echo $gambar ?>" alt="" class="img-fluid">
-                                <div class="container my-3">
-                                    <h6><?php echo $judul ?></h6>
-                                    <p><?php echo $tanggal ?></p>
-                                    <a href="" class="btn btn-sm btn-secondary">Kunjungi</a>
-                                </div>
-                            </div>
-                            <div class="col-lg-5 border rounded">
-                                <div class="float-end mt-2 ms-2 bg-warning position-absolute">25/05/2015</div>
-                                <img src="./assets/img/poltesa-home.jpg" alt="" class="img-fluid">
-                                <div class="container my-3">
-                                    <h6>Foto Bersama Direktur Polnep</h6>
-                                    <p>Pada tanggal 24 September 2023...</p>
-                                    <a href="" class="btn btn-sm btn-secondary">Kunjungi</a>
-                                </div>
+                        <div class="col-lg-12 border rounded mb-5">
+                            <div class="rounded mt-2 ms-2 bg-warning position-absolute"><?php echo date('d F Y', strtotime($tanggal)) ?></div>
+                            <img src="./admin/assets/upload/galeri/<?php echo $gambar ?>" alt="" class="img-fluid">
+                            <div class="my-3 mx-2">
+                                <h6><?php echo $judul_foto ?></h6>
+                                <p><?php echo $deskripsi ?></p>
                             </div>
                         </div>
                     <?php
                     }
                     ?>
-
-                    <div class="container d-lg-flex flex-row justify-content-evenly align-items-center">
-                        <div class="col-lg-5 border rounded">
-                            <div class="float-end mt-2 ms-2 bg-warning position-absolute">25/05/2015</div>
-                            <img src="./assets/img/poltesa-home.jpg" alt="" class="img-fluid">
-                            <div class="container my-3">
-                                <h6>Foto Bersama Direktur Polnep</h6>
-                                <p>Pada tanggal 24 September 2023...</p>
-                                <a href="" class="btn btn-sm btn-secondary">Kunjungi</a>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 border rounded">
-                            <div class="float-end mt-2 ms-2 bg-warning position-absolute">25/05/2015</div>
-                            <img src="./assets/img/poltesa-home.jpg" alt="" class="img-fluid">
-                            <div class="container my-3">
-                                <h6>Foto Bersama Direktur Polnep</h6>
-                                <p>Pada tanggal 24 September 2023...</p>
-                                <a href="" class="btn btn-sm btn-secondary">Kunjungi</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <h4 class="text-uppercase text-center mb-5">Berita Terbaru</h4>
-                <div class="container d-lg-flex flex-column gap-5">
-                    <div class="col-lg-12 border rounded">
-                        <div class="float-end mt-2 ms-2 bg-warning position-absolute">25/05/2015</div>
-                        <img src="./assets/img/poltesa-home.jpg" alt="" class="img-fluid">
-                        <div class="container my-3">
-                            <h6>Foto Bersama Direktur Polnep</h6>
-                            <p>Pada tanggal 24 September 2023...</p>
-                            <a href="" class="btn btn-sm btn-secondary">Kunjungi</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-12 border rounded">
-                        <div class="float-end mt-2 ms-2 bg-warning position-absolute">25/05/2015</div>
-                        <img src="./assets/img/poltesa-home.jpg" alt="" class="img-fluid">
-                        <div class="container my-3">
-                            <h6>Foto Bersama Direktur Polnep</h6>
-                            <p>Pada tanggal 24 September 2023...</p>
-                            <a href="" class="btn btn-sm btn-secondary">Kunjungi</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
+        <?php include "./layout/footer.php"; ?>
     </section>
-    <!-- ========== End Galeri ========== -->
-
-    <section>
-        <?php include "./layout/footer.php" ?>
-    </section>
+    <!-- ========== End Berita ========== -->
 </body>
 
 <!-- Chart JS -->

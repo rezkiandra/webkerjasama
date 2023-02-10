@@ -19,14 +19,17 @@ require_once "./bin/koneksi.php";
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="./assets/vendor/bootstrap-icons/bootstrap-icons.css">
-
-    <!-- Style Header -->
-    <link rel="stylesheet" href="../assets/css/style.css">
-
+    <style>
+        #bg-nav {
+            background-color: #472272;
+            border-radius: 40px;
+            box-shadow: 0px 0px 5px orange;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="navbar navbar-expand-lg py-2 mx-3" id="bg-nav">
+    <div class="navbar navbar-expand-lg py-2" id="bg-nav">
         <div class="container">
             <a class="navbar-brand" href="./index.php">
                 <img src="../../kerjasama/assets/img/logo.png" alt="" style="height: 51px; width: 150;">
@@ -35,7 +38,7 @@ require_once "./bin/koneksi.php";
                 <i class="bi bi-list"></i>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <div class="container-lg">
+                <div class="container-fluid">
                     <ul class="navbar-nav d-lg-flex justify-content-around">
                         <li class="nav-item">
                             <a class="nav-link text-light d-flex flex-column align-items-center" href="../../kerjasama/index.php"><i class="bi bi-house-fill"></i>Beranda</a>

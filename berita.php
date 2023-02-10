@@ -50,21 +50,20 @@ if ($op == 'pilih') {
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
-    <section>
+    <section class="pt-3">
         <?php include "./layout/header.php" ?>
     </section>
     <!-- ========== Start Main ========== -->
     <section id="main">
-        <div class="container my-5">
+        <div class="container">
             <div class="title">
-                <h2 class="text-uppercase text-center my-5">Berita Kerjasama</h2>
+                <h2 class="text-uppercase text-center mt-5 mb-4">Berita Kerjasama</h2>
             </div>
-            <div class="rows my-5">
+            <div class="rows mb-5">
                 <div class="d-lg-flex flex-row justify-content-center align-items-center gap-5">
                     <?php
                     $perPage            = 3;
@@ -90,10 +89,10 @@ if ($op == 'pilih') {
                             <img src="./admin//assets//upload/berita/<?php echo $gambar ?>" class="img-fluid" alt="">
                             <div class="d-lg-flex justify-content-between align-items-center my-2">
                                 <h5 class="text-start mx-2"><?php echo $judul ?></h5>
-                                <h6 class="text-right mx-2"><?php echo $tanggal ?></h6>
+                                <h6 class="text-right mx-2"><?php echo date('d F Y', strtotime($tanggal)) ?></h6>
                             </div>
                             <p class="my-3 mx-2 text-start"><?php echo $deskripsi ?></p>
-                            <p class="my-3 mx-2 col-lg-5 text-center rounded shadow-sm bg-warning"><?php echo $lokasi ?></p>
+                            <p class="my-3 mx-2 col-lg-3 text-center rounded shadow-sm bg-warning" style="font-size: 14px;"><?php echo $lokasi ?></p>
                             <hr>
                             </hr>
                             <a href="./template/berita.php?op=pilih&id=<?php echo $id ?>">

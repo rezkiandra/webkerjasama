@@ -18,9 +18,11 @@ require_once "./bin/koneksi.php";
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="./assets/vendor/bootstrap-icons/bootstrap-icons.css">
-
-    <!-- Style Header -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <style>
+        #footer {
+            background: linear-gradient(90deg, rgba(51, 27, 68, 1) 0%, rgba(135, 57, 195, 1) 50%, rgba(51, 27, 68, 1) 100%);
+        }
+    </style>
 </head>
 
 <body>
@@ -38,7 +40,7 @@ require_once "./bin/koneksi.php";
                     <img src="../../kerjasama/assets/img/white.png" class="img-fluid w-25">
                 </div>
                 <div class="col-lg-3 mb-3">
-                    <div class="d-flex flex-column justify-content-center text-start">
+                    <div class="d-flex flex-column justify-content-center">
                         <h4 class="text-uppercase text-light text-center mt-4">Ikuti Kami</h4>
                         <div class="d-grid gap-3">
                             <a href="" class="text-decoration-none text-light text-uppercase" style="font-size: 14px;">
@@ -58,8 +60,8 @@ require_once "./bin/koneksi.php";
                 </div>
             </div>
         </div>
-        <div class="bg-dark d-flex justify-content-center pt-3">
-            <p class="text-light">&copy 2022 Poltesa All Rights Reserved</p>
+        <div class="bg-dark d-lg-flex justify-content-center align-items-center py-2 pt-3">
+            <p class="text-light text-center">&copy 2022 Poltesa All Rights Reserved</p>
         </div>
     </section>
 </body>
