@@ -92,36 +92,36 @@ if (!$koneksi) {
 
 
     <section id="grafik">
-        <div class="container bg-light mt-5 rounded shadow pb-5">
-            <h2 class="text-center py-4">Grafik MoU</h2>
+        <div class="container bg-light mt-5 rounded shadow pb-3">
+            <h2 class="text-center pt-4">Grafik MoU</h2>
             <div class="d-lg-flex justify-content-around">
-                <div class="col-lg-8 d-lg-flex justify-content-around gap-5 mb-5">
-                    <div class="col-lg-6 border rounded shadow-sm">
+                <div class="col-lg-8 d-lg-flex justify-content-center gap-5">
+                    <div class="col-lg-6 border rounded shadow-sm my-4">
                         <h5 class="text-uppercase text-center rounded text-bold text-light py-2 bg-chart" style="font-size: 16px;">Kerjasama Dalam 3 Tahun Terakhir</h5>
                         <canvas id="myChart"></canvas>
                     </div>
-                    <div class="col-lg-6 border rounded shadow-sm">
+                    <div class="col-lg-6 border rounded shadow-sm my-4">
                         <h5 class="text-uppercase text-center rounded text-bold text-light py-2 bg-chart" style="font-size: 16px;">Kerjasama Dalam 3 Tahun Terakhir</h5>
                         <canvas id="myChart3" style="height: 20vh;"></canvas>
                     </div>
                 </div>
             </div>
             <div class="d-lg-flex flex-row justify-content-center align-items-center gap-2">
-                <div class="col-lg-4 border rounded bg-white d-flex justify-content-center">
+                <div class="col-lg-4 border rounded bg-white d-flex justify-content-center my-3">
                     <h4 class="bg-counter text-light w-25 d-flex justify-content-center align-items-center">15</h4>
                     <div class="subject">
                         <p class="text-uppercase ms-2">Kerjasama Dalam Negeri 3 Tahun Terakhir</p>
                         <a href="" class="btn btn-sm ms-2 btn-light text-uppercase">Detail</a>
                     </div>
                 </div>
-                <div class="col-lg-4 border rounded bg-white d-flex justify-content-center">
+                <div class="col-lg-4 border rounded bg-white d-flex justify-content-center my-3">
                     <h4 class="bg-counter text-light w-25 d-flex justify-content-center align-items-center">15</h4>
                     <div class="subject">
                         <p class="text-uppercase ms-2">Kerjasama Dalam Negeri 3 Tahun Terakhir</p>
                         <a href="" class="btn btn-sm ms-2 btn-light text-uppercase">Detail</a>
                     </div>
                 </div>
-                <div class="col-lg-4 border rounded bg-white d-flex justify-content-center">
+                <div class="col-lg-4 border rounded bg-white d-flex justify-content-center my-3">
                     <h4 class="bg-counter text-light w-25 d-flex justify-content-center align-items-center">15</h4>
                     <div class="subject">
                         <p class="text-uppercase ms-2">Kerjasama Dalam Negeri 3 Tahun Terakhir</p>
@@ -136,10 +136,10 @@ if (!$koneksi) {
     <!-- ========== Start Berita ========== -->
     <section id="berita" class="h-50">
         <div class="container rounded shadow mt-5 bg-light d-lg-flex justify-content-center align-items-center">
-            <div class="col-lg-8 my-5">
+            <div class="col-lg-8 pt-4">
                 <h4 class="text-uppercase text-center">Berita Terbaru</h4>
                 <div class="d-lg-flex flex-column justify-content-evenly align-items-center">
-                    <div class="d-lg-flex my-4 flex-row justify-content-evenly align-items-center">
+                    <div class="d-lg-flex    flex-row justify-content-evenly align-items-center">
                         <?php
                         $sql   = "SELECT * FROM tb_berita ORDER BY ID DESC LIMIT 2";
                         $query    = mysqli_query($koneksi, $sql);
@@ -151,7 +151,7 @@ if (!$koneksi) {
                             $tanggal           = $q['tanggal'];
                             $gambar            = $q['gambar'];
                         ?>
-                            <div class="col-lg-5 border rounded">
+                            <div class="col-lg-5 border rounded my-4">
                                 <div class="rounded mt-2 ms-2 bg-warning position-absolute"><?php echo date('d F Y', strtotime($tanggal)) ?></div>
                                 <img src="./admin/assets/upload/berita/<?php echo $gambar ?>" alt="" class="img-fluid">
                                 <div class="my-3 mx-2">
@@ -175,7 +175,7 @@ if (!$koneksi) {
                             $tanggal           = $q['tanggal'];
                             $gambar            = $q['gambar'];
                         ?>
-                            <div class="col-lg-5 border rounded">
+                            <div class="col-lg-5 border rounded my-4">
                                 <div class="rounded mt-2 ms-2 bg-warning position-absolute"><?php echo date('d F Y', strtotime($tanggal)) ?></div>
                                 <img src="./admin/assets/upload/berita/<?php echo $gambar ?>" alt="" class="img-fluid">
                                 <div class="my-3 mx-2">
@@ -190,10 +190,10 @@ if (!$koneksi) {
                 </div>
             </div>
             <div class="col-lg-3">
-                <h4 class="text-uppercase text-center my-5">Galeri</h4>
-                <div class="container d-lg-flex flex-column">
+                <h4 class="text-uppercase text-center mt-5">Galeri</h4>
+                <div class="d-lg-flex flex-column mt-4 pb-2">
                     <?php
-                    $sql   = "SELECT * FROM tb_foto ORDER BY ID ASC LIMIT 2";
+                    $sql      = "SELECT * FROM tb_foto ORDER BY ID ASC LIMIT 2";
                     $query    = mysqli_query($koneksi, $sql);
                     while ($q = mysqli_fetch_array($query)) {
                         $id                = $q['id'];
@@ -202,7 +202,7 @@ if (!$koneksi) {
                         $tanggal           = $q['tanggal'];
                         $gambar            = $q['gambar'];
                     ?>
-                        <div class="col-lg-12 border rounded mb-5">
+                        <div class="col-lg-12 border rounded mb-4">
                             <div class="rounded mt-2 ms-2 bg-warning position-absolute"><?php echo date('d F Y', strtotime($tanggal)) ?></div>
                             <img src="./admin/assets/upload/galeri/<?php echo $gambar ?>" alt="" class="img-fluid">
                             <div class="my-3 mx-2">
