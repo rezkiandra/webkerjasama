@@ -61,9 +61,9 @@ if ($op == 'pilih') {
     <section id="main">
         <div class="container">
             <div class="title">
-                <h2 class="text-uppercase text-center mt-5 mb-4">Berita Kerjasama</h2>
+                <h2 class="text-uppercase text-center mt-5">Berita Kerjasama</h2>
             </div>
-            <div class="rows mb-5">
+            <div class="rows mb-4">
                 <div class="d-lg-flex flex-row justify-content-center align-items-center gap-5">
                     <?php
                     $perPage            = 3;
@@ -85,7 +85,7 @@ if ($op == 'pilih') {
                         $tanggal    = $q['tanggal'];
                         $gambar     = $q['gambar'];
                     ?>
-                        <div class="col-lg-4 border rounded shadow-sm">
+                        <div class="col-lg-4 border rounded shadow-sm mt-4 mb-5">
                             <img src="./admin//assets//upload/berita/<?php echo $gambar ?>" class="img-fluid" alt="">
                             <div class="d-lg-flex justify-content-between align-items-center my-2">
                                 <h5 class="text-start mx-2"><?php echo $judul ?></h5>
