@@ -22,16 +22,16 @@ require_once("./bin/koneksi.php");
 </head>
 
 <body>
-    <section>
+    <section class="pt-3">
         <?php include "./layout/header.php" ?>
     </section>
 
     <section id="internal">
         <div class="title">
-            <h2 class="text-uppercase text-center my-5">Mitra Dalam Negeri</h2>
+            <h2 class="text-uppercase text-center mt-5 mb-4">Mitra Dalam Negeri</h2>
         </div>
-        <div class="my-5">
-            <div class="rows-1 my-5"> <!-- Tumpuan -->
+        <div class="">
+            <div class="rows-1"> <!-- Tumpuan -->
                 <div class="d-lg-flex flex-row justify-content-center align-items-center gap-5">
                     <?php
                     $sql      = "SELECT * FROM tb_mitra WHERE lokasi = 'Dalam Negeri' LIMIT 0, 6";
@@ -43,7 +43,7 @@ require_once("./bin/koneksi.php");
                         $tanggal        = $q['tanggal'];
                         $gambar         = $q['gambar'];
                     ?>
-                        <div class="col-lg-1 d-flex flex-row justify-content-center align-items-center">
+                        <div class="col-lg-1 d-flex flex-row justify-content-center align-items-center my-4">
                             <div class="d-flex flex-column gap-3 justify-content-center align-items-center">
                                 <img src="./admin/assets/upload/mitra/<?php echo $gambar ?>" class="img-fluid">
                                 <p class="text-center"><?php echo $nama_mitra ?></p>
@@ -55,7 +55,7 @@ require_once("./bin/koneksi.php");
                 </div>
             </div>
         </div>
-        <div class="my-5">
+        <div class="">
             <div class="rows-1 my-5"> <!-- Tumpuan -->
                 <div class="d-lg-flex flex-row justify-content-center align-items-center gap-5">
                     <?php
@@ -82,11 +82,11 @@ require_once("./bin/koneksi.php");
         </div>
     </section>
 
-    <section id="external" class="py-5">
+    <section id="external" class="pt-5">
         <div class="title">
-            <h2 class="text-uppercase text-center my-5">Mitra Luar Negeri</h2>
+            <h2 class="text-uppercase text-center mt-5 mb-4">Mitra Luar Negeri</h2>
         </div>
-        <div class="my-5">
+        <div class="">
             <div class="rows-1 my-5"> <!-- Tumpuan -->
                 <div class="d-lg-flex flex-row justify-content-center align-items-center gap-5">
                     <?php
@@ -99,7 +99,7 @@ require_once("./bin/koneksi.php");
                         $tanggal        = $q['tanggal'];
                         $gambar         = $q['gambar'];
                     ?>
-                        <div class="col-lg-1 d-flex flex-row justify-content-center align-items-center">
+                        <div class="col-lg-1 d-flex flex-row justify-content-center align-items-center my-4">
                             <div class="d-flex flex-column gap-3 justify-content-center align-items-center">
                                 <img src="./admin/assets/upload/mitra/<?php echo $gambar ?>" class="img-fluid">
                                 <p class="text-center"><?php echo $nama_mitra ?></p>
