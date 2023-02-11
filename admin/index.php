@@ -25,19 +25,19 @@ $get_berita         = mysqli_query($koneksi, "SELECT * FROM tb_berita");
 $count_berita       = mysqli_num_rows($get_berita);
 
 // Kerjasama Dalam Negeri yang aktif
-$aktif_internal             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_dalam WHERE status = 'Aktif'");
+$aktif_internal             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_dalam WHERE status = 'Aktif' OR status = 'AKTIF'");
 $count_aktif_internal       = mysqli_num_rows($aktif_internal);
 
 // Kerjasama Dalam Negeri yang tidak aktif
-$nonaktif_internal             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_dalam WHERE status = 'Tidak Aktif'");
+$nonaktif_internal             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_dalam WHERE status = 'Tidak Aktif' OR status = 'TIDAK AKTIF'");
 $count_nonaktif_internal       = mysqli_num_rows($nonaktif_internal);
 
 // Kerjasama Luar Negeri yang aktif
-$aktif_external             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_luar WHERE status = 'Aktif'");
+$aktif_external             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_luar WHERE status = 'Aktif' OR status = 'AKTIF'");
 $count_aktif_external       = mysqli_num_rows($aktif_external);
 
 // Kerjasama Luar Negeri yang tidak aktif
-$nonaktif_external             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_luar WHERE status = 'Tidak Aktif'");
+$nonaktif_external             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_luar WHERE status = 'Tidak Aktif' OR status = 'TIDAK AKTIF'");
 $count_nonaktif_external       = mysqli_num_rows($nonaktif_external);
 
 // Total Keseluruhan MoU

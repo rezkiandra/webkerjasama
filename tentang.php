@@ -12,20 +12,33 @@ require_once("./bin/koneksi.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
     <title>Tentang - Kerjasama</title>
+
     <!-- Fonts Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: content-box;
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+
 </head>
 
 <body>
-    <section>
+    <section class="pt-3">
         <?php include "./layout/header.php" ?>
     </section>
 
     <section id="gambar">
         <div class="container">
-            <h3 class="text-uppercase text-center my-5">Tentang Kami</h3>
+            <h3 class="text-uppercase text-center mt-5 mb-4">Tentang Kami</h3>
             <?php
             $sql      = "select * from tb_tentang";
             $query    = mysqli_query($koneksi, $sql);
@@ -33,7 +46,7 @@ require_once("./bin/koneksi.php");
                 $id             = $q['id'];
                 $banner         = $q['banner'];
             ?>
-                <img src="./admin/assets/upload/tentang/<?php echo $banner ?>" alt="" class="img-fluid shadow">
+                <img src="./admin/assets/upload/tentang/<?php echo $banner ?>" alt="" class="img-fluid shadow-sm rounded">
             <?php
             }
             ?>
@@ -42,7 +55,7 @@ require_once("./bin/koneksi.php");
 
     <!-- ========== Start Main ========== -->
     <section id="main">
-        <div class="container my-5 py-5">
+        <div class="container my-5">
             <h2 class="text-dark fw-normal">Hubungi Kami</h2>
             <p class="text-dark">Bagian Kerjasama dan Kelembagaan Politeknik Negeri Sambas</p>
             <p class="text-dark">Gedung Direktorat POLTESA</p>

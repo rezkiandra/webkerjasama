@@ -18,7 +18,14 @@ require_once("./bin/koneksi.php");
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: content-box;
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 
 <body>

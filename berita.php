@@ -1,5 +1,5 @@
 <?php
-// require_once("./bin/koneksi.php");
+include_once "./helpers/helpers.php";
 ob_start();
 
 $hostname       = "localhost";
@@ -19,18 +19,6 @@ if (isset($_GET['op'])) {
 } else {
     $op = "";
 }
-
-if ($op == 'pilih') {
-    $id         = $_GET['id'];
-    $sql1       = "select * from tb_berita where id = '$id'";
-    $q1         = mysqli_query($koneksi, $sql1);
-    $r1         = mysqli_fetch_array($q1);
-    $judul      = $r1['judul'];
-    $deskripsi  = $r1['deskripsi'];
-    $lokasi     = $r1['lokasi'];
-    $tanggal    = $r1['tanggal'];
-    $gambar     = $r1['gambar'];
-}
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +29,6 @@ if ($op == 'pilih') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css">
     <title>Berita - Kerjasama</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,7 +37,14 @@ if ($op == 'pilih') {
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: content-box;
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -73,12 +67,10 @@ if ($op == 'pilih') {
 
                     $result         = mysqli_query($koneksi, "SELECT * FROM tb_berita");
                     $total          = mysqli_num_rows($result);
-
                     $pages          = ceil($total / $perPage);
-
                     $query          = mysqli_query($koneksi, $sql);
                     while ($q = mysqli_fetch_array($query)) {
-                        $id         = $q['id'];
+                        $id         = enkripsiUrl('encrypt', $q['id']);
                         $judul      = $q['judul'];
                         $deskripsi  = $q['deskripsi'];
                         $lokasi     = $q['lokasi'];
@@ -95,7 +87,7 @@ if ($op == 'pilih') {
                             <p class="my-3 mx-2 col-lg-3 text-center rounded shadow-sm bg-warning" style="font-size: 14px;"><?php echo $lokasi ?></p>
                             <hr>
                             </hr>
-                            <a href="./template/berita.php?op=pilih&id=<?php echo $id ?>">
+                            <a href="./template/berita.php?id=<?php echo $id ?>">
                                 <button type="button" class="btn btn-sm btn-outline-dark mb-3 mx-2">Selengkapnya</button>
                             </a>
                         </div>

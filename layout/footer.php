@@ -36,23 +36,23 @@ require_once "./bin/koneksi.php";
                     <p class="text-light" style="font-size: 14px;"><i class="bi bi-globe me-2"></i>info@poltesa.ac.id</p>
                 </div>
                 <div class="col-lg-6 mb-3 d-flex flex-column justify-content-center align-items-center">
-                    <a href="#"><i style="font-size: 50px;" class="text-warning bi bi-arrow-up-circle-fill"></i></a>
+                    <a href="#"><i style="font-size: 50px; top: calc(100vh - 5rem);" class="text-warning bi bi-arrow-up-circle-fill"></i></a>
                     <img src="../../kerjasama/assets/img/white.png" class="img-fluid w-25">
                 </div>
                 <div class="col-lg-3 mb-3">
                     <div class="d-flex flex-column justify-content-center">
                         <h4 class="text-uppercase text-light text-center mt-4">Ikuti Kami</h4>
                         <div class="d-grid gap-3">
-                            <a href="" class="text-decoration-none text-light text-uppercase" style="font-size: 14px;">
+                            <a href="https://facebook.com/poltesa/" class="text-decoration-none text-light text-uppercase" style="font-size: 14px;">
                                 <i class="bi bi-facebook me-2"></i>Facebook
                             </a>
-                            <a href="" class="text-decoration-none text-light text-uppercase" style="font-size: 14px;">
+                            <a href="https://twitter.com/officialpoltesa" class="text-decoration-none text-light text-uppercase" style="font-size: 14px;">
                                 <i class="bi bi-twitter me-2"></i>Twitter
                             </a>
-                            <a href="" class="text-decoration-none text-light text-uppercase" style="font-size: 14px;">
+                            <a href="https://instagram.com/officialpoltesa" class="text-decoration-none text-light text-uppercase" style="font-size: 14px;">
                                 <i class="bi bi-instagram me-2"></i>Instagram
                             </a>
-                            <a href="" class="text-decoration-none text-light text-uppercase" style="font-size: 14px;">
+                            <a href="https://youtube.com/@mediapoltesa" class="text-decoration-none text-light text-uppercase" style="font-size: 14px;">
                                 <i class="bi bi-youtube me-2"></i>Youtube
                             </a>
                         </div>

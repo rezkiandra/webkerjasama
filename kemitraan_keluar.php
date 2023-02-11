@@ -19,17 +19,25 @@ include "./bin/koneksi.php";
 
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="./assets/vendor/bootstrap-icons/bootstrap-icons.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: content-box;
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 
 <body>
-    <section>
+    <section class="pt-3">
         <?php include "./layout/header.php" ?>
     </section>
 
     <section id="gambar">
         <div class="container">
-            <h2 class="text-center text-uppercase my-5">Prosedur Kemitraan Keluar</h2>
-            <img src="./assets//img//Prosedur Kemitraan Keluar.png" alt="" class="img-fluid shadow">
+            <h2 class="text-center text-uppercase mt-5 mb-4">Prosedur Kemitraan Keluar</h2>
+            <img src="./assets//img//Prosedur Kemitraan Keluar.png" alt="" class="img-fluid shadow-sm rounded">
         </div>
     </section>
 

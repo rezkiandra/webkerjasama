@@ -330,8 +330,8 @@ if (isset($_POST['simpan'])) { //untuk create data
                                 <th>Nama Mitra</th>
                                 <th>Bentuk Lembaga</th>
                                 <th>Jenis Kegiatan</th>
-                                <th>Tanggal Mulai</th>
-                                <th>Tanggal Berakhir</th>
+                                <th>Waktu Mulai</th>
+                                <th>Waktu Berakhir</th>
                                 <th>MoU Poltesa</th>
                                 <th>MoU Mitra</th>
                                 <th>Lokasi</th>
