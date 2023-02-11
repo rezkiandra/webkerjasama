@@ -1,4 +1,6 @@
 <?php
+require_once "../helpers/helpers.php";
+
 ob_start();
 $hostname       = "localhost";
 $user           = "root";
@@ -15,6 +17,7 @@ $tanggal        = "";
 $gambar         = "";
 $success        = "";
 $failed         = "";
+$op             = "";
 
 $koneksi = mysqli_connect($hostname, $user, $pwd, $db);
 if (!$koneksi) {
@@ -29,9 +32,10 @@ if (isset($_GET['op'])) {
     $op = "";
 }
 
-if ($op == 'hapus-video') {
+if ($op == 'hapus-video' && isset($_GET['id']) && !empty($_GET['id'])) {
     $id         = $_GET['id'];
-    $sql1       = "delete from tb_video where id = '$id'";
+    $id         = enkripsiUrl('decrypt', $id);
+    $sql1       = "DELETE FROM tb_video WHERE id = '$id'";
     $q1         = mysqli_query($koneksi, $sql1);
     if ($q1) {
         $success = "Berhasil menghapus data video";
@@ -40,9 +44,10 @@ if ($op == 'hapus-video') {
     }
 }
 
-if ($op == 'edit-video') {
+if ($op == 'edit-video' && isset($_GET['id']) && !empty($_GET['id'])) {
     $id             = $_GET['id'];
-    $sql1           = "select * from tb_video where id = '$id'";
+    $id             = enkripsiUrl('decrypt', $id);
+    $sql1           = "SELECT * FROM tb_video WHERE id = '$id'";
     $q1             = mysqli_query($koneksi, $sql1);
     $r1             = mysqli_fetch_array($q1);
     $judul_video    = $r1['judul_video'];
@@ -56,8 +61,8 @@ if (isset($_POST['simpan-video'])) { //untuk create data
     $link                 = $_POST['link'];
 
     if ($judul_video && $deskripsi && $link) {
-        if ($op == 'edit-video') { //untuk update
-            $sql1       = "update tb_video set judul_video = '$judul_video', deskripsi = '$deskripsi', link = '$link' where id = '$id'";
+        if ($op == 'edit-video' && isset($_GET['id']) && !empty($_GET['id'])) { //untuk update
+            $sql1       = "UPDATE tb_video SET judul_video = '$judul_video', deskripsi = '$deskripsi', link = '$link' where id = '$id'";
             $q1         = mysqli_query($koneksi, $sql1);
             if ($q1) {
                 $success = "Data video berhasil diupdate";
@@ -65,7 +70,7 @@ if (isset($_POST['simpan-video'])) { //untuk create data
                 $failed  = "Data video gagal diupdate";
             }
         } else { //untuk insert
-            $sql1   = "insert into tb_video(judul_video, deskripsi, link) values ('$judul_video','$deskripsi', '$link')";
+            $sql1   = "INSERT INTO tb_video(judul_video, deskripsi, link) values ('$judul_video','$deskripsi', '$link')";
             $q1     = mysqli_query($koneksi, $sql1);
             if ($q1) {
                 $success     = "Berhasil memasukkan data video baru";
@@ -76,9 +81,10 @@ if (isset($_POST['simpan-video'])) { //untuk create data
     }
 }
 
-if ($op == 'hapus-foto') {
+if ($op == 'hapus-foto' && isset($_GET['id']) && !empty($_GET['id'])) {
     $id          = $_GET['id'];
-    $sql1        = "delete from tb_foto where id = '$id'";
+    $id          = enkripsiUrl('decrypt', $id);
+    $sql1        = "DELETE FROM tb_foto WHERE id = '$id'";
     $q1          = mysqli_query($koneksi, $sql1);
     if ($q1) {
         $success = "Berhasil menghapus data foto";
@@ -87,9 +93,10 @@ if ($op == 'hapus-foto') {
     }
 }
 
-if ($op == 'edit-foto') {
+if ($op == 'edit-foto' && isset($_GET['id']) && !empty($_GET['id'])) {
     $id             = $_GET['id'];
-    $sql1           = "select * from tb_foto where id = '$id'";
+    $id             = enkripsiUrl('decrypt', $id);
+    $sql1           = "SELECT * FROM tb_foto WHERE id = '$id'";
     $q1             = mysqli_query($koneksi, $sql1);
     $r1             = mysqli_fetch_array($q1);
     $judul_foto     = $r1['judul_foto'];
@@ -109,8 +116,8 @@ if (isset($_POST['simpan-foto'])) { //untuk create data
     move_uploaded_file($tmp_name, $path . $gambar);
 
     if ($judul_foto && $lokasi && $tanggal && $gambar) {
-        if ($op == 'edit-foto') { //untuk update
-            $sql1       = "update tb_foto set judul_foto = '$judul_foto', lokasi = '$lokasi', tanggal = '$tanggal', gambar = '$gambar' where id = '$id'";
+        if ($op == 'edit-foto' && isset($_GET['id']) && !empty($_GET['id'])) { //untuk update
+            $sql1       = "UPDATE tb_foto SET judul_foto = '$judul_foto', lokasi = '$lokasi', tanggal = '$tanggal', gambar = '$gambar' where id = '$id'";
             $q1         = mysqli_query($koneksi, $sql1);
             if ($q1) {
                 $success = "Data foto berhasil diupdate";
@@ -118,7 +125,7 @@ if (isset($_POST['simpan-foto'])) { //untuk create data
                 $failed  = "Data foto gagal diupdate";
             }
         } else { //untuk insert
-            $sql1   = "insert into tb_foto(judul_foto, lokasi, tanggal, gambar) values ('$judul_foto','$lokasi', '$tanggal', '$gambar')";
+            $sql1   = "INSERT INTO tb_foto(judul_foto, lokasi, tanggal, gambar) values ('$judul_foto','$lokasi', '$tanggal', '$gambar')";
             $q1     = mysqli_query($koneksi, $sql1);
             if ($q1) {
                 $success     = "Berhasil memasukkan data foto baru";
@@ -169,12 +176,12 @@ if (isset($_POST['simpan-foto'])) { //untuk create data
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li><a href="./index.php" aria-expanded="true"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
-                            <li><a href="./berita.php" aria-expanded="true"><i class="ti-world"></i><span>Berita</span></a></li>
-                            <li><a href="./mitra.php" aria-expanded="true"><i class="ti-user"></i><span>Mitra</span></a></li>
-                            <li><a href="./kerjasama.php" aria-expanded="true"><i class="ti-link"></i><span>Kerjasama</span></a></li>
-                            <li><a href="./galeri.php" aria-expanded="true"><i class="ti-announcement"></i><span>Galeri</span></a></li>
-                            <li><a href="./tentang.php" aria-expanded="true"><i class="ti-headphone"></i><span>Tentang</span></a></li>
+                            <li><a href="../admin/" aria-expanded="true"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
+                            <li><a href="./berita" aria-expanded="true"><i class="ti-world"></i><span>Berita</span></a></li>
+                            <li><a href="./mitra" aria-expanded="true"><i class="ti-user"></i><span>Mitra</span></a></li>
+                            <li><a href="./kerjasama" aria-expanded="true"><i class="ti-link"></i><span>Kerjasama</span></a></li>
+                            <li><a href="./galeri" aria-expanded="true"><i class="ti-announcement"></i><span>Galeri</span></a></li>
+                            <li><a href="./tentang" aria-expanded="true"><i class="ti-headphone"></i><span>Tentang</span></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -185,6 +192,11 @@ if (isset($_POST['simpan-foto'])) { //untuk create data
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
+                            <div class="nav-btn pull-left">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                             <h4 class="page-title pull-left">Galeri</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.html">Admin</a></li>
@@ -196,7 +208,7 @@ if (isset($_POST['simpan-foto'])) { //untuk create data
                         <div class="user-profile pull-right">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Username Admin<i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="./auth.php">Log Out</a>
+                                <a class="dropdown-item" href="./auth">Log Out</a>
                             </div>
                         </div>
                     </div>
@@ -204,7 +216,7 @@ if (isset($_POST['simpan-foto'])) { //untuk create data
             </div>
         </div>
         <section id="tambah-data" class="py-5 bg-light">
-            <div class="container">
+            <div class="container-fluid">
                 <?php
                 if ($success) {
                 ?>
@@ -212,14 +224,14 @@ if (isset($_POST['simpan-foto'])) { //untuk create data
                         <?php echo $success ?>
                     </div>
                 <?php
-                    header("refresh:3; url=galeri.php");
+                    header("refresh:3; url=galeri");
                 } elseif ($failed) {
                 ?>
                     <div class="alert alert-danger" role="alert">
                         <?php echo $failed ?>
                     </div>
                 <?php
-                    header("refresh:3; url=galeri.php");
+                    header("refresh:3; url=galeri");
                 }
                 ?>
                 <form method="post">
@@ -241,7 +253,7 @@ if (isset($_POST['simpan-foto'])) { //untuk create data
                             <input type="text" class="form-control" id="link" name="link" placeholder="Masukkan Link Video" required value="<?php echo $link ?>">
                         </div>
                     </div>
-                    <input type="submit" value="Simpan Video" name="simpan-video" class="btn btn-primary text-uppercase col-2 offset-2">
+                    <input type="submit" value="Simpan Video" name="simpan-video" class="btn btn-primary text-uppercase col-lg-10 col-12 offset-lg-2">
                 </form>
 
                 <form action="" method="post" class="py-5" enctype="multipart/form-data">
@@ -274,110 +286,105 @@ if (isset($_POST['simpan-foto'])) { //untuk create data
                             <input type="file" name="gambar" id="gambar" class="form-control" required>
                         </div>
                     </div>
-                    <input type="submit" value="Simpan Foto" name="simpan-foto" class="btn btn-danger text-uppercase col-2 offset-2">
+                    <input type="submit" value="Simpan Foto" name="simpan-foto" class="btn btn-danger text-uppercase col-lg-10 col-12 offset-lg-2">
                 </form>
             </div>
-            <div class="d-flex flex-row">
-                <div class="col-lg-6">
-                    <section id="record" class="py-5 my-5">
-                        <div class="container">
-                            <h5 class="text-center mb-3">Record Video</h5>
-                            <table id="video" class="hover display compact border cell-border stripe">
-                                <thead>
-                                    <tr>
-                                        <th>Judul Video</th>
-                                        <th>Deskripsi Video</th>
-                                        <th>Link Video</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $sql   = "select * from tb_video order by id";
-                                    $query    = mysqli_query($koneksi, $sql);
-                                    while ($q = mysqli_fetch_array($query)) {
-                                        $id             = $q['id'];
-                                        $judul_video    = $q['judul_video'];
-                                        $deskripsi      = $q['deskripsi'];
-                                        $link           = $q['link'];
-                                    ?>
-                                        <tr class="text-start text-wrap">
-                                            <td scope="row"><?php echo $judul_video ?></td>
-                                            <td scope="row"><?php echo $deskripsi ?></td>
-                                            <td scope="row"><?php echo $link ?></td>
-                                            <td class="text-center">
-                                                <a href="galeri.php?op=edit-video&id=<?php echo $id ?>">
-                                                    <button type="button" name="edit-video" class="col-4 btn btn-warning">Edit</button>
-                                                </a>
-                                                <a href="galeri.php?op=hapus-video&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete video?')">
-                                                    <button type="button" name="hapus-video" class="col-4 btn btn-danger">Delete</button>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    <?php
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </section>
+            <section id="record" class="my-5 container-lg">
+                <div class="container-fluid">
+                    <h5 class="text-center mb-3">Record Video</h5>
+                    <table id="video" class="hover display compact border cell-border stripe">
+                        <thead>
+                            <tr>
+                                <th>Judul Video</th>
+                                <th>Deskripsi Video</th>
+                                <th>Link Video</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $sql   = "SELECT * FROM tb_video ORDER BY id";
+                            $query    = mysqli_query($koneksi, $sql);
+                            while ($q = mysqli_fetch_array($query)) {
+                                $id             = $q['id'];
+                                $id             = enkripsiUrl('encrypt', $id);
+                                $judul_video    = $q['judul_video'];
+                                $deskripsi      = $q['deskripsi'];
+                                $link           = $q['link'];
+                            ?>
+                                <tr class="text-start text-wrap">
+                                    <td scope="row"><?php echo $judul_video ?></td>
+                                    <td scope="row"><?php echo $deskripsi ?></td>
+                                    <td scope="row"><?php echo $link ?></td>
+                                    <td class="text-center">
+                                        <a href="galeri?op=edit-video&id=<?php echo $id ?>">
+                                            <button type="button" name="edit-video" class="col-10 btn btn-warning">Edit</button>
+                                        </a>
+                                        <a href="galeri?op=hapus-video&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete video?')">
+                                            <button type="button" name="hapus-video" class="col-10 btn btn-danger">Delete</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="col-lg-6">
-                    <section id="record" class="py-5 my-5">
-                        <div class="container">
-                            <h5 class="text-center mb-3">Record Foto</h5>
-                            <table id="foto" class="hover display compact border cell-border stripe">
-                                <thead>
-                                    <tr>
-                                        <th>Judul Foto</th>
-                                        <th>Lokasi</th>
-                                        <th>Tanggal</th>
-                                        <th>Dokumentasi</th>
-                                        <th>Aksi</th>
+                <section id="record" class="my-5">
+                    <div class="container-fluid">
+                        <h5 class="text-center mb-3">Record Foto</h5>
+                        <table id="foto" class="hover display compact border cell-border stripe">
+                            <thead>
+                                <tr>
+                                    <th>Judul Foto</th>
+                                    <th>Lokasi</th>
+                                    <th>Tanggal</th>
+                                    <th>Dokumentasi</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $sql   = "SELECT * FROM tb_foto ORDER BY id";
+                                $query    = mysqli_query($koneksi, $sql);
+                                while ($q = mysqli_fetch_array($query)) {
+                                    $id                 = $q['id'];
+                                    $id                 = enkripsiUrl('encrypt', $id);
+                                    $judul_foto         = $q['judul_foto'];
+                                    $lokasi             = $q['lokasi'];
+                                    $tanggal            = $q['tanggal'];
+                                    $gambar             = $q['gambar'];
+                                ?>
+                                    <tr class="text-start text-wrap">
+                                        <td scope="row"><?php echo $judul_foto ?></td>
+                                        <td scope="row"><?php echo $lokasi ?></td>
+                                        <td scope="row"><?php echo $tanggal ?></td>
+                                        <td scope="row">
+                                            <img src="../admin/assets/upload/galeri/<?php echo $gambar ?>" style="width: 100px;" class="img-fluid">
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="galeri?op=edit-foto&id=<?php echo $id ?>">
+                                                <button type="button" name="edit-foto" class="col-10 btn btn-warning">Edit</button>
+                                            </a>
+                                            <a href="galeri?op=hapus-foto&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
+                                                <button type="button" name="hapus-foto" class="col-10 btn btn-danger">Delete</button>
+                                            </a>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $sql   = "select * from tb_foto order by id";
-                                    $query    = mysqli_query($koneksi, $sql);
-                                    while ($q = mysqli_fetch_array($query)) {
-                                        $id                 = $q['id'];
-                                        $judul_foto         = $q['judul_foto'];
-                                        $lokasi             = $q['lokasi'];
-                                        $tanggal            = $q['tanggal'];
-                                        $gambar             = $q['gambar'];
-                                    ?>
-                                        <tr class="text-start text-wrap">
-                                            <td scope="row"><?php echo $judul_foto ?></td>
-                                            <td scope="row"><?php echo $lokasi ?></td>
-                                            <td scope="row"><?php echo $tanggal ?></td>
-                                            <td scope="row">
-                                                <img src="../admin/assets/upload/galeri/<?php echo $gambar ?>" style="width: 100px;" class="img-fluid">
-                                            </td>
-                                            <td class="text-center">
-                                                <a href="galeri.php?op=edit-foto&id=<?php echo $id ?>">
-                                                    <button type="button" name="edit-foto" class="col-4 btn btn-warning">Edit</button>
-                                                </a>
-                                                <a href="galeri.php?op=hapus-foto&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
-                                                    <button type="button" name="hapus-foto" class="col-4 btn btn-danger">Delete</button>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    <?php
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </div>
-                    </section>
+                                <?php
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
+            <footer>
+                <div class="footer-area">
+                    <p>© Copyright 2023 Poltesa | All Right Reserved</p>
                 </div>
-            </div>
-        </section>
-        <footer>
-            <div class="footer-area">
-                <p>© Copyright 2023 Poltesa | All Right Reserved</p>
-            </div>
-        </footer>
+            </footer>
     </div>
 </body>
 

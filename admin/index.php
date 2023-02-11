@@ -84,12 +84,12 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li><a href="./index.php" aria-expanded="true"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
-                            <li><a href="./berita.php" aria-expanded="true"><i class="ti-world"></i><span>Berita</span></a></li>
-                            <li><a href="./mitra.php" aria-expanded="true"><i class="ti-user"></i><span>Mitra</span></a></li>
-                            <li><a href="./kerjasama.php" aria-expanded="true"><i class="ti-link"></i><span>Kerjasama</span></a></li>
-                            <li><a href="./galeri.php" aria-expanded="true"><i class="ti-announcement"></i><span>Galeri</span></a></li>
-                            <li><a href="./tentang.php" aria-expanded="true"><i class="ti-headphone"></i><span>Tentang</span></a></li>
+                            <li><a href="../admin/" aria-expanded="true"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
+                            <li><a href="./berita" aria-expanded="true"><i class="ti-world"></i><span>Berita</span></a></li>
+                            <li><a href="./mitra" aria-expanded="true"><i class="ti-user"></i><span>Mitra</span></a></li>
+                            <li><a href="./kerjasama" aria-expanded="true"><i class="ti-link"></i><span>Kerjasama</span></a></li>
+                            <li><a href="./galeri" aria-expanded="true"><i class="ti-announcement"></i><span>Galeri</span></a></li>
+                            <li><a href="./tentang" aria-expanded="true"><i class="ti-headphone"></i><span>Tentang</span></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -100,6 +100,11 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
+                            <div class="nav-btn pull-left">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.html">Admin</a></li>
@@ -111,16 +116,16 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                         <div class="user-profile pull-right">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Username Admin<i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="./auth.php">Log Out</a>
+                                <a class="dropdown-item" href="./auth">Log Out</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="main-content-inner">
-                <div class="sales-report-area mt-5 mb-5">
-                    <div class="row mb-5">
-                        <div class="col-md-4">
+                <div class="sales-report-area mt-5">
+                    <div class="d-lg-flex justify-content-center gap-5 mb-1">
+                        <div class="col-lg-4">
                             <div class="single-report mb-xs-30">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-globe"></i></div>
@@ -133,10 +138,9 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                                         <span>Berita</span>
                                     </div>
                                 </div>
-                                <!-- <canvas id="berita" height="100"></canvas> -->
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-lg-4">
                             <div class="single-report mb-xs-30">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-user"></i></div>
@@ -151,8 +155,8 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="single-report">
+                        <div class="col-lg-4">
+                            <div class="single-report mb-4">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-user"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
@@ -167,8 +171,8 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                             </div>
                         </div>
                     </div>
-                    <div class="row mb-5">
-                        <div class="col-md-6">
+                    <div class="d-lg-flex justify-content-center gap-5 mb-4">
+                        <div class="col-lg-6">
                             <div class="single-report mb-xs-30">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-user"></i></div>
@@ -184,7 +188,7 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                                 <!-- <canvas id="berita" height="100"></canvas> -->
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <div class="single-report mb-xs-30">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-user"></i></div>
@@ -200,8 +204,8 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                             </div>
                         </div>
                     </div>
-                    <div class="row mb-5">
-                        <div class="col-md-6">
+                    <div class="d-lg-flex justify-content-center gap-5 mb-5">
+                        <div class="col-lg-6">
                             <div class="single-report mb-xs-30">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-user"></i></div>
@@ -217,7 +221,7 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                                 <!-- <canvas id="berita" height="100"></canvas> -->
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <div class="single-report mb-xs-30">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-user"></i></div>

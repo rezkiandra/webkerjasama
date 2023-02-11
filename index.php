@@ -62,7 +62,7 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                 <h5 class="text-light text-center">Ayo Jalin Kerja Sama Bersama Kami</h5>
                 <h5 class="text-light text-center">Untuk Meningkatkan Kebersamaan Antar Perguruan Tinggi</h5>
             </div>
-            <a href="#carousel" class="btn btn-outline-dark btn-warning rounded border border-warning border-2 shadow my-4">Selengkapnya</a>
+            <div onclick="scrollToCarousel('carousel')" class="btn btn-outline-dark btn-warning rounded border border-warning border-2 shadow my-4">Selengkapnya</div>
         </div>
     </section>
     <!-- ========== End Banner ========== -->
@@ -226,9 +226,6 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
 
 <!-- Chart JS -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="./assets/js/chart.js"></script>
-<script src="./assets/js/chart2.js"></script>
-<script src="./assets/js/chart3.js"></script>
 <!-- End Chart JS -->
 
 <script>
@@ -401,6 +398,14 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
         },
     });
     // End Chart 3
+</script>
+<script>
+    const scrollToCarousel = (id) => {
+        const carousel = document.getElementById(id);
+        carousel.scrollIntoView({
+            behavior: "smooth"
+        });
+    }
 </script>
 
 </html>

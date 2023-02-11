@@ -1,4 +1,6 @@
 <?php
+require_once "../helpers/helpers.php";
+
 ob_start();
 $hostname       = "localhost";
 $user           = "root";
@@ -8,7 +10,7 @@ $db             = "kerjasama";
 $banner         = "";
 $success        = "";
 $failed         = "";
-
+$op             = "";
 
 $koneksi = mysqli_connect($hostname, $user, $pwd, $db);
 if (!$koneksi) {
@@ -23,9 +25,10 @@ if (isset($_GET['op'])) {
     $op = "";
 }
 
-if ($op == 'hapus') {
+if ($op == 'hapus' && isset($_GET['id']) && !empty($_GET['id'])) {
     $id         = $_GET['id'];
-    $sql1       = "delete from tb_tentang where id = '$id'";
+    $id         = enkripsiUrl('decrypt', $id);
+    $sql1       = "DELETE FROM tb_tentang WHERE id = '$id'";
     $q1         = mysqli_query($koneksi, $sql1);
     if ($q1) {
         $success = "Berhasil menghapus data mitra";
@@ -34,9 +37,10 @@ if ($op == 'hapus') {
     }
 }
 
-if ($op == 'edit') {
+if ($op == 'edit' && isset($_GET['id']) && !empty($_GET['id'])) {
     $id         = $_GET['id'];
-    $sql1       = "select * from tb_tentang where id = '$id'";
+    $id         = enkripsiUrl('decrypt', $id);
+    $sql1       = "SELECT * FROM tb_tentang WHERE id = '$id'";
     $q1         = mysqli_query($koneksi, $sql1);
     $r1         = mysqli_fetch_array($q1);
     $banner      = $r1['banner'];
@@ -48,8 +52,8 @@ if (isset($_POST['simpan'])) { //untuk create data
     $path               = "../../kerjasama/admin/assets/upload/tentang/";
     move_uploaded_file($tmp_name, $path . $banner);
 
-    if ($op == 'edit') { //untuk update
-        $sql1       = "update tb_tentang set banner = '$banner' where id = '$id'";
+    if ($op == 'edit' && isset($_GET['id']) && !empty($_GET['id'])) { //untuk update
+        $sql1       = "UPDATE tb_tentang SET banner = '$banner' WHERE id = '$id'";
         $q1         = mysqli_query($koneksi, $sql1);
         if ($q1) {
             $success = "Data berhasil diupdate";
@@ -57,7 +61,7 @@ if (isset($_POST['simpan'])) { //untuk create data
             $failed  = "Data gagal diupdate";
         }
     } else {
-        $sql1   = "insert into tb_tentang(banner) values ('$banner')";
+        $sql1   = "INSERT INTO tb_tentang(banner) VALUES ('$banner')";
         $q1     = mysqli_query($koneksi, $sql1);
         if ($q1) {
             $success     = "Berhasil memasukkan data baru";
@@ -108,12 +112,12 @@ if (isset($_POST['simpan'])) { //untuk create data
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li><a href="./index.php" aria-expanded="true"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
-                            <li><a href="./berita.php" aria-expanded="true"><i class="ti-world"></i><span>Berita</span></a></li>
-                            <li><a href="./mitra.php" aria-expanded="true"><i class="ti-user"></i><span>Mitra</span></a></li>
-                            <li><a href="./kerjasama.php" aria-expanded="true"><i class="ti-link"></i><span>Kerjasama</span></a></li>
-                            <li><a href="./galeri.php" aria-expanded="true"><i class="ti-announcement"></i><span>Galeri</span></a></li>
-                            <li><a href="./tentang.php" aria-expanded="true"><i class="ti-headphone"></i><span>Tentang</span></a></li>
+                            <li><a href="../admin/" aria-expanded="true"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
+                            <li><a href="./berita" aria-expanded="true"><i class="ti-world"></i><span>Berita</span></a></li>
+                            <li><a href="./mitra" aria-expanded="true"><i class="ti-user"></i><span>Mitra</span></a></li>
+                            <li><a href="./kerjasama" aria-expanded="true"><i class="ti-link"></i><span>Kerjasama</span></a></li>
+                            <li><a href="./galeri" aria-expanded="true"><i class="ti-announcement"></i><span>Galeri</span></a></li>
+                            <li><a href="./tentang" aria-expanded="true"><i class="ti-headphone"></i><span>Tentang</span></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -124,6 +128,11 @@ if (isset($_POST['simpan'])) { //untuk create data
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
+                            <div class="nav-btn pull-left">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                             <h4 class="page-title pull-left">Tentang</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.html">Admin</a></li>
@@ -135,7 +144,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                         <div class="user-profile pull-right">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Username Admin<i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="./auth.php">Log Out</a>
+                                <a class="dropdown-item" href="./auth">Log Out</a>
                             </div>
                         </div>
                     </div>
@@ -151,14 +160,14 @@ if (isset($_POST['simpan'])) { //untuk create data
                         <?php echo $success ?>
                     </div>
                 <?php
-                    header("refresh:3; url=tentang.php");
+                    header("refresh:3; url=tentang");
                 } elseif ($failed) {
                 ?>
                     <div class="alert alert-danger" role="alert">
                         <?php echo $failed ?>
                     </div>
                 <?php
-                    header("refresh:3; url=tentang.php");
+                    header("refresh:3; url=tentang");
                 }
                 ?>
                 <form method="post" enctype="multipart/form-data">
@@ -168,7 +177,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                             <input type="file" name="banner" id="banner" class="form-control" required>
                         </div>
                     </div>
-                    <input type="submit" value="Simpan" name="simpan" class="btn btn-primary text-uppercase col-2 offset-2">
+                    <input type="submit" value="Simpan" name="simpan" class="btn btn-primary text-uppercase col-lg-10 col-12 offset-lg-2">
                 </form>
             </div>
         </section>
@@ -189,6 +198,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                         $no_urut  = 1;
                         while ($q = mysqli_fetch_array($query)) {
                             $id                 = $q['id'];
+                            $id                 = enkripsiUrl('encrypt', $id);
                             $banner             = $q['banner'];
                         ?>
                             <tr class="text-center text-wrap">
@@ -197,11 +207,11 @@ if (isset($_POST['simpan'])) { //untuk create data
                                     <img src="../admin/assets/upload/tentang/<?php echo $banner ?>" style="width: 500px;" class="img-fluid">
                                 </td>
                                 <td class="text-center">
-                                    <a href="tentang.php?op=edit&id=<?php echo $id ?>">
-                                        <button type="button" name="edit" class="col-4 btn btn-warning">Edit</button>
+                                    <a href="tentang?op=edit&id=<?php echo $id ?>">
+                                        <button type="button" name="edit" class="col-lg-4 col-10 btn btn-warning">Edit</button>
                                     </a>
-                                    <a href="tentang.php?op=hapus&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
-                                        <button type="button" name="hapus" class="col-4 btn btn-danger">Delete</button>
+                                    <a href="tentang?op=hapus&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
+                                        <button type="button" name="hapus" class="col-lg-4 col-10 btn btn-danger">Delete</button>
                                     </a>
                                 </td>
                             </tr>

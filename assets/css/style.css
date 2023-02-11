@@ -2,12 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-}
-
-@media screen and (prefers-reduced-motion: no-preference) {
-    html {
-        scroll-behavior: smooth;
-    }
+    scroll-behavior: smooth;
 }
 
 :root {
@@ -45,3 +40,7 @@
 }
 
 /* End Statistik */
+
+#footer #back-top {
+    transition: all 0.5s ease-in-out 0s;
+}

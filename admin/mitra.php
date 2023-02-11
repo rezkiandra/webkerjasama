@@ -1,4 +1,6 @@
 <?php
+require_once "../helpers/helpers.php";
+
 ob_start();
 $hostname       = "localhost";
 $user           = "root";
@@ -11,6 +13,7 @@ $tanggal        = "";
 $gambar         = "";
 $success        = "";
 $failed         = "";
+$op             = "";
 
 
 $koneksi = mysqli_connect($hostname, $user, $pwd, $db);
@@ -26,9 +29,10 @@ if (isset($_GET['op'])) {
     $op = "";
 }
 
-if ($op == 'hapus') {
+if ($op == 'hapus' && isset($_GET['id']) && !empty($_GET['id'])) {
     $id         = $_GET['id'];
-    $sql1       = "delete from tb_mitra where id = '$id'";
+    $id         = enkripsiUrl('decrypt', $id);
+    $sql1       = "DELETE FROM tb_mitra WHERE id = '$id'";
     $q1         = mysqli_query($koneksi, $sql1);
     if ($q1) {
         $success = "Berhasil menghapus data mitra";
@@ -37,9 +41,10 @@ if ($op == 'hapus') {
     }
 }
 
-if ($op == 'edit') {
+if ($op == 'edit' && isset($_GET['id']) && !empty($_GET['id'])) {
     $id         = $_GET['id'];
-    $sql1       = "select * from tb_mitra where id = '$id'";
+    $id         = enkripsiUrl('decrypt', $id);
+    $sql1       = "SELECT * FROM tb_mitra WHERE id = '$id'";
     $q1         = mysqli_query($koneksi, $sql1);
     $r1         = mysqli_fetch_array($q1);
     $nama_mitra = $r1['nama_mitra'];
@@ -59,8 +64,8 @@ if (isset($_POST['simpan'])) { //untuk create data
     move_uploaded_file($tmp_name, $path . $gambar);
 
     if ($nama_mitra && $lokasi && $tanggal && $gambar) {
-        if ($op == 'edit') { //untuk update
-            $sql1       = "update tb_mitra set nama_mitra = '$nama_mitra', lokasi = '$lokasi', tanggal = '$tanggal', gambar = '$gambar' where id = '$id'";
+        if ($op == 'edit' && isset($_GET['id'])) { //untuk update
+            $sql1       = "UPDATE tb_mitra SET nama_mitra = '$nama_mitra', lokasi = '$lokasi', tanggal = '$tanggal', gambar = '$gambar' where id = '$id'";
             $q1         = mysqli_query($koneksi, $sql1);
             if ($q1) {
                 $success = "Data mitra berhasil diupdate";
@@ -68,7 +73,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                 $failed  = "Data mitra gagal diupdate";
             }
         } else {
-            $sql1   = "insert into tb_mitra(nama_mitra, lokasi, tanggal, gambar) values ('$nama_mitra','$lokasi', '$tanggal','$gambar')";
+            $sql1   = "INSERT INTO tb_mitra(nama_mitra, lokasi, tanggal, gambar) values ('$nama_mitra','$lokasi', '$tanggal','$gambar')";
             $q1     = mysqli_query($koneksi, $sql1);
             if ($q1) {
                 $success     = "Berhasil memasukkan data mitra baru";
@@ -119,12 +124,12 @@ if (isset($_POST['simpan'])) { //untuk create data
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li><a href="./index.php" aria-expanded="true"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
-                            <li><a href="./berita.php" aria-expanded="true"><i class="ti-world"></i><span>Berita</span></a></li>
-                            <li><a href="./mitra.php" aria-expanded="true"><i class="ti-user"></i><span>Mitra</span></a></li>
-                            <li><a href="./kerjasama.php" aria-expanded="true"><i class="ti-link"></i><span>Kerjasama</span></a></li>
-                            <li><a href="./galeri.php" aria-expanded="true"><i class="ti-announcement"></i><span>Galeri</span></a></li>
-                            <li><a href="./tentang.php" aria-expanded="true"><i class="ti-headphone"></i><span>Tentang</span></a></li>
+                            <li><a href="../admin/" aria-expanded="true"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
+                            <li><a href="./berita" aria-expanded="true"><i class="ti-world"></i><span>Berita</span></a></li>
+                            <li><a href="./mitra" aria-expanded="true"><i class="ti-user"></i><span>Mitra</span></a></li>
+                            <li><a href="./kerjasama" aria-expanded="true"><i class="ti-link"></i><span>Kerjasama</span></a></li>
+                            <li><a href="./galeri" aria-expanded="true"><i class="ti-announcement"></i><span>Galeri</span></a></li>
+                            <li><a href="./tentang" aria-expanded="true"><i class="ti-headphone"></i><span>Tentang</span></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -135,6 +140,11 @@ if (isset($_POST['simpan'])) { //untuk create data
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
+                            <div class="nav-btn pull-left">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                             <h4 class="page-title pull-left">Mitra</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.html">Admin</a></li>
@@ -146,7 +156,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                         <div class="user-profile pull-right">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Username Admin<i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="./auth.php">Log Out</a>
+                                <a class="dropdown-item" href="./auth">Log Out</a>
                             </div>
                         </div>
                     </div>
@@ -162,14 +172,14 @@ if (isset($_POST['simpan'])) { //untuk create data
                         <?php echo $success ?>
                     </div>
                 <?php
-                    header("refresh:3; url=mitra.php");
+                    header("refresh:3; url=mitra");
                 } elseif ($failed) {
                 ?>
                     <div class="alert alert-danger" role="alert">
                         <?php echo $failed ?>
                     </div>
                 <?php
-                    header("refresh:3; url=mitra.php");
+                    header("refresh:3; url=mitra");
                 }
                 ?>
                 <form method="post" enctype="multipart/form-data">
@@ -202,7 +212,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                             <input type="file" name="gambar" id="gambar" class="form-control" required>
                         </div>
                     </div>
-                    <input type="submit" value="Simpan" name="simpan" class="btn btn-primary text-uppercase col-2 offset-2">
+                    <input type="submit" value="Simpan" name="simpan" class="btn btn-primary text-uppercase col-lg-10 col-12 offset-lg-2">
                 </form>
             </div>
             <section id="record" class="py-5 my-5">
@@ -223,6 +233,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                             $query    = mysqli_query($koneksi, $sql);
                             while ($q = mysqli_fetch_array($query)) {
                                 $id                 = $q['id'];
+                                $id                 = enkripsiUrl('encrypt', $id);
                                 $nama_mitra         = $q['nama_mitra'];
                                 $lokasi             = $q['lokasi'];
                                 $tanggal            = $q['tanggal'];
@@ -231,16 +242,16 @@ if (isset($_POST['simpan'])) { //untuk create data
                                 <tr class="text-start text-wrap">
                                     <td scope="row"><?php echo $nama_mitra ?></td>
                                     <td scope="row"><?php echo $lokasi ?></td>
-                                    <td scope="row"><?php echo $tanggal ?></td>
+                                    <td scope="row"><?php echo date('d F Y', strtotime($tanggal)) ?></td>
                                     <td scope="row">
                                         <img src="../admin/assets/upload/mitra/<?php echo $gambar ?>" style="width: 100px;" class="img-fluid">
                                     </td>
                                     <td class="text-center">
-                                        <a href="mitra.php?op=edit&id=<?php echo $id ?>">
-                                            <button type="button" name="edit" class="col-4 btn btn-warning">Edit</button>
+                                        <a href="mitra?op=edit&id=<?php echo $id ?>">
+                                            <button type="button" name="edit" class="col-lg-4 col-10 btn btn-warning">Edit</button>
                                         </a>
-                                        <a href="mitra.php?op=hapus&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
-                                            <button type="button" name="hapus" class="col-4 btn btn-danger">Delete</button>
+                                        <a href="mitra?op=hapus&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
+                                            <button type="button" name="hapus" class="col-lg-4 col-10 btn btn-danger">Delete</button>
                                         </a>
                                     </td>
                                 </tr>

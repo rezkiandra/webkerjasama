@@ -87,7 +87,7 @@ if (isset($_GET['op'])) {
                             <p class="my-3 mx-2 col-lg-3 text-center rounded shadow-sm bg-warning" style="font-size: 14px;"><?php echo $lokasi ?></p>
                             <hr>
                             </hr>
-                            <a href="./template/berita.php?id=<?php echo $id ?>">
+                            <a href="./template/berita?op=pilih&id=<?php echo $id ?>">
                                 <button type="button" class="btn btn-sm btn-outline-dark mb-3 mx-2">Selengkapnya</button>
                             </a>
                         </div>

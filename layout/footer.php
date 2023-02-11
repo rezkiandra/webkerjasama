@@ -19,8 +19,23 @@ require_once "./bin/koneksi.php";
     <!-- Vendor CSS -->
     <link rel="stylesheet" href="./assets/vendor/bootstrap-icons/bootstrap-icons.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         #footer {
             background: linear-gradient(90deg, rgba(51, 27, 68, 1) 0%, rgba(135, 57, 195, 1) 50%, rgba(51, 27, 68, 1) 100%);
+
+        }
+
+        #footer .back-top {
+            transition: all 0.5s ease-in-out 0s;
         }
     </style>
 </head>
@@ -36,7 +51,7 @@ require_once "./bin/koneksi.php";
                     <p class="text-light" style="font-size: 14px;"><i class="bi bi-globe me-2"></i>info@poltesa.ac.id</p>
                 </div>
                 <div class="col-lg-6 mb-3 d-flex flex-column justify-content-center align-items-center">
-                    <a href="#"><i style="font-size: 50px; top: calc(100vh - 5rem);" class="text-warning bi bi-arrow-up-circle-fill"></i></a>
+                    <div onclick="return scrollToTop()" class="back-top" style="cursor: pointer;"><i style="font-size: 50px;" class="text-warning bi bi-arrow-up-circle-fill"></i></div>
                     <img src="../../kerjasama/assets/img/white.png" class="img-fluid w-25">
                 </div>
                 <div class="col-lg-3 mb-3">
@@ -65,5 +80,10 @@ require_once "./bin/koneksi.php";
         </div>
     </section>
 </body>
+<script>
+    function scrollToTop() {
+        window.scrollTo(0, 0);
+    }
+</script>
 
 </html>
