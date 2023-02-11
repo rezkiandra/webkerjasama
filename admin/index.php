@@ -1,4 +1,10 @@
 <?php
+session_start();
+
+// if(!isset($_SESSION['session_username'])) {
+//     header("location:auth");
+//     exit();
+// }
 
 $hostname       = "localhost";
 $user           = "root";

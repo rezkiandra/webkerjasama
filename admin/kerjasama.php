@@ -132,11 +132,6 @@ if (isset($_POST['simpan'])) { //untuk create data
                 $q1     = mysqli_query($koneksi, $sql1);
             }
         }
-        if ($q1) {
-            $success     = "Berhasil memasukkan mitra kerjasama baru";
-        } else {
-            $failed      = "Gagal memasukkan mitra kerjasama baru";
-        }
     } else {
         $failed = "Silakan masukkan semua data mitra";
     }
@@ -257,8 +252,12 @@ if (isset($_POST['simpan'])) { //untuk create data
                                 <option value="Lembaga Swadaya Masyarakat" <?php if ($bentuk_lembaga == "Lembaga Swadaya Masyarakat") echo "selected" ?>>Lembaga Swadaya Masyarakat</option>
                                 <option value="Lembaga Pelatihan" <?php if ($bentuk_lembaga == "Lembaga Pelatihan") echo "selected" ?>>Lembaga Pelatihan</option>
                                 <option value="Lembaga Negara" <?php if ($bentuk_lembaga == "Lembaga Negara") echo "selected" ?>>Lembaga Negara</option>
+                                <option value="Lembaga" <?php if ($bentuk_lembaga == "Lembaga") echo "selected" ?>>Lembaga</option>
                                 <option value="Pelatihan" <?php if ($bentuk_lembaga == "Pelatihan") echo "selected" ?>>Pelatihan</option>
+                                <option value="Industri" <?php if ($bentuk_lembaga == "Industri") echo "selected" ?>>Industri</option>
+                                <option value="Organisasi Profesi" <?php if ($bentuk_lembaga == "Organisasi Profesi") echo "selected" ?>>Organisasi Profesi</option>
                                 <option value="Pemerintah Desa" <?php if ($bentuk_lembaga == "Pemerintah Desa") echo "selected" ?>>Pemerintah Desa</option>
+                                <option value="Penelitian dan Pengembangan Lembaga" <?php if ($bentuk_lembaga == "Penelitian dan Pengembangan Lembaga") echo "selected" ?>>Penelitian dan Pengembangan Lembaga</option>
                             </select>
                         </div>
                     </div>
@@ -277,16 +276,37 @@ if (isset($_POST['simpan'])) { //untuk create data
                                 <option value="Penerbitan Kartu Kredit Pemerintah" <?php if ($jenis_kegiatan == "Penerbitan Kartu Kredit Pemerintah") echo "selected" ?>>Penerbitan Kartu Kredit Pemerintah</option>
                                 <option value="Dukungan Pengembangan Dan kerjasama Masyarakat Terinstitusi" <?php if ($jenis_kegiatan == "Dukungan Pengembangan Dan kerjasama Masyarakat Terinstitusi") echo "selected" ?>>Dukungan Pengembangan Dan kerjasama Masyarakat Terinstitusi</option>
                                 <option value="PMMB" <?php if ($jenis_kegiatan == "PMMB") echo "selected" ?>>PMMB</option>
+                                <option value="Pengembangan Penilaian Mutu Pendidikan Tinggi Vokasi Berstandar Industri" <?php if ($jenis_kegiatan == "Pengembangan Penilaian Mutu Pendidikan Tinggi Vokasi Berstandar Industri") echo "selected" ?>>Pengembangan Penilaian Mutu Pendidikan Tinggi Vokasi Berstandar Industri</option>
+                                <option value="P3M" <?php if ($jenis_kegiatan == "P3M") echo "selected" ?>>P3M</option>
+                                <option value="Program Rekrutmen PKL di Jepang" <?php if ($jenis_kegiatan == "Program Rekrutmen PKL di Jepang") echo "selected" ?>>Program Rekrutmen PKL di Jepang</option>
+                                <option value="Dukungan Pengembangan Akademik Antar Lembaga" <?php if ($jenis_kegiatan == "Dukungan Pengembangan Akademik Antar Lembaga") echo "selected" ?>>Dukungan Pengembangan Akademik Antar Lembaga</option>
+                                <option value="Program Magang Mahasiswa Bersertifikat" <?php if ($jenis_kegiatan == "Program Magang Mahasiswa Bersertifikat") echo "selected" ?>>Program Magang Mahasiswa Bersertifikat</option>
+                                <option value="Perjanjian Kerjasama Program Mobilisasi Dosen" <?php if ($jenis_kegiatan == "Perjanjian Kerjasama Program Mobilisasi Dosen") echo "selected" ?>>Perjanjian Kerjasama Program Mobilisasi Dosen</option>
+                                <option value="Standar Dan Sertifikasi Produk Kopi" <?php if ($jenis_kegiatan == "Standar Dan Sertifikasi Produk Kopi") echo "selected" ?>>Standar Dan Sertifikasi Produk Kopi</option>
+                                <option value="Pemuktahiran Data" <?php if ($jenis_kegiatan == "Pemuktahiran Data") echo "selected" ?>>Pemuktahiran Data</option>
+                                <option value="Pengembangan Soft Skill Mahasiswa" <?php if ($jenis_kegiatan == "Pengembangan Soft Skill Mahasiswa") echo "selected" ?>>Pengembangan Soft Skill Mahasiswa</option>
+                                <option value="Dukungan Penyelenggaraan Tri Dharma" <?php if ($jenis_kegiatan == "Dukungan Penyelenggaraan Tri Dharma") echo "selected" ?>>Dukungan Penyelenggaraan Tri Dharma</option>
+                                <option value="Pemanfaatan Informasi Geospasial" <?php if ($jenis_kegiatan == "Pemanfaatan Informasi Geospasial") echo "selected" ?>>Pemanfaatan Informasi Geospasial</option>
+                                <option value="Dukungan Pengembangan Masyarakat Terinstitusi" <?php if ($jenis_kegiatan == "Dukungan Pengembangan Masyarakat Terinstitusi") echo "selected" ?>>Dukungan Pengembangan Masyarakat Terinstitusi</option>
+                                <option value="Pengembangan SDM Agribisnis" <?php if ($jenis_kegiatan == "Pengembangan SDM Agribisnis") echo "selected" ?>>Pengembangan SDM Agribisnis</option>
+                                <option value="Peningkatan Penyelenggaraan Tri Dharma Perguruan Tinggi" <?php if ($jenis_kegiatan == "Peningkatan Penyelenggaraan Tri Dharma Perguruan Tinggi") echo "selected" ?>>Peningkatan Penyelenggaraan Tri Dharma Perguruan Tinggi</option>
+                                <option value="Pengembangan Dan Pemanfaatan Informasi Geospasial Untuk Pengabdian Kepada Masyarakat Kabupaten Sambas" <?php if ($jenis_kegiatan == "Pengembangan Dan Pemanfaatan Informasi Geospasial Untuk Pengabdian Kepada Masyarakat Kabupaten Sambas") echo "selected" ?>>Pengembangan Dan Pemanfaatan Informasi Geospasial Untuk Pengabdian Kepada Masyarakat Kabupaten Sambas</option>
+                                <option value="Program Magang" <?php if ($jenis_kegiatan == "Program Magang") echo "selected" ?>>Program Magang</option>
+                                <option value="Standarisasi Dan Sertifikasi Produk Kopi Bubuk Pada Tenant Di Lingkungan Inkubator Bisnis Swabina Tech'S Politeknik Negeri Sambas" <?php if ($jenis_kegiatan == "Standarisasi Dan Sertifikasi Produk Kopi Bubuk Pada Tenant Di Lingkungan Inkubator Bisnis Swabina Tech'S Politeknik Negeri Sambas") echo "selected" ?>>Standarisasi Dan Sertifikasi Produk Kopi Bubuk Pada Tenant Di Lingkungan Inkubator Bisnis Swabina Tech'S Politeknik Negeri Sambas</option>
+                                <option value="Program Sadar Hukum" <?php if ($jenis_kegiatan == "Program Sadar Hukum") echo "selected" ?>>Program Sadar Hukum</option>
+                                <option value="Hal Kerjasama Pelatihan, Layanan Beasiswa, Test Toefl,Pendidikan Karakter, Kampus Uni Eropa" <?php if ($jenis_kegiatan == "Hal Kerjasama Pelatihan, Layanan Beasiswa, Test Toefl,Pendidikan Karakter, Kampus Uni Eropa") echo "selected" ?>>Hal Kerjasama Pelatihan, Layanan Beasiswa, Test Toefl,Pendidikan Karakter, Kampus Uni Eropa</option>
+                                <option value="Penerbitan Dan Pengelolaan Kartu Mahasiswa" <?php if ($jenis_kegiatan == "Penerbitan Dan Pengelolaan Kartu Mahasiswa") echo "selected" ?>>Penerbitan Dan Pengelolaan Kartu Mahasiswa</option>
+                                <option value="Pengembangan PPPM" <?php if ($jenis_kegiatan == "Pengembangan PPPM") echo "selected" ?>>Pengembangan PPPM</option>
+                                <option value="Pendirian Galeri Investasi" <?php if ($jenis_kegiatan == "Pendirian Galeri Investasi") echo "selected" ?>>Pendirian Galeri Investasi</option>
                                 <option value="Tax Center" <?php if ($jenis_kegiatan == "Tax Center") echo "selected" ?>>Tax Center</option>
                                 <option value="Pendidikan dan Pelatihan PKM" <?php if ($jenis_kegiatan == "Pendidikan dan Pelatihan PKM") echo "selected" ?>>Pendidikan dan Pelatihan PKM</option>
-                                <option value="MoU Pengembangan Dan Kerjasama Masyarakat Terinstitusi & Perjanjian Kerjasama Program Mobilisasi Dosen" <?php if ($jenis_kegiatan == "MoU Pengembangan Dan Kerjasama Masyarakat Terinstitusi & Perjanjian Kerjasama Program Mobilisasi Dosen") echo "selected" ?>>MoU Pengembangan Dan Kerjasama Masyarakat Terinstitusi & Perjanjian Kerjasama Program Mobilisasi Dosen</option>
                             </select>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <label for="waktu_mulai" class="col-sm-2 col-form-label">Waktu Mulai</label>
                         <div class="col-sm-10">
-                            <input type="date" name="waktu_mulai" id="waktu_mulai" class="form-control" required value="<?php echo $mit ?>">
+                            <input type="date" name="waktu_mulai" id="waktu_mulai" class="form-control" required value="<?php echo $waktu_mulai ?>">
 
                         </div>
                     </div>

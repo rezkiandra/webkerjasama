@@ -121,14 +121,14 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                     <div class="bg-counter text-light w-25 d-flex justify-content-center align-items-center" style="font-size: 20px;"><?php echo $jumlah_internal ?></div>
                     <div class="subject container my-1">
                         <p class="text-uppercase">Total Kerjasama Dalam Negeri</p>
-                        <a href="" class="btn btn-sm mb-1 btn-outline-dark text-uppercase">Detail</a>
+                        <a href="./kerjasama_dalam" class="btn btn-sm mb-1 btn-outline-dark text-uppercase">Detail</a>
                     </div>
                 </div>
                 <div class="col-lg-4 border rounded bg-white d-flex justify-content-center my-3 shadow-sm">
                     <div class="bg-counter text-light w-25 d-flex justify-content-center align-items-center" style="font-size: 20px;"><?php echo $jumlah_external ?></div>
                     <div class="subject container my-1">
                         <p class="text-uppercase">Total Kerjasama Luar Negeri</p>
-                        <a href="" class="btn btn-sm mb-1 btn-outline-dark text-uppercase">Detail</a>
+                        <a href="./kerjasama_luar" class="btn btn-sm mb-1 btn-outline-dark text-uppercase">Detail</a>
                     </div>
                 </div>
             </div>

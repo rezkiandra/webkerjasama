@@ -1,3 +1,67 @@
+<?php
+include_once "../bin/koneksi.php";
+session_start();
+
+$username       = "";
+$password       = "";
+$me             = "";
+
+// if (isset($_COOKIE['cookie_username'])) {
+//     $cookie_username        = $_COOKIE['cookie_username'];
+//     $cookie_password        = $_COOKIE['cookie_password'];
+
+//     $sql            = "SELECT * FROM tb_user WHERE username = '$username'";
+//     $query          = mysqli_query($koneksi, $sql);
+//     $result         = mysqli_fetch_array($query);
+//     if ($result['password'] == $cookie_password) {
+//         $_SESSION['session_username'] = $cookie_username;
+//         $_SESSION['session_password'] = $cookie_password;
+//     }
+// }
+
+// if (isset($_SESSION['session_username'])) {
+//     header("location:index");
+//     exit();
+// }
+
+// if (isset($_POST['login'])) {
+//     $id             = $_POST['id'];
+//     $username       = $_POST['username'];
+//     $password       = $_POST['password'];
+
+//     if ($username == '' && $password = '') {
+//         $error      = "Silahkan masukkan username dan password";
+//     } else {
+//         $sql            = "SELECT * FROM tb_user WHERE username = '$username'";
+//         $query          = mysqli_query($koneksi, $sql);
+//         $result         = mysqli_fetch_array($query);
+
+//         if ($result['username'] == '') {
+//             $error      = "Username '$username' tidak terdaftar";
+//         } elseif ($result['password'] != md5($password)) {
+//             $error      = "Password yang dimasukkan tidak sesuai";
+//         }
+
+//         if (empty($error)) {
+//             $_SESSION['session_username'] = $username;
+//             $_SESSION['session_password'] = md5($password);
+
+//             if ($me == 1) {
+//                 $cookie_name    = "cookie_username";
+//                 $cookie_value   = $username;
+//                 $cookie_time    = time() + (60 * 60 * 24 * 30);
+//                 setcookie($cookie_name, $cookie_value, $cookie_time);
+
+//                 $cookie_name    = "cookie_password";
+//                 $cookie_value   = md5($password);
+//                 $cookie_time    = time() + (60 * 60 * 24 * 30);
+//                 setcookie($cookie_name, $cookie_value, $cookie_time);
+//             }
+//         }
+//     }
+// }
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -14,39 +78,30 @@
     <!--Google Fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-    <!--Custom Css-->
-    <link rel="stylesheet" href="./CSS/style.css">
     <!--End Custom Css-->
     <title>Admin - Login</title>
 </head>
 
 <body>
-    <div class="d-lg-flex justify-content-center align-items-center flex-row">
-        <div class="col-lg-7">
-            <img src="../assets/img//auth.jpg" alt="" class="img-fluid" style="height: 100vh; width: 100%;">
-        </div>
-        <div class="col-lg-5">
-            <div class="container d-lg-flex justify-content-center align-items-center">
-                <div class="card w-50">
-                    <div class="card-header">
-                        <h3 class="text-center">Login</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" placeholder="Username">
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" placeholder="Password">
-                        </div>
-                        <form action="" method="post">
-                            <input type="submit" value="Login" name="login" class="btn btn-sm btn-success col-4">
-                        </form>
-                    </div>
-                    <div class="card-footer text-center">&copy Copyrights 2023 Poltesa</div>
-                </div>
+    <div class="container-lg my-5 d-lg-flex justify-content-center align-items-center">
+        <div class="card col-lg-5 shadow-sm">
+            <div class="card-header">
+                <h3 class="text-center">Login</h3>
             </div>
+            <div class="card-body">
+                <form action="" method="post">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                    <input type="submit" value="Login" name="login" class="btn btn-sm btn-success col-lg-12 col-12">
+                </form>
+            </div>
+            <div class="card-footer text-center">&copy Copyrights 2023 Poltesa</div>
         </div>
     </div>
 </body>

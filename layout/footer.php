@@ -77,6 +77,7 @@ require_once "./bin/koneksi.php";
         </div>
         <div class="bg-dark d-lg-flex justify-content-center align-items-center py-2 pt-3">
             <p class="text-light text-center">&copy 2022 Poltesa All Rights Reserved</p>
+            <!-- <a href="../../kerjasama/admin/auth" class="text-end text-decoration-none text-dark">Login</a> -->
         </div>
     </section>
 </body>
