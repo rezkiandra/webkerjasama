@@ -268,9 +268,10 @@ if (isset($_POST['simpan-foto'])) { //untuk create data
                         <div class="col-sm-10">
                             <select class="form-control form-select" name="lokasi" id="lokasi" required>
                                 <option selected disabled value="">Pilih Lokasi</option>
-                                <option value="Dalam Negeri" <?php if ($lokasi == "Dalam Negeri") echo "selected" ?>>Dalam Negeri</option>
-                                <option value="Luar Negeri" <?php if ($lokasi == "Luar Negeri") echo "selected" ?>>Luar Negeri</option>
+                                <!-- <option value="Dalam Negeri" <?php if ($lokasi == "Dalam Negeri") echo "selected" ?>>Dalam Negeri</option>
+                                <option value="Luar Negeri" <?php if ($lokasi == "Luar Negeri") echo "selected" ?>>Luar Negeri</option> -->
                                 <option value="Kampus" <?php if ($lokasi == "Kampus") echo "selected" ?>>Kampus</option>
+                                <option value="Umum" <?php if ($lokasi == "Umum") echo "selected" ?>>Umum</option>
                             </select>
                         </div>
                     </div>

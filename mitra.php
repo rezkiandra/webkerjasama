@@ -50,7 +50,7 @@ require_once("./bin/koneksi.php");
                         $tanggal        = $q['tanggal'];
                         $gambar         = $q['gambar'];
                     ?>
-                        <div class="col-lg-1 d-flex flex-row justify-content-center align-items-center my-4">
+                        <div class="col-lg-1 d-lg-flex flex-row justify-content-center align-items-center my-4">
                             <div class="d-flex flex-column gap-3 justify-content-center align-items-center">
                                 <img src="./admin/assets/upload/mitra/<?php echo $gambar ?>" class="img-fluid">
                                 <p class="text-center"><?php echo $nama_mitra ?></p>

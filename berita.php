@@ -79,16 +79,16 @@ if (isset($_GET['op'])) {
                     ?>
                         <div class="col-lg-4 border rounded shadow-sm mt-4 mb-5">
                             <img src="./admin//assets//upload/berita/<?php echo $gambar ?>" class="img-fluid" alt="">
-                            <div class="d-lg-flex justify-content-between align-items-center my-2">
-                                <h5 class="text-start mx-2"><?php echo $judul ?></h5>
-                                <h6 class="text-right mx-2"><?php echo date('d F Y', strtotime($tanggal)) ?></h6>
+                            <h3 class="my-3 mx-3"><?php echo $judul ?></h3>
+                            <div class="d-flex justify-content-between align-items-center my-3" style="font-size: 14px;">
+                                <p class="mx-3 col-lg-2 col-3 text-center rounded bg-light text-secondary"><?php echo $lokasi ?></p>
+                                <p class="text-right mx-3"><?php echo date('d F Y', strtotime($tanggal)) ?></p>
                             </div>
-                            <p class="my-3 mx-2 text-start"><?php echo $deskripsi ?></p>
-                            <p class="my-3 mx-2 col-lg-3 text-center rounded shadow-sm bg-warning" style="font-size: 14px;"><?php echo $lokasi ?></p>
+                            <p class="my-3 mx-3 text-start text-secondary"><?php echo $deskripsi ?></p>
                             <hr>
                             </hr>
                             <a href="./template/berita?op=pilih&id=<?php echo $id ?>">
-                                <button type="button" class="btn btn-sm btn-outline-dark mb-3 mx-2">Selengkapnya</button>
+                                <button type="button" class="btn btn-sm mb-3 mx-2">Selengkapnya<i class="ms-2 bi bi-arrow-up-right"></i></button>
                             </a>
                         </div>
                     <?php

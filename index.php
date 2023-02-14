@@ -1,5 +1,6 @@
 <?php
 require_once("./bin/koneksi.php");
+include_once "./helpers/helpers.php";
 
 $hostname           = "localhost";
 $user               = "root";
@@ -11,6 +12,12 @@ if (!$koneksi) {
     die("Belum terkoneksi");
 } else {
     // echo "Koneksi berhasil";
+}
+
+if (isset($_GET['op'])) {
+    $op = $_GET['op'];
+} else {
+    $op = "";
 }
 
 // Kerjasama Dalam Negeri
@@ -147,7 +154,7 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                         $sql   = "SELECT * FROM tb_berita ORDER BY ID DESC LIMIT 2";
                         $query    = mysqli_query($koneksi, $sql);
                         while ($q = mysqli_fetch_array($query)) {
-                            $id                = $q['id'];
+                            $id                = enkripsiUrl('encrypt', $q['id']);
                             $judul             = $q['judul'];
                             $deskripsi         = $q['deskripsi'];
                             $lokasi            = $q['lokasi'];
@@ -155,12 +162,17 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                             $gambar            = $q['gambar'];
                         ?>
                             <div class="col-lg-5 border rounded my-4 shadow-sm">
-                                <div class="rounded mt-2 ms-2 bg-warning position-absolute"><?php echo date('d F Y', strtotime($tanggal)) ?></div>
+                                <div class="rounded mt-2 ms-2 bg-light px-1 position-absolute" style="font-size: 14px;"><?php echo date('d F Y', strtotime($tanggal)) ?></div>
                                 <img src="./admin/assets/upload/berita/<?php echo $gambar ?>" alt="" class="img-fluid">
-                                <div class="my-3 mx-2">
-                                    <h6><?php echo $judul ?></h6>
-                                    <p><?php echo $deskripsi ?></p>
+                                <h4 class="my-3 mx-3"><?php echo $judul ?></h4>
+                                <div class="d-flex justify-content-between align-items-center my-3" style="font-size: 14px;">
+                                    <p class="mx-3 col-lg-3 col-3 text-center rounded bg-warning"><?php echo $lokasi ?></p>
+                                    <p class="text-right mx-3"><?php echo date('d F Y', strtotime($tanggal)) ?></p>
                                 </div>
+                                <p class="my-3 mx-3 text-start text-secondary"><?php echo $deskripsi ?></p>
+                                <a href="./template/berita?op=pilih&id=<?php echo $id ?>">
+                                    <button type="button" class="btn btn-sm mb-3 mx-2">Selengkapnya<i class="ms-2 bi bi-arrow-up-right"></i></button>
+                                </a>
                             </div>
                         <?php
                         }
@@ -171,7 +183,7 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                         $sql   = "SELECT * FROM tb_berita ORDER BY ID DESC LIMIT 2, 2";
                         $query    = mysqli_query($koneksi, $sql);
                         while ($q = mysqli_fetch_array($query)) {
-                            $id                = $q['id'];
+                            $id                = enkripsiUrl('encrypt', $q['id']);
                             $judul             = $q['judul'];
                             $deskripsi         = $q['deskripsi'];
                             $lokasi            = $q['lokasi'];
@@ -179,12 +191,17 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                             $gambar            = $q['gambar'];
                         ?>
                             <div class="col-lg-5 border rounded my-4 shadow-sm">
-                                <div class="rounded mt-2 ms-2 bg-warning position-absolute"><?php echo date('d F Y', strtotime($tanggal)) ?></div>
+                                <div class="rounded mt-2 ms-2 bg-light px-1 position-absolute" style="font-size: 14px;"><?php echo date('d F Y', strtotime($tanggal)) ?></div>
                                 <img src="./admin/assets/upload/berita/<?php echo $gambar ?>" alt="" class="img-fluid">
-                                <div class="my-3 mx-2">
-                                    <h6><?php echo $judul ?></h6>
-                                    <p><?php echo $deskripsi ?></p>
+                                <h4 class="my-3 mx-3"><?php echo $judul ?></h4>
+                                <div class="d-flex justify-content-between align-items-center my-3" style="font-size: 14px;">
+                                    <p class="mx-3 col-lg-3 col-3 text-center rounded bg-warning"><?php echo $lokasi ?></p>
+                                    <p class="text-right mx-3"><?php echo date('d F Y', strtotime($tanggal)) ?></p>
                                 </div>
+                                <p class="my-3 mx-3 text-start text-secondary"><?php echo $deskripsi ?></p>
+                                <a href="./template/berita?op=pilih&id=<?php echo $id ?>">
+                                    <button type="button" class="btn btn-sm mb-3 mx-2">Selengkapnya<i class="ms-2 bi bi-arrow-up-right"></i></button>
+                                </a>
                             </div>
                         <?php
                         }
@@ -205,13 +222,17 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                         $tanggal           = $q['tanggal'];
                         $gambar            = $q['gambar'];
                     ?>
-                        <div class="col-lg-12 border rounded mb-4 shadow-sm">
-                            <div class="rounded mt-2 ms-2 bg-warning position-absolute"><?php echo date('d F Y', strtotime($tanggal)) ?></div>
+                        <div class="col-lg-12 border rounded mb-5 shadow-sm">
+                            <div class="rounded mt-2 ms-2 bg-light position-absolute" style="font-size: 14px;"><?php echo date('d F Y', strtotime($tanggal)) ?></div>
                             <img src="./admin/assets/upload/galeri/<?php echo $gambar ?>" alt="" class="img-fluid">
-                            <div class="my-3 mx-2">
-                                <h6><?php echo $judul_foto ?></h6>
-                                <p><?php echo $deskripsi ?></p>
+                            <h4 class="my-3 mx-3"><?php echo $judul ?></h4>
+                            <div class="d-flex justify-content-between align-items-center my-3" style="font-size: 14px;">
+                                <p class="mx-3 col-lg-3 col-3 text-center rounded bg-warning"><?php echo $lokasi ?></p>
+                                <p class="text-right mx-3"><?php echo date('d F Y', strtotime($tanggal)) ?></p>
                             </div>
+                            <!-- <a href="./template/berita?op=pilih&id=<?php echo $id ?>">
+                                <button type="button" class="btn btn-sm mb-3 mx-2">Selengkapnya<i class="ms-2 bi bi-arrow-up-right"></i></button>
+                            </a> -->
                         </div>
                     <?php
                     }

@@ -93,7 +93,7 @@ if ($op == 'pilih') {
 
 <body>
     <!-- ========== Start Navbar ========== -->
-    <div class="navbar navbar-expand-lg py-2 mt-3" id="bg-nav">
+    <div class="navbar navbar-expand-lg py-2 mt-3 mb-5" id="bg-nav">
         <div class="container">
             <a class="navbar-brand" href="../../kerjasama/">
                 <img src="../../kerjasama/assets/img/logo.png" alt="" style="height: 51px; width: 150;">
@@ -137,24 +137,19 @@ if ($op == 'pilih') {
 
     <!-- ========== Start Template ========== -->
     <section id="main">
-        <div class="container">
-            <img src="../admin/assets/upload/berita/<?php echo $gambar ?>" alt="Gambar Berita" class="img-fluid mt-5 mb-4">
-            <div class="my-3">
-                <h3 class="text-start"><?php echo $judul ?></h3>
-            </div>
-            <div class="d-lg-flex justify-content-between align-items-center">
-                <div class="col-lg-3">
-                    <p class="text-start"><i class="bi bi-people me-2"></i>Author : <?php echo $author ?></p>
+        <div class="container d-flex justify-content-center align-items-center">
+            <div class="col-lg-10 shadow-sm border rounded">
+                <img src="../admin/assets/upload/berita/<?php echo $gambar ?>" alt="Gambar Berita" class="img-fluid shadow-sm rounded">
+                <div class="my-4 mx-3">
+                    <h3 class="text-start"><?php echo $judul ?></h3>
                 </div>
-                <div class="col-lg-3">
-                    <p class="text-start"><i class="bi bi-people me-2"></i>Lokasi : <?php echo $lokasi ?></p>
+                <div class="col-2 col-lg-1 my-3 mx-3" style="font-size: 14px;">
+                    <p class="px-1 text-center rounded bg-light"><?php echo $lokasi ?></p>
                 </div>
-                <div class="col-lg-3">
-                    <p class="text-start"><i class="bi bi-people me-2"></i>Tanggal : <?php echo date('d F Y', strtotime($tanggal)) ?></p>
+                <div class="my-4 mx-3">
+                    <p class="text-start"><?php echo $deskripsi ?></p>
                 </div>
-            </div>
-            <div class="my-4">
-                <p class="text-start"><?php echo $deskripsi ?></p>
+                <p class="mx-3" style="font-size: 13px;"><?php echo date('d F Y', strtotime($tanggal)) ?></p>
             </div>
         </div>
     </section>
