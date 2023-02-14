@@ -355,7 +355,7 @@ if (isset($_POST['simpan'])) { //untuk create data
             <section id="record" class="py-5 my-5">
                 <div class="container-fluid">
                     <h3 class="text-center text-uppercase mb-4">Kerjasama Dalam Negeri</h3>
-                    <table id="dalam" class="hover stripe display cell-border compact">
+                    <table id="dalam" class="hover stripe display cell-border">
                         <thead>
                             <tr>
                                 <th>Nama Mitra</th>
@@ -419,7 +419,7 @@ if (isset($_POST['simpan'])) { //untuk create data
             <section id="record" class="py-5 my-5">
                 <div class="container-fluid">
                     <h3 class="text-center text-uppercase mb-4">Kerjasama Luar Negeri</h3>
-                    <table id="luar" class="hover stripe display cell-border compact">
+                    <table id="luar" class="hover stripe display cell-border">
                         <thead>
                             <tr>
                                 <th>Nama Mitra</th>

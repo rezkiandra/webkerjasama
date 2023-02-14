@@ -217,7 +217,7 @@ if (isset($_POST['simpan'])) { //untuk create data
             </div>
             <section id="record" class="py-5 my-5">
                 <div class="container-fluid">
-                    <table id="myTable" class="hover display compact cell-border stripe">
+                    <table id="myTable" class="hover display cell-border stripe">
                         <thead>
                             <tr>
                                 <th>Nama Mitra</th>

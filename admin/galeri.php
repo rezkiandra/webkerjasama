@@ -292,7 +292,7 @@ if (isset($_POST['simpan-foto'])) { //untuk create data
             <section id="record" class="my-5 container-lg">
                 <div class="container-fluid">
                     <h5 class="text-center mb-3">Record Video</h5>
-                    <table id="video" class="hover display compact border cell-border stripe">
+                    <table id="video" class="hover display border cell-border stripe">
                         <thead>
                             <tr>
                                 <th>Judul Video</th>
@@ -334,7 +334,7 @@ if (isset($_POST['simpan-foto'])) { //untuk create data
                 <section id="record" class="my-5">
                     <div class="container-fluid">
                         <h5 class="text-center mb-3">Record Foto</h5>
-                        <table id="foto" class="hover display compact border cell-border stripe">
+                        <table id="foto" class="hover display border cell-border stripe">
                             <thead>
                                 <tr>
                                     <th>Judul Foto</th>
@@ -381,7 +381,7 @@ if (isset($_POST['simpan-foto'])) { //untuk create data
                 </section>
             </section>
             <footer>
-                <div class="footer-area">
+                <div class="footer-area position-static bottom-0 w-100">
                     <p>© Copyright 2023 Poltesa | All Right Reserved</p>
                 </div>
             </footer>

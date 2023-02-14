@@ -18,15 +18,17 @@ include_once "./bin/koneksi.php";
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Vendor CSS -->
-    <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: content-box;
             font-family: 'Poppins', sans-serif;
+        }
+
+        #internal {
+            font-size: 14px;
         }
     </style>
 </head>
@@ -36,10 +38,10 @@ include_once "./bin/koneksi.php";
         <?php include "./layout/header.php" ?>
     </section>
 
-    <section id="record" class="py-5 my-5">
+    <section id="record" class="py-5 mb-4">
         <div class="container-fluid">
             <h3 class="text-center text-uppercase mb-4">Kerjasama Dalam Negeri</h3>
-            <table id="dalam" class="hover stripe display cell-border compact">
+            <table id="internal" class="hover stripe display cell-border">
                 <thead>
                     <tr>
                         <th>Nama Mitra</th>
@@ -82,7 +84,7 @@ include_once "./bin/koneksi.php";
                             <td scope="row"><?php echo $status ?></td>
                             <td class="text-center">
                                 <a href="kerjasama?op=detail-internal&id=<?php echo $id ?>">
-                                    <button type="button" name="detail-internal" class="col-12 btn btn-warning">Detail</button>
+                                    <button type="button" name="detail-internal" class="col-12 btn btn-warning" style="font-size: 14px;">Detail</button>
                                 </a>
                             </td>
                         </tr>
@@ -97,10 +99,10 @@ include_once "./bin/koneksi.php";
         <?php include "./layout/footer.php" ?>
     </section>
 </body>
-<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#dalam').DataTable({
+        $('#internal').DataTable({
             ordering: false,
         });
     });
