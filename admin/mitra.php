@@ -136,6 +136,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                             <li><a href="./kerjasama" aria-expanded="true"><i class="ti-link"></i><span>Kerjasama</span></a></li>
                             <li><a href="./galeri" aria-expanded="true"><i class="ti-announcement"></i><span>Galeri</span></a></li>
                             <li><a href="./tentang" aria-expanded="true"><i class="ti-headphone"></i><span>Tentang</span></a></li>
+                            <li><a href="./edit_admin" aria-expanded="true"><i class="ti-help-alt"></i><span>Edit Admin</span></a></li>
                         </ul>
                     </nav>
                 </div>

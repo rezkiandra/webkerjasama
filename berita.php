@@ -60,7 +60,7 @@ if (isset($_GET['op'])) {
             <div class="rows mb-4">
                 <div class="d-lg-flex flex-row justify-content-center align-items-center gap-5">
                     <?php
-                    $perPage            = 3;
+                    $perPage            = 4;
                     $page               = isset($_GET['halaman']) ? (int)$_GET['halaman'] : 1;
                     $start              = ($page > 1) ? ($page * $perPage) - $perPage : 0;
                     $sql                = "SELECT * FROM tb_berita LIMIT $start, $perPage";
@@ -77,11 +77,11 @@ if (isset($_GET['op'])) {
                         $tanggal    = $q['tanggal'];
                         $gambar     = $q['gambar'];
                     ?>
-                        <div class="col-lg-4 border rounded shadow-sm mt-4 mb-5">
+                        <div class="col-lg-3 border rounded shadow-sm mt-4 mb-5">
                             <img src="./admin//assets//upload/berita/<?php echo $gambar ?>" class="img-thumbnail img-fluid" alt="">
-                            <h3 class="my-3 mx-3"><?php echo $judul ?></h3>
-                            <div class="d-flex justify-content-between align-items-center my-3" style="font-size: 14px;">
-                                <p class="mx-3 col-lg-2 col-3 text-center rounded bg-light text-secondary"><?php echo $lokasi ?></p>
+                            <h4 class="my-3 mx-3"><?php echo $judul ?></h4>
+                            <div class="d-flex justify-content-between align-items-center my-3" style="font-size: 13px;">
+                                <p class="mx-3 col-lg-3 col-3 text-center rounded bg-light fw-bold text-uppercase" style="font-size: 12px;"><?php echo $lokasi ?></p>
                                 <p class="text-right mx-3"><?php echo date('d F Y', strtotime($tanggal)) ?></p>
                             </div>
                             <p class="my-3 mx-3 text-start text-secondary"><?php echo $deskripsi ?></p>

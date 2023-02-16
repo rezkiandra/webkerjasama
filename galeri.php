@@ -67,9 +67,9 @@ $koneksi                = mysqli_connect($hostname, $user, $pwd, $db);
                     ?>
                         <div class="col-lg-4 border rounded shadow-sm my-4">
                             <img src="./admin/assets/upload/galeri/<?php echo $gambar ?>" class="img-thumbnail img-fluid">
-                            <h4 class="my-3 mx-3"><?php echo $judul_foto ?></h4>
-                            <div class="d-flex justify-content-between align-items-center my-3" style="font-size: 14px;">
-                                <p class="mx-3 col-lg-3 col-3 text-center rounded bg-warning"><?php echo $lokasi ?></p>
+                            <h5 class="my-3 mx-3"><?php echo $judul_foto ?></h5>
+                            <div class="d-flex justify-content-between align-items-center my-3" style="font-size: 13px;">
+                                <p class="mx-3 col-lg-3 col-3 text-center rounded bg-light fw-bold text-uppercase" style="font-size: 12px;"><?php echo $lokasi ?></p>
                                 <p class="text-right mx-3"><?php echo date('d F Y', strtotime($tanggal)) ?></p>
                             </div>
                         </div>

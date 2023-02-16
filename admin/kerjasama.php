@@ -189,6 +189,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                             <li><a href="./kerjasama" aria-expanded="true"><i class="ti-link"></i><span>Kerjasama</span></a></li>
                             <li><a href="./galeri" aria-expanded="true"><i class="ti-announcement"></i><span>Galeri</span></a></li>
                             <li><a href="./tentang" aria-expanded="true"><i class="ti-headphone"></i><span>Tentang</span></a></li>
+                            <li><a href="./edit_admin" aria-expanded="true"><i class="ti-help-alt"></i><span>Edit Admin</span></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -260,6 +261,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                                 <option value="Lembaga Negara" <?php if ($bentuk_lembaga == "Lembaga Negara") echo "selected" ?>>Lembaga Negara</option>
                                 <option value="Lembaga" <?php if ($bentuk_lembaga == "Lembaga") echo "selected" ?>>Lembaga</option>
                                 <option value="Pelatihan" <?php if ($bentuk_lembaga == "Pelatihan") echo "selected" ?>>Pelatihan</option>
+                                <option value="Kelompok Binaan" <?php if ($bentuk_lembaga == "Kelompok Binaan") echo "selected" ?>>Kelompok Binaan</option>
                                 <option value="Industri" <?php if ($bentuk_lembaga == "Industri") echo "selected" ?>>Industri</option>
                                 <option value="Organisasi Profesi" <?php if ($bentuk_lembaga == "Organisasi Profesi") echo "selected" ?>>Organisasi Profesi</option>
                                 <option value="Pemerintah Desa" <?php if ($bentuk_lembaga == "Pemerintah Desa") echo "selected" ?>>Pemerintah Desa</option>
@@ -280,7 +282,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                                 <option value="Kerjasama Antar Lembaga" <?php if ($jenis_kegiatan == "Kerjasama Antar Lembaga") echo "selected" ?>>Kerjasama Antar Lembaga</option>
                                 <option value="Dukungan Pengembangan Kerjasama Akademik" <?php if ($jenis_kegiatan == "Dukungan Pengembangan Kerjasama Akademik") echo "selected" ?>>Dukungan Pengembangan Kerjasama Akademik</option>
                                 <option value="Penerbitan Kartu Kredit Pemerintah" <?php if ($jenis_kegiatan == "Penerbitan Kartu Kredit Pemerintah") echo "selected" ?>>Penerbitan Kartu Kredit Pemerintah</option>
-                                <option value="Dukungan Pengembangan Dan kerjasama Masyarakat Terinstitusi" <?php if ($jenis_kegiatan == "Dukungan Pengembangan Dan kerjasama Masyarakat Terinstitusi") echo "selected" ?>>Dukungan Pengembangan Dan kerjasama Masyarakat Terinstitusi</option>
+                                <option value="Dukungan Pengembangan Dan Kerjasama Masyarakat Terinstitusi" <?php if ($jenis_kegiatan == "Dukungan Pengembangan Dan Kerjasama Masyarakat Terinstitusi") echo "selected" ?>>Dukungan Pengembangan Dan Kerjasama Masyarakat Terinstitusi</option>
                                 <option value="PMMB" <?php if ($jenis_kegiatan == "PMMB") echo "selected" ?>>PMMB</option>
                                 <option value="Pengembangan Penilaian Mutu Pendidikan Tinggi Vokasi Berstandar Industri" <?php if ($jenis_kegiatan == "Pengembangan Penilaian Mutu Pendidikan Tinggi Vokasi Berstandar Industri") echo "selected" ?>>Pengembangan Penilaian Mutu Pendidikan Tinggi Vokasi Berstandar Industri</option>
                                 <option value="P3M" <?php if ($jenis_kegiatan == "P3M") echo "selected" ?>>P3M</option>
@@ -298,7 +300,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                                 <option value="Peningkatan Penyelenggaraan Tri Dharma Perguruan Tinggi" <?php if ($jenis_kegiatan == "Peningkatan Penyelenggaraan Tri Dharma Perguruan Tinggi") echo "selected" ?>>Peningkatan Penyelenggaraan Tri Dharma Perguruan Tinggi</option>
                                 <option value="Pengembangan Dan Pemanfaatan Informasi Geospasial Untuk Pengabdian Kepada Masyarakat Kabupaten Sambas" <?php if ($jenis_kegiatan == "Pengembangan Dan Pemanfaatan Informasi Geospasial Untuk Pengabdian Kepada Masyarakat Kabupaten Sambas") echo "selected" ?>>Pengembangan Dan Pemanfaatan Informasi Geospasial Untuk Pengabdian Kepada Masyarakat Kabupaten Sambas</option>
                                 <option value="Program Magang" <?php if ($jenis_kegiatan == "Program Magang") echo "selected" ?>>Program Magang</option>
-                                <option value="Standarisasi Dan Sertifikasi Produk Kopi Bubuk Pada Tenant Di Lingkungan Inkubator Bisnis Swabina Tech'S Politeknik Negeri Sambas" <?php if ($jenis_kegiatan == "Standarisasi Dan Sertifikasi Produk Kopi Bubuk Pada Tenant Di Lingkungan Inkubator Bisnis Swabina Tech'S Politeknik Negeri Sambas") echo "selected" ?>>Standarisasi Dan Sertifikasi Produk Kopi Bubuk Pada Tenant Di Lingkungan Inkubator Bisnis Swabina Tech'S Politeknik Negeri Sambas</option>
+                                <option value="Standarisasi Dan Sertifikasi Produk Kopi Bubuk Pada Tenant Di Lingkungan Inkubator Bisnis Swabina Tech Politeknik Negeri Sambas" <?php if ($jenis_kegiatan == "Standarisasi Dan Sertifikasi Produk Kopi Bubuk Pada Tenant Di Lingkungan Inkubator Bisnis Swabina Tech Politeknik Negeri Sambas") echo "selected" ?>>Standarisasi Dan Sertifikasi Produk Kopi Bubuk Pada Tenant Di Lingkungan Inkubator Bisnis Swabina Tech Politeknik Negeri Sambas</option>
                                 <option value="Program Sadar Hukum" <?php if ($jenis_kegiatan == "Program Sadar Hukum") echo "selected" ?>>Program Sadar Hukum</option>
                                 <option value="Hal Kerjasama Pelatihan, Layanan Beasiswa, Test Toefl,Pendidikan Karakter, Kampus Uni Eropa" <?php if ($jenis_kegiatan == "Hal Kerjasama Pelatihan, Layanan Beasiswa, Test Toefl,Pendidikan Karakter, Kampus Uni Eropa") echo "selected" ?>>Hal Kerjasama Pelatihan, Layanan Beasiswa, Test Toefl,Pendidikan Karakter, Kampus Uni Eropa</option>
                                 <option value="Penerbitan Dan Pengelolaan Kartu Mahasiswa" <?php if ($jenis_kegiatan == "Penerbitan Dan Pengelolaan Kartu Mahasiswa") echo "selected" ?>>Penerbitan Dan Pengelolaan Kartu Mahasiswa</option>
@@ -378,8 +380,8 @@ if (isset($_POST['simpan'])) { //untuk create data
                         </thead>
                         <tbody>
                             <?php
-                            $sql   = "SELECT * FROM tb_kerjasama_dalam ORDER BY id";
-                            $query    = mysqli_query($koneksi, $sql);
+                            $sql            = "SELECT * FROM tb_kerjasama_dalam ORDER BY id";
+                            $query          = mysqli_query($koneksi, $sql);
                             while ($q = mysqli_fetch_array($query)) {
                                 $id                 = $q['id'];
                                 $id                 = enkripsiUrl('encrypt', $id);
@@ -410,9 +412,9 @@ if (isset($_POST['simpan'])) { //untuk create data
                                         <a href="kerjasama?op=hapus-internal&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
                                             <button type="button" name="hapus-internal" class="col-12 btn btn-sm btn-danger">Delete</button>
                                         </a>
-                                        <a href="kerjasama?op=detail-internal&id=<?php echo $id ?>">
+                                        <!-- <a href="kerjasama?op=detail-internal&id=<?php echo $id ?>">
                                             <button type="button" name="detail-internal" class="col-12 btn btn-sm btn-info">Detail</button>
-                                        </a>
+                                        </a> -->
                                     </td>
                                 </tr>
                             <?php
@@ -474,9 +476,9 @@ if (isset($_POST['simpan'])) { //untuk create data
                                         <a href="kerjasama?op=hapus-external&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
                                             <button type="button" name="hapus-external" class="col-12 btn btn-sm btn-danger">Delete</button>
                                         </a>
-                                        <a href="kerjasama?op=detail-external&id=<?php echo $id ?>">
+                                        <!-- <a href="kerjasama?op=detail-external&id=<?php echo $id ?>">
                                             <button type="button" name="detail-external" class="col-12 btn btn-sm btn-info">Detail</button>
-                                        </a>
+                                        </a> -->
                                     </td>
                                 </tr>
                             <?php

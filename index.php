@@ -114,7 +114,7 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
             <div class="d-lg-flex justify-content-around">
                 <div class="col-lg-8 d-lg-flex justify-content-center gap-5">
                     <div class="col-lg-6 border rounded shadow-sm my-4">
-                        <h5 class="text-uppercase text-center rounded text-bold text-light py-2 bg-chart" style="font-size: 16px;">Kerjasama Dalam 3 Tahun Terakhir</h5>
+                        <h5 class="text-uppercase text-center rounded text-bold text-light py-2 bg-chart" style="font-size: 16px;">Kerjasama Dalam 5 Tahun Terakhir</h5>
                         <canvas class="bg-white" id="myChart"></canvas>
                     </div>
                     <div class="col-lg-6 border rounded shadow-sm my-4">
@@ -166,7 +166,7 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                                 <img src="./admin/assets/upload/berita/<?php echo $gambar ?>" alt="" class="img-fluid img-thumbnail">
                                 <h4 class="my-3 mx-3"><?php echo $judul ?></h4>
                                 <div class="d-flex justify-content-between align-items-center my-3" style="font-size: 14px;">
-                                    <p class="mx-3 col-lg-3 col-3 text-center rounded bg-warning"><?php echo $lokasi ?></p>
+                                    <p class="mx-3 col-lg-3 col-3 text-center rounded bg-light fw-bold text-uppercase" style="font-size: 12px;"><?php echo $lokasi ?></p>
                                     <p class="text-right mx-3"><?php echo date('d F Y', strtotime($tanggal)) ?></p>
                                 </div>
                                 <p class="my-2 mx-3 text-start text-secondary"><?php echo $deskripsi ?></p>
@@ -195,7 +195,7 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                                 <img src="./admin/assets/upload/berita/<?php echo $gambar ?>" alt="" class="img-fluid img-thumbnail">
                                 <h4 class="my-3 mx-3"><?php echo $judul ?></h4>
                                 <div class="d-flex justify-content-between align-items-center my-3" style="font-size: 14px;">
-                                    <p class="mx-3 col-lg-3 col-3 text-center rounded bg-warning"><?php echo $lokasi ?></p>
+                                    <p class="mx-3 col-lg-3 col-3 text-center rounded bg-light fw-bold text-uppercase" style="font-size: 12px;"><?php echo $lokasi ?></p>
                                     <p class="text-right mx-3"><?php echo date('d F Y', strtotime($tanggal)) ?></p>
                                 </div>
                                 <p class="my-3 mx-3 text-start text-secondary"><?php echo $deskripsi ?></p>
@@ -227,7 +227,7 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                             <img src="./admin/assets/upload/galeri/<?php echo $gambar ?>" alt="" class="img-fluid img-thumbnail">
                             <h4 class="my-3 mx-3"><?php echo $judul ?></h4>
                             <div class="d-flex justify-content-between align-items-center my-3" style="font-size: 14px;">
-                                <p class="mx-3 col-lg-3 col-3 text-center rounded bg-warning"><?php echo $lokasi ?></p>
+                                <p class="mx-3 col-lg-3 col-3 text-center rounded bg-light fw-bold text-uppercase" style="font-size: 12px;"><?php echo $lokasi ?></p>
                                 <p class="text-right mx-3"><?php echo date('d F Y', strtotime($tanggal)) ?></p>
                             </div>
                             <!-- <a href="./template/berita?op=pilih&id=<?php echo $id ?>">
@@ -267,27 +267,27 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                 label: 'Total Kerjasama',
                 data: [
                     <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2018'";
+                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2018%'";
                     $jml_thn_2018 = mysqli_query($koneksi, $sql);
                     echo mysqli_num_rows($jml_thn_2018);
                     ?>,
                     <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2019'";
+                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2019%'";
                     $jml_thn_2019 = mysqli_query($koneksi, $sql);
                     echo mysqli_num_rows($jml_thn_2019);
                     ?>,
                     <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2020'";
+                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2020%'";
                     $jml_thn_2020 = mysqli_query($koneksi, $sql);
                     echo mysqli_num_rows($jml_thn_2020);
                     ?>,
                     <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2021'";
+                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2021%'";
                     $jml_thn_2021 = mysqli_query($koneksi, $sql);
                     echo mysqli_num_rows($jml_thn_2021);
                     ?>,
                     <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2022'";
+                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2022%'";
                     $jml_thn_2022 = mysqli_query($koneksi, $sql);
                     echo mysqli_num_rows($jml_thn_2022);
                     ?>,
@@ -297,22 +297,13 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                     echo mysqli_num_rows($jml_luar_negeri);
                     ?>,
                 ],
-                borderWidth: 2,
                 backgroundColor: [
-                    "rgba(255, 99, 132, .7)",
-                    "rgba(255, 159, 64, .7)",
-                    "rgba(255, 205, 86, .7)",
-                    "rgba(75, 192, 192, .7)",
-                    "rgba(54, 162, 235, .7)",
-                    "rgba(54, 112, 14, .7)",
-                ],
-                borderColor: [
-                    "rgba(255, 99, 132)",
-                    "rgba(255, 159, 64)",
-                    "rgba(255, 205, 86)",
-                    "rgba(75, 192, 192)",
-                    "rgba(54, 162, 235)",
-                    "rgba(54, 112, 14)",
+                    "#7846a8",
+                    "#966fbb",
+                    "#a584c5",
+                    "#c3add8",
+                    "#d2c1e2",
+                    "#f0eaf5",
                 ],
             }, ],
         },
@@ -352,27 +343,27 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                 label: "Total MoU",
                 data: [
                     <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2018'";
+                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2018%'";
                     $jml_thn_2018 = mysqli_query($koneksi, $sql);
                     echo mysqli_num_rows($jml_thn_2018);
                     ?>,
                     <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2019'";
+                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2019%'";
                     $jml_thn_2019 = mysqli_query($koneksi, $sql);
                     echo mysqli_num_rows($jml_thn_2019);
                     ?>,
                     <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2020'";
+                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2020%'";
                     $jml_thn_2020 = mysqli_query($koneksi, $sql);
                     echo mysqli_num_rows($jml_thn_2020);
                     ?>,
                     <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2021'";
+                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2021%'";
                     $jml_thn_2021 = mysqli_query($koneksi, $sql);
                     echo mysqli_num_rows($jml_thn_2021);
                     ?>,
                     <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2022'";
+                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2022%'";
                     $jml_thn_2022 = mysqli_query($koneksi, $sql);
                     echo mysqli_num_rows($jml_thn_2022);
                     ?>,
@@ -383,23 +374,14 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                     ?>,
                 ],
                 backgroundColor: [
-                    "rgba(2, 99, 132, .9)",
-                    "rgba(54, 162, 235, .9)",
-                    "rgba(255, 205, 86, .9)",
-                    "rgba(15, 205, 86, .9)",
-                    "rgba(87, 7, 86, .9)",
-                    "rgba(87, 7, 86, .9)",
+                    "#7846a8",
+                    "#966fbb",
+                    "#a584c5",
+                    "#c3add8",
+                    "#d2c1e2",
+                    "#f0eaf5",
                 ],
-                borderColor: [
-                    "rgb(2, 99, 132)",
-                    "rgb(54, 162, 235)",
-                    "rgb(255, 205, 86)",
-                    "rgb(15, 205, 86)",
-                    "rgb(87, 7, 86)",
-                    "rgb(87, 7, 86)",
-                ],
-                hoverOffset: 2,
-                borderWidth: 2,
+                hoverOffset: 1,
             }, ],
             options: {
                 responsive: true,

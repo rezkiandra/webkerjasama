@@ -144,7 +144,7 @@ if ($op == 'pilih') {
                     <h3 class="text-start"><?php echo $judul ?></h3>
                 </div>
                 <div class="col-2 col-lg-1 my-3 mx-3" style="font-size: 14px;">
-                    <p class="px-1 text-center rounded bg-light"><?php echo $lokasi ?></p>
+                    <p class="px-1 text-center rounded bg-light fw-bold"><?php echo $lokasi ?></p>
                 </div>
                 <div class="my-4 mx-3">
                     <p class="text-start"><?php echo $deskripsi ?></p>
