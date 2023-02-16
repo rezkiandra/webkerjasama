@@ -115,11 +115,11 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                 <div class="col-lg-8 d-lg-flex justify-content-center gap-5">
                     <div class="col-lg-6 border rounded shadow-sm my-4">
                         <h5 class="text-uppercase text-center rounded text-bold text-light py-2 bg-chart" style="font-size: 16px;">Kerjasama Dalam 3 Tahun Terakhir</h5>
-                        <canvas id="myChart"></canvas>
+                        <canvas class="bg-white" id="myChart"></canvas>
                     </div>
                     <div class="col-lg-6 border rounded shadow-sm my-4">
                         <h5 class="text-uppercase text-center rounded text-bold text-light py-2 bg-chart" style="font-size: 16px;">Jumlah MoU Dalam 5 Tahun Terakhir</h5>
-                        <canvas id="myChart3" style="height: 20vh;"></canvas>
+                        <canvas class="bg-white" id="myChart3" style="height: 20vh;"></canvas>
                     </div>
                 </div>
             </div>
@@ -149,7 +149,7 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
             <div class="col-lg-8 pt-4">
                 <h4 class="text-uppercase text-center">Berita Terbaru</h4>
                 <div class="d-lg-flex flex-column justify-content-evenly align-items-center">
-                    <div class="d-lg-flex    flex-row justify-content-evenly align-items-center">
+                    <div class="d-lg-flex flex-row justify-content-evenly align-items-center">
                         <?php
                         $sql   = "SELECT * FROM tb_berita ORDER BY ID DESC LIMIT 2";
                         $query    = mysqli_query($koneksi, $sql);
@@ -161,15 +161,15 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                             $tanggal           = $q['tanggal'];
                             $gambar            = $q['gambar'];
                         ?>
-                            <div class="col-lg-5 border rounded my-4 shadow-sm">
+                            <div class="col-lg-5 bg-white border rounded my-4 shadow-sm">
                                 <div class="rounded mt-2 ms-2 bg-light px-1 position-absolute" style="font-size: 14px;"><?php echo date('d F Y', strtotime($tanggal)) ?></div>
-                                <img src="./admin/assets/upload/berita/<?php echo $gambar ?>" alt="" class="img-fluid">
+                                <img src="./admin/assets/upload/berita/<?php echo $gambar ?>" alt="" class="img-fluid img-thumbnail">
                                 <h4 class="my-3 mx-3"><?php echo $judul ?></h4>
                                 <div class="d-flex justify-content-between align-items-center my-3" style="font-size: 14px;">
                                     <p class="mx-3 col-lg-3 col-3 text-center rounded bg-warning"><?php echo $lokasi ?></p>
                                     <p class="text-right mx-3"><?php echo date('d F Y', strtotime($tanggal)) ?></p>
                                 </div>
-                                <p class="my-3 mx-3 text-start text-secondary"><?php echo $deskripsi ?></p>
+                                <p class="my-2 mx-3 text-start text-secondary"><?php echo $deskripsi ?></p>
                                 <a href="./template/berita?op=pilih&id=<?php echo $id ?>">
                                     <button type="button" class="btn btn-sm mb-3 mx-2">Selengkapnya<i class="ms-2 bi bi-arrow-up-right"></i></button>
                                 </a>
@@ -190,9 +190,9 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                             $tanggal           = $q['tanggal'];
                             $gambar            = $q['gambar'];
                         ?>
-                            <div class="col-lg-5 border rounded my-4 shadow-sm">
+                            <div class="col-lg-5 border bg-white rounded my-4 shadow-sm">
                                 <div class="rounded mt-2 ms-2 bg-light px-1 position-absolute" style="font-size: 14px;"><?php echo date('d F Y', strtotime($tanggal)) ?></div>
-                                <img src="./admin/assets/upload/berita/<?php echo $gambar ?>" alt="" class="img-fluid">
+                                <img src="./admin/assets/upload/berita/<?php echo $gambar ?>" alt="" class="img-fluid img-thumbnail">
                                 <h4 class="my-3 mx-3"><?php echo $judul ?></h4>
                                 <div class="d-flex justify-content-between align-items-center my-3" style="font-size: 14px;">
                                     <p class="mx-3 col-lg-3 col-3 text-center rounded bg-warning"><?php echo $lokasi ?></p>
@@ -222,9 +222,9 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                         $tanggal           = $q['tanggal'];
                         $gambar            = $q['gambar'];
                     ?>
-                        <div class="col-lg-12 border rounded mb-5 shadow-sm">
+                        <div class="col-lg-12 border bg-white rounded mb-5 shadow-sm">
                             <div class="rounded mt-2 ms-2 bg-light position-absolute" style="font-size: 14px;"><?php echo date('d F Y', strtotime($tanggal)) ?></div>
-                            <img src="./admin/assets/upload/galeri/<?php echo $gambar ?>" alt="" class="img-fluid">
+                            <img src="./admin/assets/upload/galeri/<?php echo $gambar ?>" alt="" class="img-fluid img-thumbnail">
                             <h4 class="my-3 mx-3"><?php echo $judul ?></h4>
                             <div class="d-flex justify-content-between align-items-center my-3" style="font-size: 14px;">
                                 <p class="mx-3 col-lg-3 col-3 text-center rounded bg-warning"><?php echo $lokasi ?></p>

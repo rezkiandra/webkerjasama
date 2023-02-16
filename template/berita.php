@@ -139,7 +139,7 @@ if ($op == 'pilih') {
     <section id="main">
         <div class="container d-flex justify-content-center align-items-center">
             <div class="col-lg-10 shadow-sm border rounded">
-                <img src="../admin/assets/upload/berita/<?php echo $gambar ?>" alt="Gambar Berita" class="img-fluid shadow-sm rounded">
+                <img src="../admin/assets/upload/berita/<?php echo $gambar ?>" alt="Gambar Berita" class="img-fluid img-thumbnail shadow-sm rounded">
                 <div class="my-4 mx-3">
                     <h3 class="text-start"><?php echo $judul ?></h3>
                 </div>

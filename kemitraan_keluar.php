@@ -35,7 +35,7 @@ include "./bin/koneksi.php";
     </section>
 
     <section id="gambar">
-        <div class="container">
+        <div class="container col-lg-8">
             <h2 class="text-center text-uppercase mt-5 mb-4">Prosedur Kemitraan Keluar</h2>
             <img src="./assets//img//Prosedur Kemitraan Keluar.png" alt="" class="img-fluid shadow-sm rounded">
         </div>

@@ -1,5 +1,42 @@
 <?php
 include_once "./bin/koneksi.php";
+include_once "./helpers/helpers.php";
+
+$hostname           = "localhost";
+$user               = "root";
+$pwd                = "";
+$db                 = "kerjasama";
+
+
+$koneksi = mysqli_connect($hostname, $user, $pwd, $db);
+if (!$koneksi) {
+    die("Belum terkoneksi");
+} else {
+    // echo "Koneksi berhasil";
+}
+
+if (isset($_GET['op'])) {
+    $op = $_GET['op'];
+} else {
+    $op = "";
+}
+
+if ($op == 'detail-internal' && isset($_GET['id']) && !empty($_GET['id'])) {
+    $id                 = $_GET['id'];
+    $id                 = enkripsiUrl('decrypt', $id);
+    $sql1               = "SELECT * FROM tb_kerjasama_dalam WHERE id = '$id'";
+    $q1                 = mysqli_query($koneksi, $sql1);
+    $r1                 = mysqli_fetch_array($q1);
+    $mitra_kerjasama    = $r1['mitra_kerjasama'];
+    $bentuk_lembaga     = $r1['bentuk_lembaga'];
+    $jenis_kegiatan     = $r1['jenis_kegiatan'];
+    $waktu_mulai        = $r1['waktu_mulai'];
+    $waktu_berakhir     = $r1['waktu_berakhir'];
+    $mou_poltesa        = $r1['mou_poltesa'];
+    $mou_mitra          = $r1['mou_mitra'];
+    $lokasi             = $r1['lokasi'];
+    $status             = $r1['status'];
+}
 
 ?>
 
@@ -53,7 +90,7 @@ include_once "./bin/koneksi.php";
                         <th>MoU Mitra</th>
                         <th>Lokasi</th>
                         <th>Status</th>
-                        <th>Aksi</th>
+                        <!-- <th>Aksi</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -61,7 +98,8 @@ include_once "./bin/koneksi.php";
                     $sql   = "SELECT * FROM tb_kerjasama_dalam ORDER BY id";
                     $query    = mysqli_query($koneksi, $sql);
                     while ($q = mysqli_fetch_array($query)) {
-                        $id                 = $q['id'];
+                        // $id                 = $q['id'];
+                        $id                 = enkripsiUrl('encrypt', $q['id']);
                         $mitra_kerjasama    = $q['mitra_kerjasama'];
                         $bentuk_lembaga     = $q['bentuk_lembaga'];
                         $jenis_kegiatan     = $q['jenis_kegiatan'];
@@ -82,11 +120,11 @@ include_once "./bin/koneksi.php";
                             <td scope="row"><?php echo $mou_mitra ?></td>
                             <td scope="row"><?php echo $lokasi ?></td>
                             <td scope="row"><?php echo $status ?></td>
-                            <td class="text-center">
-                                <a href="kerjasama?op=detail-internal&id=<?php echo $id ?>">
+                            <!-- <td class="text-center">
+                                <a href="kerjasama_dalam?op=detail-internal&id=<?php echo $id ?>">
                                     <button type="button" name="detail-internal" class="col-12 btn btn-warning" style="font-size: 14px;">Detail</button>
                                 </a>
-                            </td>
+                            </td> -->
                         </tr>
                     <?php
                     }

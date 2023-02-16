@@ -1,7 +1,13 @@
 <?php
 require_once "../helpers/helpers.php";
-
 ob_start();
+session_start();
+
+if (!isset($_SESSION['session_username'])) {
+    header("location:auth");
+    exit();
+}
+
 $hostname       = "localhost";
 $user           = "root";
 $pwd            = "";
@@ -162,7 +168,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                         <div class="user-profile pull-right">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Username Admin<i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="./auth">Log Out</a>
+                                <a class="dropdown-item" href="./logout" onclick="return confirm('Apakah yakin ingin logout?')">Log Out</a>
                             </div>
                         </div>
                     </div>
@@ -264,10 +270,10 @@ if (isset($_POST['simpan'])) { //untuk create data
                                     </td>
                                     <td class="text-center">
                                         <a href="berita?op=edit&id=<?php echo $id ?>">
-                                            <button type="button" name="edit" class="col-lg-4 col-10 btn btn-warning">Edit</button>
+                                            <button type="button" name="edit" class="col-lg-4 btn-sm col-10 btn btn-warning">Edit</button>
                                         </a>
                                         <a href="berita?op=hapus&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
-                                            <button type="button" name="hapus" class="col-lg-4 col-10 btn btn-danger">Delete</button>
+                                            <button type="button" name="hapus" class="col-lg-4 btn-sm col-10 btn btn-danger">Delete</button>
                                         </a>
                                     </td>
                                 </tr>

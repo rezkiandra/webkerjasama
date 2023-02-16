@@ -1,7 +1,13 @@
 <?php
 require_once "../helpers/helpers.php";
-
 ob_start();
+session_start();
+
+if (!isset($_SESSION['session_username'])) {
+    header("location:auth");
+    exit();
+}
+
 $hostname       = "localhost";
 $user           = "root";
 $pwd            = "";
@@ -208,7 +214,7 @@ if (isset($_POST['simpan-foto'])) { //untuk create data
                         <div class="user-profile pull-right">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Username Admin<i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="./auth">Log Out</a>
+                                <a class="dropdown-item" href="./logout" onclick="return confirm('Apakah yakin ingin logout?')">Log Out</a>
                             </div>
                         </div>
                     </div>
@@ -319,10 +325,10 @@ if (isset($_POST['simpan-foto'])) { //untuk create data
                                     <td scope="row"><?php echo $link ?></td>
                                     <td class="text-center">
                                         <a href="galeri?op=edit-video&id=<?php echo $id ?>">
-                                            <button type="button" name="edit-video" class="col-10 btn btn-warning">Edit</button>
+                                            <button type="button" name="edit-video" class="col-10 btn btn-sm btn-warning">Edit</button>
                                         </a>
                                         <a href="galeri?op=hapus-video&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete video?')">
-                                            <button type="button" name="hapus-video" class="col-10 btn btn-danger">Delete</button>
+                                            <button type="button" name="hapus-video" class="col-10 btn btn-sm btn-danger">Delete</button>
                                         </a>
                                     </td>
                                 </tr>

@@ -1,7 +1,13 @@
 <?php
 require_once "../helpers/helpers.php";
-
 ob_start();
+session_start();
+
+if (!isset($_SESSION['session_username'])) {
+    header("location:auth");
+    exit();
+}
+
 $hostname       = "localhost";
 $user           = "root";
 $pwd            = "";
@@ -209,7 +215,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                         <div class="user-profile pull-right">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Username Admin<i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="./auth">Log Out</a>
+                                <a class="dropdown-item" href="./logout" onclick="return confirm('Apakah yakin ingin logout?')">Log Out</a>
                             </div>
                         </div>
                     </div>
@@ -399,13 +405,13 @@ if (isset($_POST['simpan'])) { //untuk create data
                                     <td scope="row"><?php echo $status ?></td>
                                     <td class="text-center">
                                         <a href="kerjasama?op=edit-internal&id=<?php echo $id ?>">
-                                            <button type="button" name="edit-internal" class="col-12 btn btn-warning">Edit</button>
+                                            <button type="button" name="edit-internal" class="col-12 btn btn-sm btn-warning">Edit</button>
                                         </a>
                                         <a href="kerjasama?op=hapus-internal&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
-                                            <button type="button" name="hapus-internal" class="col-12 btn btn-danger">Delete</button>
+                                            <button type="button" name="hapus-internal" class="col-12 btn btn-sm btn-danger">Delete</button>
                                         </a>
                                         <a href="kerjasama?op=detail-internal&id=<?php echo $id ?>">
-                                            <button type="button" name="detail-internal" class="col-12 btn btn-info">Detail</button>
+                                            <button type="button" name="detail-internal" class="col-12 btn btn-sm btn-info">Detail</button>
                                         </a>
                                     </td>
                                 </tr>
@@ -463,13 +469,13 @@ if (isset($_POST['simpan'])) { //untuk create data
                                     <td scope="row"><?php echo $status ?></td>
                                     <td class="text-center">
                                         <a href="kerjasama?op=edit-external&id=<?php echo $id ?>">
-                                            <button type="button" name="edit-external" class="col-12 btn btn-warning">Edit</button>
+                                            <button type="button" name="edit-external" class="col-12 btn btn-sm btn-warning">Edit</button>
                                         </a>
                                         <a href="kerjasama?op=hapus-external&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
-                                            <button type="button" name="hapus-external" class="col-12 btn btn-danger">Delete</button>
+                                            <button type="button" name="hapus-external" class="col-12 btn btn-sm btn-danger">Delete</button>
                                         </a>
                                         <a href="kerjasama?op=detail-external&id=<?php echo $id ?>">
-                                            <button type="button" name="detail-external" class="col-12 btn btn-info">Detail</button>
+                                            <button type="button" name="detail-external" class="col-12 btn btn-sm btn-info">Detail</button>
                                         </a>
                                     </td>
                                 </tr>

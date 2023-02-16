@@ -78,7 +78,7 @@ if (isset($_GET['op'])) {
                         $gambar     = $q['gambar'];
                     ?>
                         <div class="col-lg-4 border rounded shadow-sm mt-4 mb-5">
-                            <img src="./admin//assets//upload/berita/<?php echo $gambar ?>" class="img-fluid" alt="">
+                            <img src="./admin//assets//upload/berita/<?php echo $gambar ?>" class="img-thumbnail img-fluid" alt="">
                             <h3 class="my-3 mx-3"><?php echo $judul ?></h3>
                             <div class="d-flex justify-content-between align-items-center my-3" style="font-size: 14px;">
                                 <p class="mx-3 col-lg-2 col-3 text-center rounded bg-light text-secondary"><?php echo $lokasi ?></p>

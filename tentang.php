@@ -37,7 +37,7 @@ require_once("./bin/koneksi.php");
     </section>
 
     <section id="gambar">
-        <div class="container">
+        <div class="container col-lg-8">
             <h3 class="text-uppercase text-center mt-5 mb-4">Tentang Kami</h3>
             <?php
             $sql      = "select * from tb_tentang";
@@ -55,7 +55,7 @@ require_once("./bin/koneksi.php");
 
     <!-- ========== Start Main ========== -->
     <section id="main">
-        <div class="container my-5">
+        <div class="container my-5 col-lg-8">
             <h2 class="text-dark fw-normal">Hubungi Kami</h2>
             <p class="text-dark">Bagian Kerjasama dan Kelembagaan Politeknik Negeri Sambas</p>
             <p class="text-dark">Gedung Direktorat POLTESA</p>

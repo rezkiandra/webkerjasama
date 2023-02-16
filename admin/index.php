@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-// if(!isset($_SESSION['session_username'])) {
-//     header("location:auth");
-//     exit();
-// }
+if(!isset($_SESSION['session_username'])) {
+    header("location:auth");
+    exit();
+}
 
 $hostname       = "localhost";
 $user           = "root";
@@ -122,7 +122,7 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                         <div class="user-profile pull-right">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Username Admin<i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="./auth">Log Out</a>
+                                <a class="dropdown-item" href="./logout" onclick="return confirm('Apakah yakin ingin logout?')">Log Out</a>
                             </div>
                         </div>
                     </div>
