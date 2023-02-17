@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['session_username'])) {
+if (!isset($_SESSION['session_username'])) {
     header("location:auth");
     exit();
 }
@@ -94,9 +94,11 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                             <li><a href="./berita" aria-expanded="true"><i class="ti-world"></i><span>Berita</span></a></li>
                             <li><a href="./mitra" aria-expanded="true"><i class="ti-user"></i><span>Mitra</span></a></li>
                             <li><a href="./kerjasama" aria-expanded="true"><i class="ti-link"></i><span>Kerjasama</span></a></li>
+                            <li><a href="./kemitraan_keluar" aria-expanded="true"><i class="ti-export"></i><span>Kemitraan Keluar</span></a></li>
+                            <li><a href="./kemitraan_kunjungan" aria-expanded="true"><i class="ti-import"></i><span>Kerjasama Kunjungan</span></a></li>
                             <li><a href="./galeri" aria-expanded="true"><i class="ti-announcement"></i><span>Galeri</span></a></li>
                             <li><a href="./tentang" aria-expanded="true"><i class="ti-headphone"></i><span>Tentang</span></a></li>
-                            <li><a href="./edit_admin" aria-expanded="true"><i class="ti-help-alt"></i><span>Edit Admin</span></a></li>
+                            <li><a href="./edit_admin" aria-expanded="true"><i class="ti-settings"></i><span>Edit Admin</span></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -114,7 +116,7 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                             </div>
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Admin</a></li>
+                                <li><a href="./">Admin</a></li>
                                 <li><span>Dashboard</span></li>
                             </ul>
                         </div>
@@ -184,7 +186,7 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-user"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Jumlah Kerjasama Yang Aktif</h4>
+                                        <h4 class="header-title mb-0">Jumlah Mitra Yang Aktif</h4>
                                         <p>Dalam Negeri</p>
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
@@ -200,7 +202,7 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-user"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Jumlah Kerjasama Yang Tidak Aktif</h4>
+                                        <h4 class="header-title mb-0">Jumlah Mitra Yang Tidak Aktif</h4>
                                         <p>Dalam Negeri</p>
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
@@ -217,7 +219,7 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-user"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Jumlah Kerjasama Yang Aktif</h4>
+                                        <h4 class="header-title mb-0">Jumlah Mitra Yang Aktif</h4>
                                         <p>Luar Negeri</p>
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
@@ -233,7 +235,7 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-user"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Jumlah Kerjasama Yang Tidak Aktif</h4>
+                                        <h4 class="header-title mb-0">Jumlah Mitra Yang Tidak Aktif</h4>
                                         <p>Luar Negeri</p>
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">

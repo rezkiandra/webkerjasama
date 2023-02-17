@@ -140,9 +140,11 @@ if (isset($_POST['simpan'])) { //untuk create data
                             <li><a href="./berita" aria-expanded="true"><i class="ti-world"></i><span>Berita</span></a></li>
                             <li><a href="./mitra" aria-expanded="true"><i class="ti-user"></i><span>Mitra</span></a></li>
                             <li><a href="./kerjasama" aria-expanded="true"><i class="ti-link"></i><span>Kerjasama</span></a></li>
+                            <li><a href="./kemitraan_keluar" aria-expanded="true"><i class="ti-export"></i><span>Kemitraan Keluar</span></a></li>
+                            <li><a href="./kemitraan_kunjungan" aria-expanded="true"><i class="ti-import"></i><span>Kerjasama Kunjungan</span></a></li>
                             <li><a href="./galeri" aria-expanded="true"><i class="ti-announcement"></i><span>Galeri</span></a></li>
                             <li><a href="./tentang" aria-expanded="true"><i class="ti-headphone"></i><span>Tentang</span></a></li>
-                            <li><a href="./edit_admin" aria-expanded="true"><i class="ti-help-alt"></i><span>Edit Admin</span></a></li>
+                            <li><a href="./edit_admin" aria-expanded="true"><i class="ti-settings"></i><span>Edit Admin</span></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -160,7 +162,7 @@ if (isset($_POST['simpan'])) { //untuk create data
                             </div>
                             <h4 class="page-title pull-left">Berita</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Admin</a></li>
+                                <li><a href="./">Admin</a></li>
                                 <li><span>Berita</span></li>
                             </ul>
                         </div>

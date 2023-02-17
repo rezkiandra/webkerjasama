@@ -36,8 +36,18 @@ include "./bin/koneksi.php";
 
     <section id="gambar">
         <div class="container col-lg-8">
-            <h2 class="text-center text-uppercase mt-5 mb-4">Prosedur Kemitraan Keluar</h2>
-            <img src="./assets//img//Prosedur Kemitraan Keluar.png" alt="" class="img-fluid shadow-sm rounded">
+            <h3 class="text-uppercase text-center mt-5 mb-4">Tentang Kami</h3>
+            <?php
+            $sql      = "select * from tb_kemitraan_keluar";
+            $query    = mysqli_query($koneksi, $sql);
+            while ($q = mysqli_fetch_array($query)) {
+                $id             = $q['id'];
+                $foto           = $q['foto'];
+            ?>
+                <img src="./admin/assets/upload/kemitraan/<?php echo $foto ?>" alt="" class="img-fluid shadow-sm rounded">
+            <?php
+            }
+            ?>
         </div>
     </section>
 
