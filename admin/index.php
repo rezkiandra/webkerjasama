@@ -145,7 +145,7 @@ $count_mitra_external       = mysqli_num_rows($mitra_external);
                                     <div class="icon"><i class="fa fa-globe"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
                                         <h4 class="header-title mb-0">Jumlah Berita</h4>
-                                        <p>Kampus</p>
+                                        <p>Kampus & Umum</p>
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
                                         <h2><?php echo $count_berita ?></h2>
