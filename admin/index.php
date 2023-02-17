@@ -31,23 +31,28 @@ $get_berita         = mysqli_query($koneksi, "SELECT * FROM tb_berita");
 $count_berita       = mysqli_num_rows($get_berita);
 
 // Kerjasama Dalam Negeri yang aktif
-$aktif_internal             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_dalam WHERE status = 'Aktif' OR status = 'AKTIF'");
+$aktif_internal             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_dalam WHERE status = 'Aktif'");
 $count_aktif_internal       = mysqli_num_rows($aktif_internal);
 
 // Kerjasama Dalam Negeri yang tidak aktif
-$nonaktif_internal             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_dalam WHERE status = 'Tidak Aktif' OR status = 'TIDAK AKTIF'");
+$nonaktif_internal             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_dalam WHERE status = 'Tidak Aktif'");
 $count_nonaktif_internal       = mysqli_num_rows($nonaktif_internal);
 
 // Kerjasama Luar Negeri yang aktif
-$aktif_external             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_luar WHERE status = 'Aktif' OR status = 'AKTIF'");
+$aktif_external             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_luar WHERE status = 'Aktif'");
 $count_aktif_external       = mysqli_num_rows($aktif_external);
 
 // Kerjasama Luar Negeri yang tidak aktif
-$nonaktif_external             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_luar WHERE status = 'Tidak Aktif' OR status = 'TIDAK AKTIF'");
+$nonaktif_external             = mysqli_query($koneksi, "SELECT * FROM tb_kerjasama_luar WHERE status = 'Tidak Aktif'");
 $count_nonaktif_external       = mysqli_num_rows($nonaktif_external);
 
-// Total Keseluruhan MoU
-$total_mou                  = $count_aktif_internal + $count_nonaktif_internal + $count_aktif_external + $count_nonaktif_external;
+// Kemitraan Dalam Negeri
+$mitra_internal             = mysqli_query($koneksi, "SELECT * FROM tb_mitra WHERE lokasi = 'Dalam Negeri'");
+$count_mitra_internal       = mysqli_num_rows($mitra_internal);
+
+// Kemitraan Luar Negeri
+$mitra_external             = mysqli_query($koneksi, "SELECT * FROM tb_mitra WHERE lokasi = 'Luar Negeri'");
+$count_mitra_external       = mysqli_num_rows($mitra_external);
 
 ?>
 
@@ -154,7 +159,7 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-user"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Mitra Kerjasama</h4>
+                                        <h4 class="header-title mb-0">Kerjasama</h4>
                                         <p>Dalam Negeri</p>
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
@@ -169,7 +174,7 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-user"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Mitra Kerjasama</h4>
+                                        <h4 class="header-title mb-0">Kerjasama</h4>
                                         <p>Luar Negeri</p>
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
@@ -180,13 +185,15 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                             </div>
                         </div>
                     </div>
+
+                    <!-- Rows 1 -->
                     <div class="d-lg-flex justify-content-center gap-5 mb-4">
                         <div class="col-lg-6">
                             <div class="single-report mb-xs-30">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-user"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Jumlah Mitra Yang Aktif</h4>
+                                        <h4 class="header-title mb-0">Jumlah Kerjasama Yang Aktif</h4>
                                         <p>Dalam Negeri</p>
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
@@ -194,7 +201,6 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                                         <span>Kerjasama</span>
                                     </div>
                                 </div>
-                                <!-- <canvas id="berita" height="100"></canvas> -->
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -202,7 +208,27 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-user"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Jumlah Mitra Yang Tidak Aktif</h4>
+                                        <h4 class="header-title mb-0">Jumlah Kerjasama Yang Aktif</h4>
+                                        <p>Luar Negeri</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between pb-2">
+                                        <h2><?php echo $count_aktif_external ?></h2>
+                                        <span>Kerjasama</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Rows 1 -->
+
+                    <!-- Rows 2 -->
+                    <div class="d-lg-flex justify-content-center gap-5 mb-4">
+                        <div class="col-lg-6">
+                            <div class="single-report mb-xs-30">
+                                <div class="s-report-inner pr--20 pt--30 mb-3">
+                                    <div class="icon"><i class="fa fa-user"></i></div>
+                                    <div class="s-report-title d-flex justify-content-between">
+                                        <h4 class="header-title mb-0">Jumlah Kerjasama Yang Tidak Aktif</h4>
                                         <p>Dalam Negeri</p>
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
@@ -212,30 +238,12 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="d-lg-flex justify-content-center gap-5 mb-5">
                         <div class="col-lg-6">
                             <div class="single-report mb-xs-30">
                                 <div class="s-report-inner pr--20 pt--30 mb-3">
                                     <div class="icon"><i class="fa fa-user"></i></div>
                                     <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Jumlah Mitra Yang Aktif</h4>
-                                        <p>Luar Negeri</p>
-                                    </div>
-                                    <div class="d-flex justify-content-between pb-2">
-                                        <h2><?php echo $count_aktif_external ?></h2>
-                                        <span>Kerjasama</span>
-                                    </div>
-                                </div>
-                                <!-- <canvas id="berita" height="100"></canvas> -->
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="single-report mb-xs-30">
-                                <div class="s-report-inner pr--20 pt--30 mb-3">
-                                    <div class="icon"><i class="fa fa-user"></i></div>
-                                    <div class="s-report-title d-flex justify-content-between">
-                                        <h4 class="header-title mb-0">Jumlah Mitra Yang Tidak Aktif</h4>
+                                        <h4 class="header-title mb-0">Jumlah Kerjasama Yang Tidak Aktif</h4>
                                         <p>Luar Negeri</p>
                                     </div>
                                     <div class="d-flex justify-content-between pb-2">
@@ -246,7 +254,46 @@ $total_mou                  = $count_aktif_internal + $count_nonaktif_internal +
                             </div>
                         </div>
                     </div>
+                    <!-- End Rows 2 -->
+
+
+                    <!-- Rows 3 -->
+                    <div class="d-lg-flex justify-content-center gap-5 mb-5">
+                        <div class="col-lg-6">
+                            <div class="single-report mb-xs-30">
+                                <div class="s-report-inner pr--20 pt--30 mb-3">
+                                    <div class="icon"><i class="fa fa-user"></i></div>
+                                    <div class="s-report-title d-flex justify-content-between">
+                                        <h4 class="header-title mb-0">Jumlah Mitra</h4>
+                                        <p>Dalam Negeri</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between pb-2">
+                                        <h2><?php echo $count_mitra_internal ?></h2>
+                                        <span>Kerjasama</span>
+                                    </div>
+                                </div>
+                                <!-- <canvas id="berita" height="100"></canvas> -->
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="single-report mb-xs-30">
+                                <div class="s-report-inner pr--20 pt--30 mb-3">
+                                    <div class="icon"><i class="fa fa-user"></i></div>
+                                    <div class="s-report-title d-flex justify-content-between">
+                                        <h4 class="header-title mb-0">Jumlah Mitra</h4>
+                                        <p>Luar Negeri</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between pb-2">
+                                        <h2><?php echo $count_mitra_external ?></h2>
+                                        <span>Kerjasama</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                <!-- End Rows 3 -->
+
             </div>
         </div>
         <footer>
