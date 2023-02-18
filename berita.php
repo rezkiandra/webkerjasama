@@ -73,6 +73,7 @@ if (isset($_GET['op'])) {
                         $id         = enkripsiUrl('encrypt', $q['id']);
                         $judul      = $q['judul'];
                         $deskripsi  = $q['deskripsi'];
+                        $slice      = substr($deskripsi, 0, 200) . "...";
                         $lokasi     = $q['lokasi'];
                         $tanggal    = $q['tanggal'];
                         $gambar     = $q['gambar'];
@@ -84,7 +85,7 @@ if (isset($_GET['op'])) {
                                 <p class="mx-3 col-lg-3 col-3 text-center rounded bg-light fw-bold text-uppercase" style="font-size: 12px;"><?php echo $lokasi ?></p>
                                 <p class="text-right mx-3"><?php echo date('d F Y', strtotime($tanggal)) ?></p>
                             </div>
-                            <p class="my-3 mx-3 text-start text-secondary"><?php echo $deskripsi ?></p>
+                            <p class="my-3 mx-3 text-start text-secondary"><?php echo $slice ?></p>
                             <hr>
                             </hr>
                             <a href="./template/berita?op=pilih&id=<?php echo $id ?>">

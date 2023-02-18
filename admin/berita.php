@@ -259,13 +259,14 @@ if (isset($_POST['simpan'])) { //untuk create data
                                 $id         = enkripsiUrl('encrypt', $q['id']);
                                 $judul      = $q['judul'];
                                 $deskripsi  = $q['deskripsi'];
+                                $slice      = substr($deskripsi, 0, 200);
                                 $lokasi     = $q['lokasi'];
                                 $tanggal    = $q['tanggal'];
                                 $gambar     = $q['gambar'];
                             ?>
                                 <tr class="text-start text-wrap">
                                     <td scope="row"><?php echo $judul ?></td>
-                                    <td scope="row"><?php echo $deskripsi ?></td>
+                                    <td scope="row"><?php echo $slice ?></td>
                                     <td scope="row"><?php echo $lokasi ?></td>
                                     <td scope="row"><?php echo date('d F Y', strtotime($tanggal)) ?></td>
                                     <td scope="row">
@@ -273,10 +274,10 @@ if (isset($_POST['simpan'])) { //untuk create data
                                     </td>
                                     <td class="text-center">
                                         <a href="berita?op=edit&id=<?php echo $id ?>">
-                                            <button type="button" name="edit" class="col-lg-4 btn-sm col-10 btn btn-warning">Edit</button>
+                                            <button type="button" name="edit" class="col-lg-10 btn-sm col-10 btn btn-warning">Edit</button>
                                         </a>
                                         <a href="berita?op=hapus&id=<?php echo $id ?>" onclick="return confirm('Apakah yakin mau delete data?')">
-                                            <button type="button" name="hapus" class="col-lg-4 btn-sm col-10 btn btn-danger">Delete</button>
+                                            <button type="button" name="hapus" class="col-lg-10 btn-sm col-10 btn btn-danger">Delete</button>
                                         </a>
                                     </td>
                                 </tr>

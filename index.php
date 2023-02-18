@@ -114,11 +114,11 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
             <div class="d-lg-flex justify-content-around">
                 <div class="col-lg-8 d-lg-flex justify-content-center gap-5">
                     <div class="col-lg-6 border rounded shadow-sm my-4">
-                        <h5 class="text-uppercase text-center rounded text-bold text-light py-2 bg-chart" style="font-size: 16px;">Kerjasama Dalam 5 Tahun Terakhir</h5>
+                        <h5 class="text-uppercase text-center rounded text-bold text-light py-2 bg-chart" style="font-size: 16px;">Kerjasama Dalam Negeri 5 Tahun Terakhir</h5>
                         <canvas class="bg-white" id="myChart"></canvas>
                     </div>
                     <div class="col-lg-6 border rounded shadow-sm my-4">
-                        <h5 class="text-uppercase text-center rounded text-bold text-light py-2 bg-chart" style="font-size: 16px;">Jumlah MoU Dalam 5 Tahun Terakhir</h5>
+                        <h5 class="text-uppercase text-center rounded text-bold text-light py-2 bg-chart" style="font-size: 16px;">Kerjasama Luar Negeri 8 Tahun Terakhir</h5>
                         <canvas class="bg-white" id="myChart3" style="height: 20vh;"></canvas>
                     </div>
                 </div>
@@ -262,7 +262,7 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
     new Chart(ctx, {
         type: "bar",
         data: {
-            labels: ["2018", "2019", "2020", "2021", "2022", "Luar Negeri"],
+            labels: ["2018", "2019", "2020", "2021", "2022"],
             datasets: [{
                 label: 'Total Kerjasama',
                 data: [
@@ -290,11 +290,6 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                     $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2022%'";
                     $jml_thn_2022 = mysqli_query($koneksi, $sql);
                     echo mysqli_num_rows($jml_thn_2022);
-                    ?>,
-                    <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_luar";
-                    $jml_luar_negeri = mysqli_query($koneksi, $sql);
-                    echo mysqli_num_rows($jml_luar_negeri);
                     ?>,
                 ],
                 backgroundColor: [
@@ -338,39 +333,49 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
     new Chart(ctx3, {
         type: "pie",
         data: {
-            labels: ["2018", "2019", "2020", "2021", "2022", "Luar Negeri"],
+            labels: ["2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023"],
             datasets: [{
-                label: "Total MoU",
+                label: "Total Kerjasama",
                 data: [
                     <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2018%'";
+                    $sql          = "SELECT * FROM tb_kerjasama_luar WHERE waktu_mulai LIKE '%2016%'";
+                    $jml_thn_2016 = mysqli_query($koneksi, $sql);
+                    echo mysqli_num_rows($jml_thn_2016);
+                    ?>,
+                    <?php
+                    $sql          = "SELECT * FROM tb_kerjasama_luar WHERE waktu_mulai LIKE '%2017%'";
+                    $jml_thn_2017 = mysqli_query($koneksi, $sql);
+                    echo mysqli_num_rows($jml_thn_2017);
+                    ?>,
+                    <?php
+                    $sql          = "SELECT * FROM tb_kerjasama_luar WHERE waktu_mulai LIKE '%2018%'";
                     $jml_thn_2018 = mysqli_query($koneksi, $sql);
                     echo mysqli_num_rows($jml_thn_2018);
                     ?>,
                     <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2019%'";
+                    $sql          = "SELECT * FROM tb_kerjasama_luar WHERE waktu_mulai LIKE '%2019%'";
                     $jml_thn_2019 = mysqli_query($koneksi, $sql);
                     echo mysqli_num_rows($jml_thn_2019);
                     ?>,
                     <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2020%'";
+                    $sql          = "SELECT * FROM tb_kerjasama_luar WHERE waktu_mulai LIKE '%2020%'";
                     $jml_thn_2020 = mysqli_query($koneksi, $sql);
                     echo mysqli_num_rows($jml_thn_2020);
                     ?>,
                     <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2021%'";
+                    $sql          = "SELECT * FROM tb_kerjasama_luar WHERE waktu_mulai LIKE '%2021%'";
                     $jml_thn_2021 = mysqli_query($koneksi, $sql);
                     echo mysqli_num_rows($jml_thn_2021);
                     ?>,
                     <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_dalam WHERE waktu_mulai LIKE '%2022%'";
+                    $sql          = "SELECT * FROM tb_kerjasama_luar WHERE waktu_mulai LIKE '%2022%'";
                     $jml_thn_2022 = mysqli_query($koneksi, $sql);
                     echo mysqli_num_rows($jml_thn_2022);
                     ?>,
                     <?php
-                    $sql          = "SELECT * FROM tb_kerjasama_luar";
-                    $jml_luar_negeri = mysqli_query($koneksi, $sql);
-                    echo mysqli_num_rows($jml_luar_negeri);
+                    $sql          = "SELECT * FROM tb_kerjasama_luar WHERE waktu_mulai LIKE '%2023%'";
+                    $jml_thn_2023 = mysqli_query($koneksi, $sql);
+                    echo mysqli_num_rows($jml_thn_2023);
                     ?>,
                 ],
                 backgroundColor: [
@@ -387,10 +392,6 @@ $jumlah_external        = mysqli_num_rows($kerjasama_luar);
                 responsive: true,
                 legend: {
                     position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'Chart.js Doughnut Chart'
                 },
                 animation: {
                     animateScale: true,
